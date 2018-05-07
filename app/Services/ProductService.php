@@ -29,10 +29,10 @@ class ProductService
             $res["image1"] = $this->uploadFile($request, '1');
             $res["image2"] = $this->uploadFile($request, '2');
         }
-        if (!empty($res["id"] && ($request->hasFile('product.image1') || $res["image1_edit"] == "1"))) {
+        if (!empty($res["id"]) && ($request->hasFile('product.image1') || $res["image1_edit"] == "1")) {
             $res["image1"] = $this->uploadFile($request, '1');
         }
-        if (!empty($res["id"] && ($request->hasFile('product.image2') || $res["image2_edit"] == "1"))) {
+        if (!empty($res["id"]) && ($request->hasFile('product.image2') || $res["image2_edit"] == "1")) {
             $res["image2"] = $this->uploadFile($request, '2');
         }
 
