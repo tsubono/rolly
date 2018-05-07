@@ -217,7 +217,7 @@
                             パスワード
                         </label>
                         <div class="col-md-6">
-                            <input type="password" id="user-password" name="user[password]" value="{{ old('user.password', $user->password) }}" class="form-control" required placeholder="※6文字以上で入力してください。"/>
+                            <input type="password" id="user-password" name="user[password]" value="" class="form-control" required placeholder="※6文字以上で入力してください。"/>
                             @if ($errors->has('password'))
                                 @foreach ($errors->get('password') as $error)
                                     <div class="text-danger">{{ $error }}</div>
