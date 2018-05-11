@@ -73,7 +73,7 @@
         <li class="header">設定</li>
         <li class="{{ request()->is('admin/setting/brands', 'admin/setting/brands/*') ? 'active' : '' }} treeview">
             <a href="#">
-                <i class="fa fa-key"></i>
+                <i class="fa fa-tag"></i>
                 <span>ブランド管理</span>
                 <span class="pull-right-container">
                     <i class="fa fa-angle-left pull-right"></i>
@@ -83,6 +83,27 @@
                 <li class="{{ request()->is('admin/setting/brands') ? 'active' : '' }} ">
                     <a href="{{ url('/admin/setting/brands') }}">
                         <span>ブランド一覧</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="{{ request()->is('admin/setting/plans', 'admin/setting/plans/*') ? 'active' : '' }} treeview">
+            <a href="#">
+                <i class="fa fa-jpy"></i>
+                <span>プラン管理</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="{{ request()->is('admin/setting/plans') ? 'active' : '' }} ">
+                    <a href="{{ url('/admin/setting/plans') }}">
+                        <span>プラン一覧</span>
+                    </a>
+                </li>
+                <li class="{{ request()->is('admin/setting/plan_details') ? 'active' : '' }} ">
+                    <a href="{{ url('/admin/setting/plan_details') }}">
+                        <span>プラン詳細一覧</span>
                     </a>
                 </li>
             </ul>

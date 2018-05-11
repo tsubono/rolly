@@ -60,6 +60,10 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->middleware('auth:admin
     /* brands */
     Route::resource('setting/brands', BrandController::class);
 
+    /* plans */
+    Route::resource('setting/plans', PlanController::class);
+    Route::resource('setting/plan_details', PlanDetailController::class);
+
     /* orders */
     Route::resource('orders', OrderController::class);
     Route::post('orders/ajaxValidation', 'OrderController@ajaxValidation');
