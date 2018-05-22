@@ -48,7 +48,7 @@
                         <td>{{ $product->model_name }}</td>
                         <td>{{ $product->color }}</td>
                         <td>{{ $product->plan->name }}</td>
-                        <td>{{ $product->status }}</td>
+                        <td>{{ config('const.product.status')[$product->status] }}</td>
                         <td>{{ \Carbon\Carbon::parse($product->updated_at)->format('Y年m月d日 h:i') }}</td>
                         <td>
                             <a href="{{ url('/admin/products/'. $product->id. '/edit') }}" class="btn btn-sm btn-primary">

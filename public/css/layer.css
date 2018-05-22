@@ -1,0 +1,424 @@
+@charset "utf-8";
+
+/* ----------------------------------------------------
+
+★layout.css
+-------------------------------------------------------
+
+build:2017-07
+lastupdate:2017-07
+version:1.1
+author:om
+
+-------------------------------------------------------
+
+★目次
+00.共通
+01.left
+02.lineup
+---------------------------------------------------- */
+
+
+/* ■01.共通
+--------------------------------------------------- */
+header { margin-top: 20px; }
+header h1 { 
+    text-align: center;
+    padding-bottom: 20px;
+}
+header h1 a { transition: 0.3s; }
+header h1 a:hover { opacity: 0.6; }
+header h1 img {
+    width: 100%;
+    max-width: 77px;
+}
+.mainimg {
+    background: url(../img/bx_rolly1.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 300px;
+    position: relative;
+}
+.mainimg::before {
+    content: "";
+    background-color: #222;
+    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.mainimg h1.title {
+    position: absolute; 
+    top: 40%;
+    left: 15%;
+}
+
+
+.breadcrumb { 
+    width: 90%;
+    max-width: 1000px;
+    margin: 20px auto;
+}
+.breadcrumb a { color: #977a21; text-decoration: none; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+.wrap { width: 90%; max-width: 1000px; margin: auto;}
+/* ■01.left
+--------------------------------------------------- */
+.side {
+    width: 20%;
+    max-width: 200px;
+    float: left;
+    margin-bottom: 60px;
+}
+.sidenav { margin-bottom: 30px; }
+.sidenav h3 { 
+    font-weight: 600;
+    padding: 10px 3% 8px;
+    border-top: solid 1px #333;
+    border-bottom: solid 1px #333;
+    position: relative;
+    margin-bottom: 5px;
+}
+.sidenav h3::before,.sidenav h3::after {
+    content: "";
+    position: absolute;
+}
+.sidenav h3::before {
+    border-top: solid 1px #333;
+    top: -5px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.sidenav h3::after {
+    border-bottom: solid 1px #333;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+}
+.sidenav h3 img {
+    width: 100%;
+}
+.sidenav:first-child h3 img { max-width: 125px; }
+.sidenav:nth-child(2) h3 img { max-width: 144px; }
+.sidenav ul li a {
+    display: block;
+    border-bottom: dotted 1px #ccc;
+    text-decoration: none;
+    color: #333;
+    background: url(../img/lineup/arrow-r.png) no-repeat right 7px top 13px;
+    background-size: 7px auto;
+    padding: 10px 0 5px 3%;
+    transition: 0.3s;
+}
+.sidenav ul li a:hover {
+    background-color: #e8e8e8;
+}
+.contents {
+    width: 75%;
+    float: right;
+    margin-bottom: 60px;
+}
+
+/* ■02.lineup
+--------------------------------------------------- */
+.lineup .mainimg h1.title img { max-width: 127px; }
+
+.item_list li {
+    width: 30.6%;
+    margin-right: 4%;
+    float: left;
+    margin-bottom: 40px;
+}
+.item_list li:nth-child(3n) {
+    margin-right: 0;
+}
+.item_list li p.plan {
+    color: #fff;
+    overflow: hidden;
+}
+.item_list li p.bronze { background-color: #94816c; }
+.item_list li p.silver { background-color: #8e8e8e; }
+.item_list li p.gold { background-color: #9c936c; }
+.item_list li p.platinum { background-color: #7db3c4; }
+.item_list li p.limited { background-color: #974545; }
+.item_list li p.plan span { 
+    display: block;
+    padding: 5px 5%;
+    float: left;
+}
+.item_list li p.plan span.rental {
+    color: #974545;
+    background-color: #fff;
+    border: solid 1px #974545;
+    padding:  5px 3%;
+    display: block; 
+    float: right;
+    box-sizing: border-box;
+}
+.item_list li a {
+    text-decoration: none;
+    color: #333;
+    transition: 0.3s;
+}
+.item_list li a:hover {
+    opacity: 0.6;
+    color: #999;
+    text-decoration: underline;
+}
+.item_list li a img {
+    width: 100%;
+    max-width: 230px;
+}
+.item_list li p.name {
+    margin-top: 10px;
+}
+
+
+
+/* ■03.detail
+--------------------------------------------------- */
+.lineup .left { width: 55%; float: left; }
+.lineup .left .itemimg img  { width: 100%; }
+.lineup .left .itemimg li { display: none; }
+.lineup .left .itemimg li:first-child { display: block; }
+.lineup .left .thumbimg li { 
+	width: 31%;
+	margin-top: 13px;
+	margin-right: 3%;
+	float: left;
+	border-radius: 4px;
+	transition: ease 0.3s;
+}
+.lineup .left .thumbimg li:nth-child(3n) { margin-right: 0; }
+.lineup .left .thumbimg li img { width: 100%; }
+.lineup .right { width: 40%; float: right;}
+.lineup .right dl::after { content:""; display:block; clear:both; }
+.lineup .right dl {
+    margin-bottom: 20px;
+    border-bottom: dotted 1px #ccc;
+}
+.lineup .right dt { 
+    float: left;
+    width: 40%;
+    padding-left: 0.7em;
+    position: relative;
+    font-weight: 600;
+}
+.lineup .right dt::before {
+    content: "";
+    width: 3px;
+    height: 14px;
+    background-color: #977a21;
+    position: absolute;
+    left: 0;
+    top: 4px;
+}
+.lineup .right dd { 
+    float: right;
+    width: 50%;
+}
+.lineup .detailbox {
+    margin-bottom: 30px;
+}
+.lineup .contents h2 { 
+    font-weight: 600;
+    line-height: 1.4;
+}
+.lineup .detailbox h1 {
+    background-color: #333;
+    font-size: 120%;
+    font-weight: 500;
+    color: #fff;
+    margin: 20px auto;
+    padding: 9px 3%;
+    border-radius: 3px;
+}
+
+/* ■04.company
+--------------------------------------------------- */
+.company .mainimg h1.title img { width: 90%; max-width: 111px; }
+.guide .contents table { width: 100%; margin-bottom: 50px; }
+.guide .contents table tr{
+    border-bottom: dotted 1px #ccc;
+}
+.guide .contents table tr:last-child { border-bottom: none; }
+.guide .contents table th {
+    width: 25%;
+    padding: 15px 3%;
+    text-align: left;
+    background-color: #f8f8f8;
+}
+.guide .contents table td {
+    padding: 15px 3%;
+}
+
+/* ■05.policy
+--------------------------------------------------- */
+.policy .mainimg h1.title img { width: 90%; max-width: 256px; }
+
+.guide .contents h2 {
+    font-size: 127%;
+    font-weight: 600;
+    margin: 50px auto 10px;
+    padding: 0 0 5px 1em;
+    border-bottom: dotted 1px #bbb;
+    line-height: 1.5;
+    position: relative;
+}
+.guide .contents h2::before {
+    content: "";
+    width: 5px;
+    height: 18px;
+    background-color: #977a21;
+    position: absolute;
+    left: 0;
+    top: 2px;
+}
+.guide .contents h3 {
+    font-size: 117%;
+    font-weight: 600;
+    padding: 0 0 5px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+.guide .contents p.txt {
+    margin-bottom: 30px;
+}
+.guide .contents ul {
+    margin-bottom: 50px;
+}
+.guide .contents ul.list_circ {
+    padding: 30px 0;
+    border-top: dotted 1px #ccc;
+    border-bottom: dotted 1px #ccc;
+    margin-bottom: 40px;
+}
+.guide .contents ul.list_disc li {
+    padding-left: 1.5em;
+    position: relative;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.guide .contents ul.list_disc li::after {
+    content: "■";
+    color: #977a21;
+    font-size: 13px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.guide .contents ul.list_circ li {
+    padding-left: 2em;
+    position: relative;
+    margin-bottom: 8px;
+}
+.guide .contents ul.list_disc li:last-child,
+.guide .contents ul.list_circ li:last-child { margin-bottom: 0; }
+.guide .contents ul.list_circ li::after {
+    content: "・";
+    color: #977a21;
+    font-size: 35px;
+    position: absolute;
+    left: -5px;
+    top: -20px;
+}
+.guide .contents .border_b {
+    padding-bottom: 30px;
+    border-bottom: solid 1px #ccc;
+}
+.policy .contents h2 {
+    background-color: #333;
+    border-bottom: none;
+    border-radius: 5px;
+    padding: 10px 3%;
+    color: #fff;
+    margin-bottom: 30px;
+}
+.policy .contents h2::before { display: none; }
+
+/* ■05.notation
+--------------------------------------------------- */
+.notation .mainimg h1.title img { width: 90%; max-width: 433px; }
+
+
+
+/* ■02.横幅1000px以上（PC用）スクロールバー対策で+20pxを指定する
+--------------------------------------------------- */
+@media screen and (min-width:1020px) {
+	/* ▼PC用================================================================== */
+
+	
+
+	
+	
+	
+/* ▲PC用================================================================== */
+}
+
+
+/* ■03.横幅768px以上、1299px以下（Tab用）スクロールバー対策で+20pxを指定する
+--------------------------------------------------- */
+@media screen and (min-width:768px) and (max-width:1020px) {
+/* ▼Tab用================================================================= */
+	
+
+    .lineup .left { width: 40%; float: left; }
+    .lineup .right { width: 55%; float: right; }
+	
+/* ▲Tab用================================================================= */
+}
+
+/* ■04.横幅767px以下（SP用）
+--------------------------------------------------- */
+@media screen and (min-width:0px) and (max-width:767px) {
+/* ▼SP用================================================================ */
+	/* ■01.共通
+    --------------------------------------------------- */
+    .side { display: none; }
+    .contents {
+        width: 100%;
+        float: none;
+        margin-bottom: 30px;
+    }
+    .mainimg { min-height: 180px; }
+    .mainimg h1.title {
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+    /* ■03.lineup
+    --------------------------------------------------- */
+    .item_list li,.item_list li:nth-child(3n) {
+        width: 48%;
+        margin-right: 4%;
+        float: left;
+        margin-bottom: 20px;
+    }
+    .item_list li:nth-child(2n) {
+        margin-right: 0;
+    }
+    .item_list li a img { max-width: none; }
+    .item_list li p.plan span.rental { font-size: 11px; }
+    
+    
+    
+    /* ■04.lineup
+    --------------------------------------------------- */
+    .lineup .contents .left {
+        width: 100%;
+        float: none;
+        margin-bottom: 30px;
+    }
+    .lineup .contents .right {
+        width: 100%;
+        float: none;
+        margin-bottom: 60px;
+    }
+	/* ▲SP用================================================================ */
+}

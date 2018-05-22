@@ -32,6 +32,7 @@
                 <thead>
                 <tr>
                     <th>プラン名</th>
+                    <th>クラス</th>
                     <th>備考</th>
                     <th>更新日</th>
                     <th></th>
@@ -41,6 +42,7 @@
                 @foreach($plans as $plan)
                     <tr>
                         <td>{{ $plan->name }}</td>
+                        <td>{{ $plan->class }}</td>
                         <td>{!! nl2br(e( $plan->note )) !!}</td>
                         <td>{{ \Carbon\Carbon::parse($plan->updated_at)->format('Y年m月d日 h:i') }}</td>
                         <td>
@@ -85,6 +87,15 @@
                             <div class="col-md-6">
                                 <input type="text" name="plan[name]" value=""
                                        class="form-control" required/>
+                            </div>
+                        </div>
+                        <br><br>
+                        <div class="clearfix"></div>
+                        <div class="form-group input_row">
+                            <label class="control-label col-md-3">クラス</label>
+                            <div class="col-md-6">
+                                <input type="text" name="plan[class]" value=""
+                                       class="form-control" />
                             </div>
                         </div>
                         <div class="clearfix"></div>
@@ -138,6 +149,15 @@
                                 <div class="col-md-6">
                                     <input type="text" name="plan[name]" value="{{ old('plan.name', $plan->name) }}"
                                            class="form-control" required/>
+                                </div>
+                            </div>
+                            <br><br>
+                            <div class="clearfix"></div>
+                            <div class="form-group input_row">
+                                <label class="control-label col-md-3">クラス</label>
+                                <div class="col-md-6">
+                                    <input type="text" name="plan[class]" value="{{ old('plan.class', $plan->class) }}"
+                                           class="form-control" />
                                 </div>
                             </div>
                             <div class="clearfix"></div>

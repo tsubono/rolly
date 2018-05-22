@@ -15,7 +15,7 @@ class Plan extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'note'
+        'name', 'class', 'note'
     ];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];

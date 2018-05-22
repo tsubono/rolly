@@ -1,0 +1,243 @@
+@charset "utf-8";
+/* ----------------------------------------------------
+
+★汎用モジュールクラスを格納
+
+-------------------------------------------------------
+
+build:2014-11
+lastupdate:2015-12
+version:1.1
+author:kh
+
+-------------------------------------------------------
+
+★目次
+00.reset
+01.margin
+02.padding 
+03.width
+04.float
+05.text-align
+99.other
+xx.サイズごとのcss
+
+---------------------------------------------------- */
+
+body,
+div,p,
+dl,dt,dd,ul,ol,li,
+h1,h2,h3,h4,h5,h6,
+pre,code,
+form,fieldset,legend,input,textarea,blockquote,
+th,td,figure,figcaption
+{
+	margin:0;
+	padding:0;
+	-webkit-text-size-adjust: none;
+	letter-spacing: 0.06em;
+}
+
+/*　■動作を滑らかにする場合の記述
+-webkit-transition-duration: 0.5s;
+-moz-transition-duration: 0.5s;
+-o-transition-duration: 0.5s;
+transition-duration: 0.5s;
+*/
+
+h1,h2,h3,h4,h5,h6{ font-weight:300; line-height:100%; }
+li{ list-style:none; }
+table{ border-collapse: collapse; border-spacing: 0; }
+
+fieldset,img { border: 0; vertical-align: bottom; }
+/*img{ width:100%; display: block;}*/
+
+body,html{ overflow-x: hidden; }
+body{
+	background: #fff;
+	font-family: "游ゴシック", "Yu Gothic", YuGothic, "Hiragino Kaku Gothic ProN", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ ゴシック", sans-serif;
+	line-height: 1.8;
+	color: #333;
+	font-weight: 500;
+	font-size: 13px;
+}
+
+
+/* ■01.margin
+--------------------------------------------------- */
+.mt0{margin-top:0px!important;}
+.mt5{margin-top:5px!important;}
+.mt10{margin-top:10px!important;}
+.mt15{margin-top:15px!important;}
+.mt20{margin-top:20px!important;}
+.mt25{margin-top:25px!important;}
+.mt30{margin-top:30px!important;}
+.mt35{margin-top:35px!important;}
+.mt40{margin-top:40px!important;}
+.mt45{margin-top:45px!important;}
+.mt50{margin-top:50px!important;}
+.mt60{margin-top:60px!important;}
+.mt70{margin-top:70px!important;}
+.mt80{margin-top:80px!important;}
+.mt90{margin-top:90px!important;}
+.mt100{margin-top:100px!important;}
+.mt1em{margin-top:1em!important;}
+
+.mr0{margin-right:0px!important;}
+.mr10{margin-right:10px!important;}
+.mr15{margin-right:15px!important;}
+.mr20{margin-right:20px!important;}
+.mr25{margin-right:25px!important;}
+.mr30{margin-right:30px!important;}
+.mr35{margin-right:35px!important;}
+.mr40{margin-right:40px!important;}
+.mr45{margin-right:45px!important;}
+.mr50{margin-right:50px!important;}
+.mr60{margin-right:60px!important;}
+.mr70{margin-right:70px!important;}
+.mr80{margin-right:80px!important;}
+.mr90{margin-right:90px!important;}
+.mr100{margin-right:100px!important;}
+
+.mb0{margin-bottom:0px!important;}
+.mb10{margin-bottom:10px!important;}
+.mb15{margin-bottom:15px!important;}
+.mb20{margin-bottom:20px!important;}
+.mb25{margin-bottom:25px!important;}
+.mb30{margin-bottom:30px!important;}
+.mb35{margin-bottom:35px!important;}
+.mb40{margin-bottom:40px!important;}
+.mb45{margin-bottom:45px!important;}
+.mb50{margin-bottom:50px!important;}
+.mb60{margin-bottom:60px!important;}
+.mb70{margin-bottom:70px!important;}
+.mb80{margin-bottom:80px!important;}
+.mb90{margin-bottom:90px!important;}
+.mb100{margin-bottom:100px!important;}
+
+.ml0{margin-left:0px!important;}
+.ml10{margin-left:10px!important;}
+.ml15{margin-left:15px!important;}
+.ml20{margin-left:20px!important;}
+.ml25{margin-left:25px!important;}
+.ml30{margin-left:30px!important;}
+.ml35{margin-left:35px!important;}
+.ml40{margin-left:40px!important;}
+.ml45{margin-left:45px!important;}
+.ml50{margin-left:50px!important;}
+.ml60{margin-left:60px!important;}
+.ml70{margin-left:70px!important;}
+.ml80{margin-left:80px!important;}
+.ml90{margin-left:90px!important;}
+.ml100{margin-left:100px!important;}
+
+/* ■02.padding 
+--------------------------------------------------- */
+.pt0{padding-top:0px!important;}
+.pt10{padding-top:10px!important;}
+.pt15{padding-top:15px!important;}
+.pt20{padding-top:20px!important;}
+.pt25{padding-top:25px!important;}
+.pt30{padding-top:30px!important;}
+.pt35{padding-top:35px!important;}
+.pt40{padding-top:40px!important;}
+.pt45{padding-top:45px!important;}
+.pt50{padding-top:50px!important;}
+.pt60{padding-top:60px!important;}
+.pt70{padding-top:70px!important;}
+.pt80{padding-top:80px!important;}
+.pt90{padding-top:90px!important;}
+.pt100{padding-top:100px!important;}
+
+.pr0{padding-right:0px!important;}
+.pr10{padding-right:10px!important;}
+.pr15{padding-right:15px!important;}
+.pr20{padding-right:20px!important;}
+.pr25{padding-right:25px!important;}
+.pr30{padding-right:30px!important;}
+.pr35{padding-right:35px!important;}
+.pr40{padding-right:40px!important;}
+.pr45{padding-right:45px!important;}
+.pr50{padding-right:50px!important;}
+.pr60{padding-right:60px!important;}
+.pr70{padding-right:70px!important;}
+.pr80{padding-right:80px!important;}
+.pr90{padding-right:90px!important;}
+.pr100{padding-right:100px!important;}
+
+.pb0{padding-bottom:0px!important;}
+.pb10{padding-bottom:10px!important;}
+.pb15{padding-bottom:15px!important;}
+.pb20{padding-bottom:20px!important;}
+.pb25{padding-bottom:25px!important;}
+.pb30{padding-bottom:30px!important;}
+.pb35{padding-bottom:35px!important;}
+.pb40{padding-bottom:40px!important;}
+.pb45{padding-bottom:45px!important;}
+.pb50{padding-bottom:50px!important;}
+.pb60{padding-bottom:60px!important;}
+.pb70{padding-bottom:70px!important;}
+.pb80{padding-bottom:80px!important;}
+.pb90{padding-bottom:90px!important;}
+.pb100{padding-bottom:100px!important;}
+
+.pl0{padding-top:0px!important;}
+.pl10{padding-top:10px!important;}
+.pl15{padding-top:15px!important;}
+.pl20{padding-top:20px!important;}
+.pl25{padding-top:25px!important;}
+.pl30{padding-top:30px!important;}
+.pl35{padding-top:35px!important;}
+.pl40{padding-top:40px!important;}
+.pl45{padding-top:45px!important;}
+.pl50{padding-top:50px!important;}
+.pl60{padding-top:60px!important;}
+.pl70{padding-top:70px!important;}
+.pl80{padding-top:80px!important;}
+.pl90{padding-top:90px!important;}
+.pl100{padding-top:100px!important;}
+
+/* ■03.width 
+--------------------------------------------------- */
+.per100{width:100%;}
+.per90{width:90%;}
+.per80{width:80%;}
+.per70{width:70%;}
+.per60{width:60%;}
+.per50{width:50%;}
+.per40{width:40%;}
+.per30{width:30%;}
+.per20{width:20%;}
+.per10{width:10%;}
+
+/* ■04.float
+--------------------------------------------------- */
+.fl{float:left;}
+.fr{float:right;}
+.cb{clear:both;}
+
+.cf:after{content:""; display:block; clear:both;}
+.cf{display:inline-block;} 
+.cf{display:block;}
+
+
+
+/* ■05.text-align
+--------------------------------------------------- */
+.txt_c{text-align:center!important;}
+.txt_l{text-align:left!important;}
+.txt_r{text-align:right!important;}
+
+/* ■99.other
+--------------------------------------------------- */
+.img100{width:100%;}
+
+/* 改行 */
+.br:after{
+	content: "\A" ;
+	white-space: pre ;
+	}
+.indent1{ padding-left: 1em; text-indent: -1em; }
+.indent5{ padding-left: 5em; text-indent: -5em; }
+
+

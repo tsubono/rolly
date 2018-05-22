@@ -16,7 +16,7 @@ class Product extends Model
      */
     protected $fillable = [
         'brand_id', 'model_number', 'model_name', 'serial_no', 'color', 'image1', 'image2',
-        'plan_id', 'status', 'breadcrumb', 'name', 'note',
+        'plan_id', 'status', 'note',
     ];
 
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];

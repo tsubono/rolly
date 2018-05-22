@@ -90,29 +90,6 @@
                             </select>
                         </div>
                     </div>
-                    {{--<div class="form-group input_row">--}}
-                    {{--<label class="control-label col-md-3">ステータス</label>--}}
-                    {{--<div class="col-md-6">--}}
-                    {{--<select name="product[status]" class="form-control" required>--}}
-                    {{--<option value=""></option>--}}
-                    {{--@foreach(config('const.product.status') as $key => $value)--}}
-                    {{--<option value="{{ $key }}">{{ $value }}</option>--}}
-                    {{--@endforeach--}}
-                    {{--</select>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
-                    <div class="form-group input_row">
-                        <label class="control-label col-md-3">パンくず</label>
-                        <div class="col-md-6">
-                            <textarea class="form-control" name="product[breadcrumb]">{{ old('product.breadcrumb', $product->breadcrumb) }}</textarea>
-                        </div>
-                    </div>
-                    <div class="form-group input_row">
-                        <label class="control-label col-md-3">商品名</label>
-                        <div class="col-md-6">
-                            <textarea class="form-control" name="product[name]">{{ old('product.name', $product->name) }}</textarea>
-                        </div>
-                    </div>
                 </div>
                 <div class="box-footer">
                     <a href="{{ url('/admin/products') }}" class="btn btn-sm btn-default">

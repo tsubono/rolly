@@ -24,8 +24,6 @@ class CreateProductsTable extends Migration
             $table->string('image2')->comment('写真2')->nullable();
             $table->string('plan_id')->comment('プランID');
             $table->string('status')->comment('ステータス')->nullable();
-            $table->text('breadcrumb')->comment('パンくず')->nullable();
-            $table->text('name')->comment('商品名')->nullable();
             $table->text('note')->comment('備考・メモ')->nullable();
             $table->timestamps();
             $table->softDeletes();
