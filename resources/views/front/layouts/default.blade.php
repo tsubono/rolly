@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    @include('front.components.head_top')
+    @include('front.components.head')
     @include('front.components.css')
 </head>
 

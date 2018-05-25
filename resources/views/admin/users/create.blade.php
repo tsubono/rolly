@@ -173,7 +173,7 @@
                     </div>
                     <div class="form-group {{ $errors->has('address1') ? 'has-error' : '' }}">
                         <label for="user-address1" class="control-label col-md-3">
-                            市区町村番地
+                            市区町村・番地
                         </label>
                         <div class="col-md-6">
                             <input type="text" id="user-address1" name="user[address1]" value="{{ old('user.address1') }}" class="form-control" required placeholder="市区町村"/>
@@ -186,7 +186,7 @@
                     </div>
                     <div class="form-group {{ $errors->has('address2') ? 'has-error' : '' }}">
                         <label for="user-address2" class="control-label col-md-3">
-                            その他（建物など）
+                            ビル・マンション等
                         </label>
                         <div class="col-md-6">
                             <input type="text" id="user-address2" name="user[address2]" value="{{ old('user.address2') }}" class="form-control" placeholder="番地・ビル名"/>

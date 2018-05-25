@@ -1,5 +1,5 @@
 <div class="mainwrap">
-    <h1 class="logo"><img src="img/logo.png" alt="時計レンタル ROLLY"></h1>
+    <h1 class="logo"><img src="{{ asset('img/logo.png') }}" alt="時計レンタル ROLLY"></h1>
 
     <ul class="mainimg">
         <li><img src="{{ asset('img/bx_rolly1.png') }}" alt=""></li>

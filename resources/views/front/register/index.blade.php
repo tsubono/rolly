@@ -1,6 +1,11 @@
-@extends('front/layouts.top')
+@extends('front.layouts.top')
 
 @section('content')
+    <style>
+        .text-danger {
+            color: red;
+        }
+    </style>
     <section class="concept">
         <h1 class="mb50"><img src="{{ asset('img/logo.png') }}" alt="時計レンタル ROLLY"></h1>
         <p class="txt_c">
@@ -63,7 +68,7 @@
             </li>
         </ul>
     </section>
-    <section class="registform mt90">
+    <section class="registform mt90" id="registerArea">
         <h1 class="txt_c mb50"><img src="{{ asset('img/hd_service.png') }}" alt="To use the service" width="233"><em>サービスご利用登録</em></h1>
         <div class="serviceimg">
             <div>
@@ -77,16 +82,17 @@
         </ul>
 
 
-        <form class="cf" method="post" action="">
-            <div id="formwrap">
+        <form class="cf" method="post" action="{{ url('register/confirm') }}">
+            {{ csrf_field() }}
 
+            <div id="formwrap">
                 <!-- ▼お名前▼ -->
                 <dl class="formitem hissu">
                     <dt class="item_name">お名前</dt>
                     <dd class="item_content">
                         <ul class="innerlist_name">
-                            <li><input type="text" name="name1_s" id="name1" /></li>
-                            <li><input type="text" name="name2_s" id="name2" /></li>
+                            <li><input type="text" name="user[last_name]" value="{{ old('user.last_name') }}" required /></li>
+                            <li><input type="text" name="user[first_name]" value="{{ old('user.first_name') }}" required /></li>
                         </ul>
                     </dd>
                 </dl>
@@ -97,9 +103,20 @@
                     <dt class="item_name">ふりがな</dt>
                     <dd class="item_content">
                         <ul class="innerlist_kana">
-                            <li><input type="text" name="kana1_s" id="kana1" /></li>
-                            <li><input type="text" name="kana2_s" id="kana2" /></li>
+                            <li><input type="text" name="user[last_name_kana]" value="{{ old('user.last_name_kana') }}" required /></li>
+                            <li><input type="text" name="user[first_name_kana]" value="{{ old('user.first_name_kana') }}" required /></li>
                         </ul>
+                        @if ($errors->has('last_name_kana')||$errors->has('first_name_kana'))
+                            @if ($errors->has('last_name_kana'))
+                                @foreach ($errors->get('last_name_kana') as $error)
+                                    <div class="text-danger">{{ $error }}</div>
+                                @endforeach
+                            @else
+                                @foreach ($errors->get('first_name_kana') as $error)
+                                    <div class="text-danger">{{ $error }}</div>
+                                @endforeach
+                            @endif
+                        @endif
                     </dd>
                 </dl>
                 <!-- ▲ふりがな▲ -->
@@ -109,9 +126,9 @@
                     <dt class="item_name">携帯電話番号</dt>
                     <dd class="item_content">
                         <ul class="innerlist_tel">
-                            <li><input type="text" name="cell_s[0]" id="fax0" /></li>
-                            <li><input type="text" name="cell_s[1]" id="fax1" /></li>
-                            <li><input type="text" name="cell_s[2]" id="fax2" /></li>
+                            <li><input type="number" name="user[mobile_tel01]" value="{{ old('user.mobile_tel01') }}" required /></li>
+                            <li><input type="number" name="user[mobile_tel02]" value="{{ old('user.mobile_tel02') }}" required /></li>
+                            <li><input type="number" name="user[mobile_tel03]" value="{{ old('user.mobile_tel03') }}" required /></li>
                         </ul>
                     </dd>
                 </dl>
@@ -122,82 +139,57 @@
                     <dt class="item_name">お電話番号</dt>
                     <dd class="item_content">
                         <ul class="innerlist_tel">
-                            <li><input type="text" name="tel[0]" id="tel0" /></li>
-                            <li><input type="text" name="tel[1]" id="tel1" /></li>
-                            <li><input type="text" name="tel[2]" id="tel2" /></li>
+                            <li><input type="number" name="user[tel01]" value="{{ old('user.tel01') }}" /></li>
+                            <li><input type="number" name="user[tel02]" value="{{ old('user.tel02') }}" /></li>
+                            <li><input type="number" name="user[tel03]" value="{{ old('user.tel03') }}" /></li>
                         </ul>
                     </dd>
                 </dl>
                 <!-- ▲お電話番号▲ -->
 
                 <!-- ▼住所▼ -->
-                <dl class="formitem hissu hissu hissu">
+                <dl class="formitem hissu">
                     <dt class="item_name">ご住所</dt>
                     <dd class="item_content">
                         <dl class="innerlist_address add01">
                             <dt>郵便番号</dt>
-                            <dd><input type="text" name="zip_s[0]" id="zip0" />&nbsp;-&nbsp;<input type="text" name="zip_s[1]" id="zip1" /></dd>
+                            <dd>
+                                <input type="number" name="user[zip01]" value="{{ old('user.zip01') }}" id="zip0" required />&nbsp;-&nbsp;<input type="number" name="user[zip02]" value="{{ old('user.zip02') }}" id="zip1" required />
+                                @if ($errors->has('zip01')||$errors->has('zip02')||$errors->has('zip03'))
+                                    @if ($errors->has('zip01'))
+                                        @foreach ($errors->get('zip01') as $error)
+                                            <div class="text-danger">{{ $error }}</div>
+                                        @endforeach
+                                    @elseif ($errors->has('zip02'))
+                                        @foreach ($errors->get('zip02') as $error)
+                                            <div class="text-danger">{{ $error }}</div>
+                                        @endforeach
+                                    @else
+                                        @foreach ($errors->get('zip03') as $error)
+                                            <div class="text-danger">{{ $error }}</div>
+                                        @endforeach
+                                    @endif
+                                @endif
+                            </dd>
                         </dl>
                         <dl class="innerlist_address add02">
                             <dt>都道府県</dt>
-                            <dd><select name="address1_s" id="address1">
-                                    <option value="none" selected="selected">選択して下さい</option>
-                                    <option value="北海道">北海道</option>
-                                    <option value="青森県">青森県</option>
-                                    <option value="岩手県">岩手県</option>
-                                    <option value="宮城県">宮城県</option>
-                                    <option value="秋田県">秋田県</option>
-                                    <option value="山形県">山形県</option>
-                                    <option value="福島県">福島県</option>
-                                    <option value="茨城県">茨城県</option>
-                                    <option value="栃木県">栃木県</option>
-                                    <option value="群馬県">群馬県</option>
-                                    <option value="埼玉県">埼玉県</option>
-                                    <option value="千葉県">千葉県</option>
-                                    <option value="東京都">東京都</option>
-                                    <option value="神奈川県">神奈川県</option>
-                                    <option value="新潟県">新潟県</option>
-                                    <option value="富山県">富山県</option>
-                                    <option value="石川県">石川県</option>
-                                    <option value="福井県">福井県</option>
-                                    <option value="山梨県">山梨県</option>
-                                    <option value="長野県">長野県</option>
-                                    <option value="岐阜県">岐阜県</option>
-                                    <option value="静岡県">静岡県</option>
-                                    <option value="愛知県">愛知県</option>
-                                    <option value="三重県">三重県</option>
-                                    <option value="滋賀県">滋賀県</option>
-                                    <option value="京都府">京都府</option>
-                                    <option value="大阪府">大阪府</option>
-                                    <option value="兵庫県">兵庫県</option>
-                                    <option value="奈良県">奈良県</option>
-                                    <option value="和歌山県">和歌山県</option>
-                                    <option value="鳥取県">鳥取県</option>
-                                    <option value="島根県">島根県</option>
-                                    <option value="岡山県">岡山県</option>
-                                    <option value="広島県">広島県</option>
-                                    <option value="山口県">山口県</option>
-                                    <option value="徳島県">徳島県</option>
-                                    <option value="香川県">香川県</option>
-                                    <option value="愛媛県">愛媛県</option>
-                                    <option value="高知県">高知県</option>
-                                    <option value="福岡県">福岡県</option>
-                                    <option value="佐賀県">佐賀県</option>
-                                    <option value="長崎県">長崎県</option>
-                                    <option value="熊本県">熊本県</option>
-                                    <option value="大分県">大分県</option>
-                                    <option value="宮崎県">宮崎県</option>
-                                    <option value="鹿児島県">鹿児島県</option>
-                                    <option value="沖縄県">沖縄県</option>
-                                </select></dd>
+                            <dd>
+                                <select name="user[pref_id]" id="address1" required>
+                                    <option value="" selected="selected">選択して下さい</option>
+                                    @foreach(config('pref') as $key => $name)
+                                        <option value="{{ $key }}" {{ old('user.pref_id') == $key ? "selected" : "" }}>{{ $name }}</option>
+                                    @endforeach
+                                </select>
+                            </dd>
                         </dl>
-                        <dl class="innerlist_address add03">
+                        <dl class="innerlist_address add03" required>
                             <dt>市区町村・番地</dt>
-                            <dd><input type="text" name="address2_s" id="address2" /></dd>
+                            <dd><input type="text" name="user[address1]" value="{{ old('user.address1') }}" id="address2" /></dd>
                         </dl>
                         <dl class="innerlist_address add04">
                             <dt>ビル・マンション等</dt>
-                            <dd><input type="text" name="address3" id="address3" /></dd>
+                            <dd><input type="text" name="user[address2]" value="{{ old('user.address2') }}" /></dd>
                         </dl>
                     </dd>
                 </dl>
@@ -206,31 +198,54 @@
                 <!-- ▼メールアドレス[予約項目]▼ -->
                 <dl class="formitem hissu">
                     <dt class="item_name">メールアドレス</dt>
-                    <dd class="item_content"><p class="innerlist_mail"><input type="text" name="email_s" id="email" /></p></dd>
+                    <dd class="item_content">
+                        <p class="innerlist_mail">
+                            <input type="email" name="user[email]" value="{{ old('user.email') }}" required />
+                        </p>
+                        @if ($errors->has('email'))
+                            @foreach ($errors->get('email') as $error)
+                                <div class="text-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
+                    </dd>
                 </dl>
                 <!-- ▲メールアドレス[予約項目]▲ -->
                 <!-- ▼メールアドレス確認[メール連携の予約項目]▼ -->
                 <dl class="formitem hissu">
                     <dt class="item_name">メールアドレス（確認用）</dt>
-                    <dd class="item_content"><p class="innerlist_mailc"><input type="text" name="emailcheck_s" id="emailcheck" /></p></dd>
+                    <dd class="item_content">
+                        <p class="innerlist_mailc">
+                            <input type="email" name="user[email_confirmation]" value="{{ old('user.email_confirmation') }}" required />
+                        </p>
+                    </dd>
                 </dl>
                 <!-- ▲メールアドレス確認[メール連携の予約項目]▲ -->
+
+                <!-- ▼パスワード▼ -->
+                <dl class="formitem hissu">
+                    <dt class="item_name">パスワード</dt>
+                    <dd class="item_content">
+                        <p class="innerlist_mailc">
+                            <input type="password" name="user[password]" required placeholder="※6文字以上で入力してください。" value="{{ old('user.password') }}"/>
+                        </p>
+                        @if ($errors->has('password'))
+                            @foreach ($errors->get('password') as $error)
+                                <div class="text-danger">{{ $error }}</div>
+                            @endforeach
+                        @endif
+                    </dd>
+                </dl>
+                <!-- ▲パスワード]▲ -->
 
                 <!-- ▼ご希望のレンタル時計▼ -->
                 <dl class="formitem top">
                     <dt class="item_name">ご希望のレンタル時計</dt>
                     <dd class="item_content">
-                        <select name="type" id="type">
-                            <option value="none" selected="selected">選択して下さい</option>
-                            <option value="GAGA MIRANO">GAGA MIRANO</option>
-                            <option value="OMEGA">OMEGA</option>
-                            <option value="CARTIER">CARTIER</option>
-                            <option value="IWC">IWC</option>
-                            <option value="TAGHEUER">TAGHEUER</option>
-                            <option value="PANERAI">PANERAI</option>
-                            <option value="HUBLOT">HUBLOT</option>
-                            <option value="ROLEX">ROLEX</option>
-                            <option value="FRANCK MULLER">FRANCK MULLER</option>
+                        <select name="user[brand_id]" class="form-control">
+                            <option value="">選択して下さい</option>
+                            @foreach(\App\Models\Brand::all() as $brand)
+                                <option value="{{ $brand->id }}" {{ old('user.brand_id')==$brand->id?"selected":"" }}>{{ $brand->name }}</option>
+                            @endforeach
                         </select>
                     </dd>
                 </dl>
@@ -276,21 +291,12 @@
                 <!-- ▲個人情報保護方針▲ -->
             </div>
 
-            <input name="autoReply" type="hidden" value="1" />
-            <!-- ▲返信メール確認（ autoReply は自動返信メールの有無）▲ -->
-
-            <!-- ▼実行に必要な項目▼ -->
-            <input type="hidden" name="mailToNum" value="0" />
-            <input type="hidden" name="mode" value="CONFIRM" />
-            <!-- ▲実行に必要な項目▲ -->
-
-            <!-- ▼▼送信ボタン　CSSタイプ -->
+            <!-- ▼▼送信ボタン -->
             <ul class="sendarea">
                 <li><input type="submit" name="submit" value="入力内容を確認する" class="btn_css_check" /></li>
                 <li><input type="reset" name="reset" value="リセット" class="btn_css_reset" /></li>
             </ul>
-            <!-- ▲▲送信ボタン　CSSタイプ -->
-            <!-- ▲実行に必要な項目と送信ボタン▲ -->
+            <!-- ▲▲送信ボタン -->
         </form>
     </section>
 @endsection

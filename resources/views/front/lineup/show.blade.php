@@ -1,5 +1,7 @@
 @extends('front/layouts.default')
 
+@section('title', 'LINE UP | 時計レンタル ROLLY')
+
 @section('content')
     <div class="lineup">
         <section class="mainimg">
@@ -15,7 +17,7 @@
         <div class="wrap cf">
 
             <!-- サイドバーPC -->
-            @include('front.lineup.side')
+            @include('front.components.side')
             <!--/ サイドバーPC -->
 
             <div class="contents">
@@ -88,7 +90,7 @@
                 </div>
             </div>
             <!-- サイドバー sp -->
-            @include('front.lineup.side_sp')
+            @include('front.components.side_sp')
             <!--/ サイドバー sp -->
         </div>
     </div>

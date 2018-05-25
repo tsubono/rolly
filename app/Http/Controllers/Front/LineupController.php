@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Models\Brand;
-use App\Models\Plan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Product;
@@ -12,14 +10,10 @@ use App\Models\Product;
 class LineupController extends Controller
 {
     private $product;
-    private $brand;
-    private $plan;
 
-    public function __construct(Product $product, Brand $brand, Plan $plan)
+    public function __construct(Product $product)
     {
         $this->product = $product;
-        $this->brand = $brand;
-        $this->plan = $plan;
     }
 
     /**
@@ -36,19 +30,15 @@ class LineupController extends Controller
         } else {
             $products = $this->product->all();
         }
-        $brands = $this->brand->all();
-        $plans = $this->plan->all();
 
-        return view('front.lineup.index', compact('products', 'brands', 'plans'));
+        return view('front.lineup.index', compact('products'));
     }
 
     public function show($id, Request $request) {
 
-        $brands = $this->brand->all();
-        $plans = $this->plan->all();
         $product = $this->product->findOrFail($id);
 
-        return view('front.lineup.show', compact('product', 'brands', 'plans'));
+        return view('front.lineup.show', compact('product'));
 
     }
 }

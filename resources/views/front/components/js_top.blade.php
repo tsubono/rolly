@@ -54,14 +54,14 @@
 
     //確認するボタンの無効化
     function disabled_submit_btn() {
-        $('input[name=submit].btn_css_check')
+        $('input[name=submit].btn_css_check:not(.true)')
             .prop("disabled", true)
             .addClass('not_approval');
     }
 
     //確認するボタンの有効化
     function abled_submit_btn() {
-        $('input[name=submit].btn_css_check')
+        $('input[name=submit].btn_css_check:not(.true)')
             .prop("disabled", false)
             .removeClass('not_approval');
     }
@@ -79,6 +79,11 @@
     //リセット時のchangeイベントへのフック
     $('input[type=reset]').click(function(e){
         disabled_submit_btn()
+    });
+
+    $('#back').click (function() {
+        $('[name=back]').val(1);
+        $('#submit').click();
     });
 
 </script>

@@ -6,7 +6,7 @@
     })(window,document,'script','dataLayer','GTM-TQV376B');</script>
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8">
-<title>LINE UP | 時計レンタル ROLLY</title>
+<title>@yield('title', '時計レンタル ROLLY（ローリー）│高級腕時計の定額レンタルサービス')</title>
 <meta name="keywords" content="時計,レンタル,ROLLY" />
 <meta name="description" content="時計レンタルROLLY" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />

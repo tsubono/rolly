@@ -26,8 +26,14 @@ Route::get('/', function () { return redirect('/home'); });
 |--------------------------------------------------------------------------
 */
 Route::namespace('Front')->group(function() {
-    Route::get('/',      'HomeController@index')->name('home');
+    Route::get('/',      'RegisterController@index')->name('register.index');
+    Route::post('register/confirm',      'RegisterController@confirm')->name('register.confirm');
+    Route::post('register/complete',      'RegisterController@postComplete');
+    Route::get('register/complete',      'RegisterController@getComplete')->name('register.complete');
     Route::resource('lineup', LineupController::class);
+    Route::get('guide/policy',     'GuideController@policy')->name('policy');
+    Route::get('guide/company',     'GuideController@company')->name('company');
+    Route::get('guide/notation',     'GuideController@notation')->name('notation');
 });
 
 /*
