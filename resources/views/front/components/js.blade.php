@@ -6,6 +6,8 @@
 <!-- ■JQUERY -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript" src="{{asset('js/jquery.matchHeight.js')}}"></script>
+<script src="{{asset('js/jquery.bxslider.js')}}"></script>
+
 <script>
     /*match height
     -------------------------*/
@@ -23,6 +25,42 @@
             $('.left .item' + num).fadeIn();
         });
     });
+
+    /* gallery
+       -------------------------*/
+    $(function() {
+
+        // サムネイルの作成
+        var insert = '';
+        for (var i = 0; i < $('#gallery li').length; i++) {
+            insert += '<a data-slide-index="' + i + '" href="#"><img src="' + $('#gallery li').eq(i).children('img').attr('src') + '"' + ' /></a>';
+        };
+        $('.custom-thumb').append(insert);
+
+        $('#gallery').bxSlider({
+            pagerCustom: '.custom-thumb',
+            nextSelector: "#feed-next-btn",
+            prevSelector: "#feed-prev-btn",
+        });
+    });
+
+    /*accordion
+     -------------------------*/
+    (function($) {
+        $(function() {
+            var accordion = $(".accordion");
+            accordion.each(function () {
+                var noTargetAccordion = $(this).siblings(accordion);
+                $(this).find(".question").click(function() {
+                    $(this).next(".answer").slideToggle();
+                    $(this).toggleClass("open");
+                    $(this).toggleClass("active");
+                    noTargetAccordion.find(".answer").slideUp();
+                    noTargetAccordion.find(".question").removeClass("open");
+                });
+            });
+        });
+    })(jQuery);
 
 
 </script>

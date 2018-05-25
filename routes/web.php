@@ -34,6 +34,10 @@ Route::namespace('Front')->group(function() {
     Route::get('guide/policy',     'GuideController@policy')->name('policy');
     Route::get('guide/company',     'GuideController@company')->name('company');
     Route::get('guide/notation',     'GuideController@notation')->name('notation');
+    Route::get('guide/contract',     'GuideController@contract')->name('contract');
+    Route::get('gallery',     'GalleryController@index')->name('gallery');
+    Route::get('qa',     'QaController@index')->name('qa');
+    Route::get('scene',     'SceneController@index')->name('scene');
 });
 
 /*

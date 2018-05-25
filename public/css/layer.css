@@ -16,10 +16,19 @@ author:om
 00.共通
 01.left
 02.lineup
+03.detail
+04.company
+05.policy
+06.plan
+07.scene
+08.contract
+09.gallery
+10.Q&A
+
 ---------------------------------------------------- */
 
 
-/* ■01.共通
+/* ■00.共通
 --------------------------------------------------- */
 header { margin-top: 20px; }
 header h1 { 
@@ -66,6 +75,7 @@ header h1 img {
 .breadcrumb a:hover { text-decoration: underline; }
 
 .wrap { width: 90%; max-width: 1000px; margin: auto;}
+
 /* ■01.left
 --------------------------------------------------- */
 .side {
@@ -347,13 +357,350 @@ header h1 img {
 .notation .mainimg h1.title img { width: 90%; max-width: 433px; }
 
 
+/* ■06.plan
+--------------------------------------------------- */
+.planint .mainimg h1.title img { width: 90%; max-width: 127px; }
+.planint .acbox { margin-bottom: 50px; }
+.planint .acbox .name { 
+    max-width: 750px;
+    position: relative;
+    transition: .3s;
+    overflow: hidden;
+}
+.planint .acbox .hidden { display: none; }
+.planint .acbox .name:hover {
+    opacity: 0.8;
+}
+.planint .acbox .name::after {
+    content: "";
+    position: absolute;
+    width: 29px;
+    height: 24px;
+    background: url(../img/plan/more.png) no-repeat;
+    background-size: contain;
+    left: 0;
+    right: 0;
+    top: auto;
+    bottom: 15px;
+    margin: auto;
+}
+.planint .acbox .name.active::after {
+    background: url(../img/plan/close.png) no-repeat;
+    background-size: contain;
+}
+.planint .acbox .name .plan { 
+    float: left;
+    width: 40%;
+    padding: 65px 0 65px 65px;
+}
+.planint .acbox .name .price {
+    float: left;
+    width: 50%;
+    font-size: 25px;
+    line-height: 1;
+    font-family: serif;
+    font-weight: 600;
+    color: #fff;
+    padding: 67px 0 0;
+    text-align: center;
+}
+.planint .acbox .name .price p {
+    margin-bottom: 0;
+}
+.planint .bro .name { 
+    background: url(../img/plan/bg_br.png) no-repeat right center;
+    background-size: cover;
+}
+.planint .sil .name { 
+    background: url(../img/plan/bg_si.png) no-repeat right center;
+    background-size: cover;
+}
+.planint .gol .name { 
+    background: url(../img/plan/bg_go.png) no-repeat right center;
+    background-size: cover;
+}
+.planint .pla .name { 
+    background: url(../img/plan/bg_pl.png) no-repeat right center;
+    background-size: cover;
+}
+.planint .lim .name { 
+    background: url(../img/plan/bg_li.png) no-repeat right center;
+    background-size: cover;
+}
+.planint .acbox .name img { 
+}
+.planint .bro .name img { 
+    max-width: 210px;
+}
+.planint .sil .name img { 
+    max-width: 192px;
+}
+.planint .gol .name img { 
+    max-width: 176px;
+}
+.planint .pla .name img { 
+    max-width: 250px;
+}
+.planint .lim .name img { 
+    max-width: 222px;
+}
+.planint .hidden {
+    padding: 30px;
+    border: solid 1px #000;
+    border-top: none;
+    box-sizing: border-box;
+}
+.planint .acbox p { margin-bottom: 30px; }
+.planint .acbox .left { float: left; width: 30%; }
+.planint .acbox .left img { width: 100%;  max-width: 190px; }
+.planint .acbox .right { float: right; width: 68%; }
+.planint .btn { 
+    margin-top: 30px; 
+    float: left; 
+    width: 50%;
+    text-align: center;
+}
+.planint .btn a { 
+    width: 90%;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    margin: auto;
+    max-width: 320px; 
+    padding: 13px 0;
+    text-align: center;
+    transition: .3s;
+}
+.planint .btn a:hover {
+    background-color: #666;
+}
+
+
+/* ■07.scene
+--------------------------------------------------- */
+.scene .mainimg h1.title img { max-width: 148px; }
+.scene .list li {
+    width: 48.7%;
+    margin-right: 2.5%;
+    float: left;
+    margin-bottom: 50px;
+}
+.scene .list li:nth-child(2n) {
+    margin-right: 0;
+}
+.scene .list li div { margin-bottom: 20px; }
+.scene .list li img { width: 100%; }
+
+
+
+/* ■08.contract
+--------------------------------------------------- */
+
+.contract .contents h2 {
+	margin: 50px auto 30px;
+}
+
+.contract .contents h2:first-child {
+	margin: 0px auto 30px;
+}
+
+.contract ul.list_space  li {
+    padding-left: 2em;
+    margin: 10px 0 10px;
+}
+
+.contract .list_space2 {
+    margin-bottom: 20px;
+	padding-left: 3em;
+}
+
+.contract .contents ul {
+	margin: 0;
+}
+
+.contract .contents ul.list_normal {
+	margin-bottom: 50px;
+}
+
+
+.contract .contents ul.list_normal > li {
+    margin: 20px 0;
+}
+
+.contract .contents ul.list_circ2 {
+    padding: 0 0 30px;
+	margin-bottom: 0px;
+}
+
+.contract .contents ul.list_circ2 li {
+    padding-left: 2em;
+    position: relative;
+    margin-bottom: 8px;
+}
+.contract .contents ul.list_circ2 li:last-child { margin-bottom: 0; }
+.contract .contents ul.list_circ2 li::after {
+    content: "・";
+    color: #977a21;
+    font-size: 35px;
+    position: absolute;
+    left: -5px;
+    top: -20px;
+}
+
+.contract .p_red {
+	color: #ff0000;
+}
+
+
+/* ■09.gallery 
+--------------------------------------------------- */
+.gallery .mainimg h1.title img { max-width: 148px; }
+.gallery .contents { position: relative; }
+#gallery li img { width: 100%; }
+.custom-thumb { margin: 30px auto; }
+.custom-thumb a { 
+    width: 19%; 
+    float: left; 
+    margin-right: 1.25%; 
+    margin-bottom: 10px; 
+    border-bottom: solid 3px #e1e1e1;
+}
+.custom-thumb a:nth-child(5n) { margin-right: 0; }
+.custom-thumb img { width: 100%; }
+.custom-thumb a.active { border-bottom: solid 3px #c29405; }
+.feed-prev-btn {
+    z-index: 5;
+    position: absolute;
+    background-image: url(../img/gallery/gallery-l.png);
+    left: 2%;
+    top: 15%;
+}
+.feed-next-btn{
+    z-index: 5;
+    position: absolute;
+    background-image: url(../img/gallery/gallery-r.png);
+    right: 2%;
+    top: 15%;
+}
+.feed-prev-btn:hover {
+  opacity: 0.7;
+}
+.feed-next-btn:hover{
+  opacity: 0.7;
+}
+.feed-prev-btn .bx-prev {
+  opacity: 0;
+  display: block;
+}
+.feed-next-btn .bx-next {
+  opacity: 0;
+  display: block;
+}
+.navi-btn {
+  margin: 79px 8px 0 9px;
+  width: 16px;
+  height: 29px;
+  -webkit-background-size: 16px;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  float: left;
+}
+.gallery .btn { 
+    float: left; 
+    width: 48.7%;
+    margin-right: 2.6%;
+    text-align: center;
+}
+.gallery .btn:nth-child(2n) { margin-right: 0; }
+.gallery .btn a { 
+    width: 100%;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    margin: auto;
+    max-width: 365px; 
+    padding: 13px 0;
+    text-align: center;
+    transition: .3s;
+}
+.gallery .btn a:hover {
+    background-color: #666;
+}
+
+/* ■10.Q&A 
+--------------------------------------------------- */
+
+.qa .mainimg h1.title img {
+    width: 90%;
+    max-width: 330px;
+}
+
+.qa .contents h2 {
+	font-size: 127%;
+	font-weight: 600;
+	margin: 0 0 20px;
+	padding: 0 0 5px 1em;
+	line-height: 1.5;
+	position: relative;
+	border-bottom: none;
+}
+.qa .question {
+	cursor: pointer;
+	padding: 20px 60px 20px 20px;
+	font-size: 13px;
+	background-color: #f8f8f8;
+	border-bottom: 1px dotted #bbb;
+	position: relative;
+	background-image: url(../img/lineup/arrow-d.png);
+	background-repeat: no-repeat;
+	background-position: right 2em center;
+	background-size: 24px;
+}
+.qa .question.active {
+	background-image: url(../img/lineup/arrow-u.png);
+}
+.qa .question img {
+	max-width: 120px;
+	float: left;
+}
+.qa .question p {
+	display: inline-block;
+	float: right;
+	width: 67%;
+}
+.qa .answer {
+	padding: 20px 20px 20px 20px;
+	font-size: 13px;
+	display: none;
+}
+.qa .answer img {
+	max-width: 120px;
+	float: left;
+	margin-top: 7px;
+}
+.qa .answer p {
+	display: inline-block;
+	float: right;
+	width: 70%;
+}
+
 
 /* ■02.横幅1000px以上（PC用）スクロールバー対策で+20pxを指定する
 --------------------------------------------------- */
 @media screen and (min-width:1020px) {
 	/* ▼PC用================================================================== */
-
 	
+    /* ■10.Q&A
+    --------------------------------------------------- */
+.qa .question p {
+	width: 70%;
+}	
+	.qa .answer p {
+	width: 72%;
+}	
 
 	
 	
@@ -370,7 +717,16 @@ header h1 img {
 
     .lineup .left { width: 40%; float: left; }
     .lineup .right { width: 55%; float: right; }
-	
+    
+    
+    /* ■04.plan
+    --------------------------------------------------- */
+	.planint .acbox .name .plan {
+        width: 49%;
+        padding: 65px 0 65px 30px;
+    }
+    .planint .acbox .name .price { width: 45%; }
+    
 /* ▲Tab用================================================================= */
 }
 
@@ -378,7 +734,7 @@ header h1 img {
 --------------------------------------------------- */
 @media screen and (min-width:0px) and (max-width:767px) {
 /* ▼SP用================================================================ */
-	/* ■01.共通
+	/* ■00.共通
     --------------------------------------------------- */
     .side { display: none; }
     .contents {
@@ -392,7 +748,7 @@ header h1 img {
         right: 0;
         text-align: center;
     }
-    /* ■03.lineup
+    /* ■02.lineup
     --------------------------------------------------- */
     .item_list li,.item_list li:nth-child(3n) {
         width: 48%;
@@ -408,7 +764,7 @@ header h1 img {
     
     
     
-    /* ■04.lineup
+    /* ■02.lineup
     --------------------------------------------------- */
     .lineup .contents .left {
         width: 100%;
@@ -420,5 +776,106 @@ header h1 img {
         float: none;
         margin-bottom: 60px;
     }
+    
+    
+    /* ■06.plan
+    --------------------------------------------------- */
+    .planint .acbox .name { padding: 50px 0; }
+    .planint .acbox .name .plan {
+        float: none;
+        width: 100%;
+        padding: 0; 
+        text-align: center;
+    }
+    .planint .acbox .name .price {
+        float: none;
+        width: 100%;
+        font-size: 25px;
+        padding: 20px 0 0;
+        text-align: center;
+    }
+    .planint .acbox .left {
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    .planint .acbox .left img { width: 100%; max-width: none; }
+    .planint .acbox .right {
+        float: none;
+        width: 100%;
+        margin-top: 30px;
+    }
+    .planint .btn { 
+        margin-top: 20px;
+        float: none;
+        width: 100%;
+        text-align: center;
+    }
+    .planint .btn a { width: 100%; }
+    
+    /* ■07.scene
+    --------------------------------------------------- */
+    .scene .list li {
+        width: 100%;
+        margin-right: 0;
+        float: none;
+        margin-bottom: 30px;
+    }
+    .scene .list li:nth-child(2n) {
+        margin-right: 0;
+    }
+    .scene .list li div { margin-bottom: 10px; }
+    
+    /* ■07.scene
+    --------------------------------------------------- */
+    .scene .list li {
+        width: 100%;
+        margin-right: 0;
+        float: none;
+        margin-bottom: 30px;
+    }
+    .scene .list li:nth-child(2n) {
+        margin-right: 0;
+    }
+    .scene .list li div { margin-bottom: 10px; }
+    
+    /* ■09.gallery
+    --------------------------------------------------- */
+    .custom-thumb a,.custom-thumb a:nth-child(5n) { 
+        width: 31.3%; 
+        margin-right: 3%; 
+    }
+    .custom-thumb a:nth-child(3n) { margin-right: 0; }
+    .feed-prev-btn {
+        left: 2%;
+        top: -3%;
+    }
+    .feed-next-btn{
+        right: 2%;
+        top: -3%;
+    }
+    .gallery .btn { margin-bottom: 30px; }
+    
+/* ■10.Q&A
+    --------------------------------------------------- */
+.qa .question img {
+	float: left;
+	margin-bottom: 10px;
+	margin-right: 10%;
+}
+.qa .question p {
+	display: block;
+	float: left;
+	width: 100%;
+}
+.qa .answer img {
+	float: left;
+	margin-bottom: 10px;
+}
+.qa .answer p {
+	display: block;
+	float: left;
+	width: 100%;
+}
 	/* ▲SP用================================================================ */
 }

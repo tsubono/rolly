@@ -30,4 +30,9 @@ class GuideController extends Controller
     {
         return view('front.guide.notation');
     }
+
+    public function contract()
+    {
+        return view('front.guide.contract');
+    }
 }
