@@ -3,7 +3,7 @@
 @section('title', '利用規約 | 時計レンタル ROLLY')
 
 @section('content')
-    <div class="contract">
+    <div class="guide contract">
         <section class="mainimg">
             <div class="wrap">
                 <h1 class="title"><img src="{{ asset('img/guide/tit_contract.png') }}" alt="利用規約"></h1>
