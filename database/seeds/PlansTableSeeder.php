@@ -18,27 +18,32 @@ class PlansTableSeeder extends Seeder
 
         DB::table('plans')->insert([
                 [
-                    'name' => 'Platinum',
+                    'name' => 'BRONZE',
+                    'class' => 'bronze',
                     'created_at' => $now,
                     'updated_at' => $now,
                 ],
                 [
-                    'name' => 'Gold',
+                    'name' => 'SILVER',
+                    'class' => 'silver',
                     'created_at' => $now,
                     'updated_at' => $now,
                 ],
                 [
-                    'name' => 'Silver',
+                    'name' => 'GOLD',
+                    'class' => 'gold',
                     'created_at' => $now,
                     'updated_at' => $now,
                 ],
                 [
-                    'name' => 'Bronze',
+                    'name' => 'PLATINUM',
+                    'class' => 'platinum',
                     'created_at' => $now,
                     'updated_at' => $now,
                 ],
                 [
-                    'name' => 'Limited',
+                    'name' => 'LIMITED',
+                    'class' => 'limited',
                     'created_at' => $now,
                     'updated_at' => $now,
                 ]
