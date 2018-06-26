@@ -39,24 +39,30 @@ Route::namespace('Front')->group(function() {
     Route::get('qa',     'QaController@index')->name('qa');
     Route::get('scene',     'SceneController@index')->name('scene');
 
+    Route::get('concept',     'ConceptController@index')->name('concept');
+    Route::get('plan',     'PlanController@index')->name('plan');
+});
+
+/*
+|--------------------------------------------------------------------------
+| 3) User ログイン後
+|--------------------------------------------------------------------------
+*/
+Route::group(['middleware' => 'auth:user'], function() {
     Route::get('mypage',     'MypageController@index');
     Route::get('mypage/edit',     'MypageController@getEdit')->name('front.mypage.edit');
     Route::post('mypage/edit',     'MypageController@postEdit');
     Route::get('mypage/status',     'MypageController@status');
 
-    Route::get('concept',     'ConceptController@index')->name('concept');
-    Route::get('plan',     'PlanController@index')->name('plan');
-
     Route::post('order',     'OrderController@index')->name('order');
     Route::post('order/payment',     'OrderController@postPayment');
     Route::get('order/payment',     'OrderController@getPayment')->name('order.payment');
     Route::get('order/complete',     'OrderController@complete')->name('order.complete');
-
 });
 
 /*
 |--------------------------------------------------------------------------
-| 3) Admin before login
+| 4) Admin before login
 |--------------------------------------------------------------------------
 */
 Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
@@ -66,7 +72,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->group(function() {
 });
 /*
 |--------------------------------------------------------------------------
-| 4) Admin after login
+| 5) Admin after login
 |--------------------------------------------------------------------------
 */
 Route::namespace('Admin')->prefix('admin')->as('admin.')->middleware('auth:admin')->group(function () {
