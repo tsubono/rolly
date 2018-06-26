@@ -48,7 +48,7 @@ Route::namespace('Front')->group(function() {
 | 3) User ログイン後
 |--------------------------------------------------------------------------
 */
-Route::group(['middleware' => 'auth:user'], function() {
+Route::namespace('Front')->group(['middleware' => 'auth:user'], function() {
     Route::get('mypage',     'MypageController@index');
     Route::get('mypage/edit',     'MypageController@getEdit')->name('front.mypage.edit');
     Route::post('mypage/edit',     'MypageController@postEdit');
