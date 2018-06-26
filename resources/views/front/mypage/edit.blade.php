@@ -114,7 +114,7 @@
                         </dd>
                         <dt>生年月日</dt>
                         <dd class="confirm1__birthday">
-                            <input type="date" value="{{ old('user.birthday', $user->birthday->format('Y-m-d')) }}" name="user[birthday]" >
+                            <input type="date" value="{{ old('user.birthday', !empty($user->birthday)?$user->birthday->format('Y-m-d'):'') }}" name="user[birthday]" >
                         </dd>
                         <dt>身分証明書</dt>
                         <dd class="confirm1__file">
