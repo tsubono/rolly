@@ -65,7 +65,7 @@ class OrderController extends Controller
         return view('front.order.payment', compact('price'));
     }
 
-    public function getComplete()
+    public function complete()
     {
         return view('front.order.complete');
     }

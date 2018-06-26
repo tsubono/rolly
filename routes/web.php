@@ -50,6 +50,7 @@ Route::namespace('Front')->group(function() {
     Route::post('order',     'OrderController@index')->name('order');
     Route::post('order/payment',     'OrderController@postPayment');
     Route::get('order/payment',     'OrderController@getPayment')->name('order.payment');
+    Route::get('order/complete',     'OrderController@complete')->name('order.complete');
 
 });
 
