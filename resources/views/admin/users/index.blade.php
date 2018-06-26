@@ -42,7 +42,7 @@
                 @foreach($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->last_name. $user->last_name }}</td>
+                        <td>{{ $user->last_name. $user->first_name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
                             @if ($user->identification_status==1)
