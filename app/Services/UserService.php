@@ -35,12 +35,16 @@ class UserService
             $res["tel"] = $res["tel01"]. "-". $res["tel02"]. "-". $res["tel03"];
         }
 
-        // 身分証明書類
-        if ($request->hasFile('user.identification_doc')) {
+        // ファイルたち
+        if (empty($res["id"])) {
+            $res["identification_doc"] = $this->uploadFile($request, true);
+            $res["doc_other"] = $this->uploadFile($request);
+        }
+
+        if (!empty($res["id"]) && ($request->hasFile('user.identification_doc') || $res["identification_doc_edit"] == "1")) {
             $res["identification_doc"] = $this->uploadFile($request, true);
         }
-        // その他証明書類
-        if ($request->hasFile('user.doc_other')) {
+        if (!empty($res["id"]) && ($request->hasFile('user.doc_other') || $res["doc_other_edit"] == "1")) {
             $res["doc_other"] = $this->uploadFile($request);
         }
 

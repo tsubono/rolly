@@ -119,7 +119,7 @@ class UserController extends Controller
         if (empty($update['password'])) {
             unset($update['password']);
         }
-        $validator = Validator::make($request->input('user'), $this->getRules($user->id), $this->getMessages());
+        $validator = Validator::make($update, $this->getRules($user->id), $this->getMessages());
 
         if ($validator->fails()) {
             return redirect()->route('admin.users.edit', ['id' => $id])

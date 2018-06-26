@@ -124,8 +124,10 @@
                                     <button id="identification_doc_update" type="button">更新する</button>
                                 </div>
                                 <input type="file" name="user[identification_doc]" style="display: none;">
+                                <input type="hidden" name="user[identification_doc_edit]" value="-1">
                             @else
                                 <input type="file" name="user[identification_doc]">
+                                <input type="hidden" name="user[identification_doc_edit]" value="1">
                             @endif
                                 <input type="hidden" name="user[identification_doc_flg]" value="false">
                                 {{--<img src="https://placehold.jp/24/cccccc/999999/300x200.jpg?text=%E8%BA%AB%E5%88%86%E8%A8%BC%E6%98%8E%E6%9B%B8" alt="">--}}
@@ -138,8 +140,10 @@
                                     <button id="doc_other_update" type="button">更新する</button>
                                 </div>
                                 <input type="file" name="user[doc_other]" style="display: none;">
+                                <input type="hidden" name="user[doc_other_edit]" value="-1">
                             @else
                                 <input type="file" name="user[doc_other]">
+                                <input type="hidden" name="user[doc_other_edit]" value="1">
                             @endif
                                 <input type="hidden" name="user[doc_other_flg]" value="false">
                             {{--<img src="https://placehold.jp/24/cccccc/999999/300x200.jpg?text=%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E8%A8%BC%E6%98%8E%E6%9B%B8%E9%A1%9E" alt="">--}}
@@ -165,11 +169,13 @@
             $('#identification_doc_old').css('display', 'none');
             $('[name="user[identification_doc]"]').fadeIn();
             $('[name="user[identification_doc_flg]"]').val(1);
+            $('[name="user[identification_doc_edit]"]').val(1);
         });
         $('#doc_other_update').click (function() {
             $('#doc_other_old').css('display', 'none');
             $('[name="user[doc_other]"]').fadeIn();
             $('[name="user[doc_other_flg]"]').val(1);
+            $('[name="user[doc_other_edit]"]').val(1);
         });
     </script>
 @endpush

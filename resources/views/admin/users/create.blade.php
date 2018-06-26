@@ -257,10 +257,25 @@
                             身分証明書類
                         </label>
                         <div class="col-md-6">
-                            <input type="file" name="user[identification_doc]" class="form-control" value="{{ old('user.identification_doc') }}">
+                            <input class="upload_file" name="user[identification_doc]" type="file"
+                                   multiple="" accept="">
                             @if ($errors->has('identification_doc'))
                                 @foreach ($errors->get('identification_doc') as $error)
                                     <div class="text-identification_doc">{{ $error }}</div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group {{ $errors->has('identification_doc') ? 'has-error' : '' }}">
+                        <label for="user-identification_doc" class="control-label col-md-3">
+                            その他の証明書類
+                        </label>
+                        <div class="col-md-6">
+                            <input class="upload_file" name="user[doc_other]" type="file"
+                                   multiple="" accept="">
+                            @if ($errors->has('doc_other'))
+                                @foreach ($errors->get('doc_other') as $error)
+                                    <div class="text-doc_other">{{ $error }}</div>
                                 @endforeach
                             @endif
                         </div>
@@ -334,6 +349,16 @@
 
             $('#zip-btn').click(function(){
                 AjaxZip3.zip2addr('user[zip01]', 'user[zip02]', 'user[pref_id]', 'user[address1]');
+            });
+
+            $("input.upload_file").fileinput({
+                maxFilePreviewSize: 10240,
+                showUpload: false,
+                maxFileCount: 1,
+                browseClass: 'btn btn-info fileinput-browse-button',
+                browseLabel: '',
+                showRemove: false,
+                showZoom: false
             });
         }
     </script>

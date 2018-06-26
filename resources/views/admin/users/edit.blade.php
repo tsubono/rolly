@@ -24,7 +24,7 @@
             <form class="form-horizontal" action="{{ url('/admin/users/'.$user->id) }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
-
+                <input type="hidden" name="user[id]" value="{{ $user->id }}">
                 <fieldset>
                     <div class="form-group {{ $errors->has('last_name') ? 'has-error' : '' }}">
                         <label for="user-last_name" class="control-label col-md-3">
@@ -260,10 +260,27 @@
                             身分証明書類
                         </label>
                         <div class="col-md-6">
-                            <input type="file" name="user[identification_doc]" class="form-control" value="{{ old('user.identification_doc', $user->identification_doc) }}">
+                            <input type="hidden" name="user[identification_doc_edit]" value="-1">
+                            <input class="upload_file" name="user[identification_doc]" type="file"
+                                   multiple="" accept="">
                             @if ($errors->has('identification_doc'))
                                 @foreach ($errors->get('identification_doc') as $error)
                                     <div class="text-identification_doc">{{ $error }}</div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group {{ $errors->has('identification_doc') ? 'has-error' : '' }}">
+                        <label for="user-identification_doc" class="control-label col-md-3">
+                            その他の証明書類
+                        </label>
+                        <div class="col-md-6">
+                            <input type="hidden" name="user[doc_other_edit]" value="-1">
+                            <input class="upload_file" name="user[doc_other]" type="file"
+                                   multiple="" accept="">
+                            @if ($errors->has('doc_other'))
+                                @foreach ($errors->get('doc_other') as $error)
+                                    <div class="text-doc_other">{{ $error }}</div>
                                 @endforeach
                             @endif
                         </div>
@@ -344,6 +361,47 @@
                 $('#user-password').fadeIn();
                 $('#user-password').attr('required', true);
             });
+
+            $("[name='user[identification_doc]']").fileinput({
+                maxFilePreviewSize: 10240,
+                showUpload: false,
+                maxFileCount: 1,
+                browseClass: 'btn btn-info fileinput-browse-button',
+                browseLabel: '',
+                showRemove: true,
+                removeLabel: '',
+                removeClass: 'btn btn-danger',
+                @if (!empty(old('user.identification_doc', $user->identification_doc)))
+                initialPreview: "{{ asset(env('PUBLIC', ''). old('user.identification_doc', $user->identification_doc)) }}",
+                initialPreviewAsData: true,
+                overwriteInitial : true,
+                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('user.identification_doc', $user->identification_doc)) }}"
+                @endif
+            });
+            $("[name='user[identification_doc]']").on('filecleared', function(event) {
+                $("[name='user[identification_doc_edit]']").val(1);
+            });
+
+            $("[name='user[doc_other]']").fileinput({
+                maxFilePreviewSize: 10240,
+                showUpload: false,
+                maxFileCount: 1,
+                browseClass: 'btn btn-info fileinput-browse-button',
+                browseLabel: '',
+                showRemove: true,
+                removeLabel: '',
+                removeClass: 'btn btn-danger',
+                @if (!empty(old('user.doc_other', $user->doc_other)))
+                initialPreview: "{{ asset(env('PUBLIC', ''). old('user.doc_other', $user->doc_other)) }}",
+                initialPreviewAsData: true,
+                overwriteInitial : true,
+                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('user.doc_other', $user->doc_other)) }}"
+                @endif
+            });
+            $("[name='user[doc_other]']").on('filecleared', function(event) {
+                $("[name='user[doc_other_edit]']").val(1);
+            });
+
         }
     </script>
 
