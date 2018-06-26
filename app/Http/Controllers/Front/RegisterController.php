@@ -49,6 +49,16 @@ class RegisterController extends Controller
             return redirect('/#registerArea')
                 ->withInput();
         }
+
+        // バリデーション
+        $validator = Validator::make($request->input('user'), $this->getRules(), $this->getMessages());
+
+        if ($validator->fails()) {
+            return redirect('/#registerArea')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
         $create = $this->userService->getDataForDB($request);
         $user = $this->user->create($create);
 
