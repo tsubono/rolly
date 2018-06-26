@@ -48,17 +48,20 @@ Route::namespace('Front')->group(function() {
 | 3) User ログイン後
 |--------------------------------------------------------------------------
 */
-Route::namespace('Front')->group(['middleware' => 'auth:user'], function() {
-    Route::get('mypage',     'MypageController@index');
-    Route::get('mypage/edit',     'MypageController@getEdit')->name('front.mypage.edit');
-    Route::post('mypage/edit',     'MypageController@postEdit');
-    Route::get('mypage/status',     'MypageController@status');
+Route::prefix('Front')->group(function () {
+    Route::group(['middleware' => 'auth:user'], function() {
+        Route::get('mypage',     'MypageController@index');
+        Route::get('mypage/edit',     'MypageController@getEdit')->name('front.mypage.edit');
+        Route::post('mypage/edit',     'MypageController@postEdit');
+        Route::get('mypage/status',     'MypageController@status');
 
-    Route::post('order',     'OrderController@index')->name('order');
-    Route::post('order/payment',     'OrderController@postPayment');
-    Route::get('order/payment',     'OrderController@getPayment')->name('order.payment');
-    Route::get('order/complete',     'OrderController@complete')->name('order.complete');
+        Route::post('order',     'OrderController@index')->name('order');
+        Route::post('order/payment',     'OrderController@postPayment');
+        Route::get('order/payment',     'OrderController@getPayment')->name('order.payment');
+        Route::get('order/complete',     'OrderController@complete')->name('order.complete');
+    });
 });
+
 
 /*
 |--------------------------------------------------------------------------
