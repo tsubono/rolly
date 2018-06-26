@@ -49,6 +49,7 @@
                             @if (!empty($user->identification_doc))
                                 登録済み
                             @else
+                                <input type="hidden" name="user[identification_doc_edit]" value="1">
                                 <input type="file" name="user[identification_doc]">
                                 <ul class="order__attention">
                                     <li>ご本人確認が済んでいない方はアップロードをお願いいたします。</li>
@@ -61,6 +62,7 @@
                             @if (!empty($user->doc_other))
                                 登録済み
                             @else
+                                <input type="hidden" name="user[doc_other_edit]" value="1">
                                 <input type="file" name="user[doc_other]">
                                 <ul class="order__attention">
                                     <li>未成年のお客様は、追加の証明書類をアップロードください。</li>

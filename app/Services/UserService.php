@@ -41,8 +41,14 @@ class UserService
             $res["doc_other"] = $this->uploadFile($request);
         }
 
+        if (!isset($res["identification_doc_edit"] )) {
+            $res["identification_doc_edit"]  = 0;
+        }
         if (!empty($res["id"]) && ($request->hasFile('user.identification_doc') || $res["identification_doc_edit"] == "1")) {
             $res["identification_doc"] = $this->uploadFile($request, true);
+        }
+        if (!isset($res["doc_other_edit"] )) {
+            $res["doc_other_edit"]  = 0;
         }
         if (!empty($res["id"]) && ($request->hasFile('user.doc_other') || $res["doc_other_edit"] == "1")) {
             $res["doc_other"] = $this->uploadFile($request);
