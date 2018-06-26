@@ -76,6 +76,20 @@
                         </div>
                     </div>
                     <div class="form-group input_row">
+                        <label class="control-label col-md-3">写真03</label>
+                        <div class="col-md-6">
+                            <input class="upload_file" name="product[image3]" type="file"
+                                   multiple="" accept="">
+                        </div>
+                    </div>
+                    <div class="form-group input_row">
+                        <label class="control-label col-md-3">写真04</label>
+                        <div class="col-md-6">
+                            <input class="upload_file" name="product[image4]" type="file"
+                                   multiple="" accept="">
+                        </div>
+                    </div>
+                    <div class="form-group input_row">
                         <label class="control-label col-md-3">プラン</label>
                         <div class="col-md-6">
                             <select name="product[plan_id]" class="form-control" required>

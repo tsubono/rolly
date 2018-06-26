@@ -29,56 +29,64 @@
         <div class="box-body">
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>注文番号</th>
-                        <th>受注日</th>
-                        <th>お名前</th>
-                        <th>支払い方法</th>
-                        <th>購入金額</th>
-                        <th>発送日</th>
-                        <th>対応状況</th>
-                        <th></th>
-                    </tr>
+                <tr>
+                    <th>注文番号</th>
+                    <th>受注日</th>
+                    <th>お名前</th>
+                    <th>ご希望のレンタル時計</th>
+                    <th>申し込みプラン</th>
+                    <th>本人確認状況</th>
+                    <th>返却予定日</th>
+                    <th></th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach($orders as $order)
+                @foreach($orders as $order)
                     <tr>
                         <td>{{ $order->id }}</td>
-                        <td>{{ $order->ordered_at->format('Y年m月d日') }}</td>
-                        <td>{{ $order->user->name or "" }}</td>
-                        <td>{{ $order->payment->name }}</td>
-                        <td>{{ number_format($order->total) }}</td>
+                        <td>{{ $order->order_date->format('Y年m月d日') }}</td>
+                        <td>{{ $order->user->first_name }} {{ $order->user->last_name }}</td>
+                        <td>{{ $order->product->brand->name }} {{ $order->product->model_name }}</td>
+                        <td>{{ $order->product->plan->name }}</td>
                         <td>
-                            @if (!empty($order->shipping_at))
-                                {{ $order->shipping_at->format('Y年m月d日') }}
+                            @if ($order->user->identification_status==1)
+                                確認済み
+                            @else
+                                <span style="color: red;">未確認</span>
                             @endif
                         </td>
-                        <td>{{ config('const.order.status')[$order->status] }}</td>
+                        <td>
+                            @if (!empty($order->return_date))
+                                {{ $order->return_date->format('Y年m月d日') }}</td>
+                            @endif
                         <td>
                             <a href="{{ url('/admin/orders/'. $order->id. '/edit') }}" class="btn btn-sm btn-primary">
                                 <i class="fa fa-edit"></i>
                                 編集
                             </a>
-                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#order-{{ $order->id }}-delete-modal">
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                    data-target="#order-{{ $order->id }}-delete-modal">
                                 <i class="fa fa-trash"></i>
                                 削除
                             </button>
 
                         </td>
                     </tr>
-                    @endforeach
+                @endforeach
                 </tbody>
             </table>
             {{ $orders->appends(request()->all())->render() }}
         </div>
     </section>
     @foreach($orders as $order)
-        <div class="modal fade" id="order-{{ $order->id }}-delete-modal" tabindex="-1" role="dialog" aria-labelledby="order-{{ $order->id }}-delete-modal-label">
+        <div class="modal fade" id="order-{{ $order->id }}-delete-modal" tabindex="-1" role="dialog"
+             aria-labelledby="order-{{ $order->id }}-delete-modal-label">
             <div class="modal-dialog" role="document">
                 <form action="{{ url('/admin/orders/'. $order->id) }}" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="order-{{ $order->id }}-delete-modal-label">
                                 <i class="fa fa-trash"></i>
                                 削除確認

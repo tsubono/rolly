@@ -80,6 +80,22 @@
                         </div>
                     </div>
                     <div class="form-group input_row">
+                        <label class="control-label col-md-3">写真03</label>
+                        <div class="col-md-6">
+                            <input type="hidden" name="product[image3_edit]" value="-1">
+                            <input class="upload_file" name="product[image3]" type="file"
+                                   multiple="" accept="">
+                        </div>
+                    </div>
+                    <div class="form-group input_row">
+                        <label class="control-label col-md-3">写真04</label>
+                        <div class="col-md-6">
+                            <input type="hidden" name="product[image4_edit]" value="-1">
+                            <input class="upload_file" name="product[image4]" type="file"
+                                   multiple="" accept="">
+                        </div>
+                    </div>
+                    <div class="form-group input_row">
                         <label class="control-label col-md-3">プラン</label>
                         <div class="col-md-6">
                             <select name="product[plan_id]" class="form-control" required>
@@ -208,6 +224,46 @@
             });
             $("[name='product[image2]']").on('filecleared', function(event) {
                 $("[name='product[image2_edit]']").val(1);
+            });
+
+            $("[name='product[image3]']").fileinput({
+                maxFilePreviewSize: 10240,
+                showUpload: false,
+                maxFileCount: 1,
+                browseClass: 'btn btn-info fileinput-browse-button',
+                browseLabel: '',
+                showRemove: true,
+                removeLabel: '',
+                removeClass: 'btn btn-danger',
+                @if (!empty(old('product.image3', $product->image3)))
+                initialPreview: "{{ asset(env('PUBLIC', ''). old('product.image3', $product->image3)) }}",
+                initialPreviewAsData: true,
+                overwriteInitial : true,
+                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('product.image3', $product->image3)) }}"
+                @endif
+            });
+            $("[name='product[image3]']").on('filecleared', function(event) {
+                $("[name='product[image3_edit]']").val(1);
+            });
+
+            $("[name='product[image4]']").fileinput({
+                maxFilePreviewSize: 10240,
+                showUpload: false,
+                maxFileCount: 1,
+                browseClass: 'btn btn-info fileinput-browse-button',
+                browseLabel: '',
+                showRemove: true,
+                removeLabel: '',
+                removeClass: 'btn btn-danger',
+                @if (!empty(old('product.image4', $product->image4)))
+                initialPreview: "{{ asset(env('PUBLIC', ''). old('product.image4', $product->image4)) }}",
+                initialPreviewAsData: true,
+                overwriteInitial : true,
+                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('product.image4', $product->image4)) }}"
+                @endif
+            });
+            $("[name='product[image4]']").on('filecleared', function(event) {
+                $("[name='product[image4_edit]']").val(1);
             });
         };
     </script>

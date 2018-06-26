@@ -226,7 +226,7 @@
                     <div class="form-group {{ $errors->has('brand_id') ? 'has-error' : '' }}">
                         <label class="control-label col-md-3">希望</label>
                         <div class="col-md-6">
-                            <select name="user[brand_id]" class="form-control" required>
+                            <select name="user[brand_id]" class="form-control">
                                 <option value=""></option>
                                 @foreach($brands as $brand)
                                     <option value="{{ $brand->id }}" {{ old('user.brand_id')==$brand->id?"selected":"" }}>{{ $brand->name }}</option>
@@ -273,6 +273,22 @@
                             <input type="text" id="user-identification_no" name="user[identification_no]" value="{{ old('user.identification_no') }}" class="form-control" placeholder=""/>
                             @if ($errors->has('identification_no'))
                                 @foreach ($errors->get('identification_no') as $error)
+                                    <div class="text-danger">{{ $error }}</div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group {{ $errors->has('identification_status') ? 'has-error' : '' }}">
+                        <label for="user-identification_status" class="control-label col-md-3">
+                            本人確認状況
+                        </label>
+                        <div class="col-md-6">
+                            <select name="user[identification_status]" class="form-control">
+                                <option value="">未確認</option>
+                                <option value="1" {{  old('user.identification_status')==1?"selected":"" }}>確認済み</option>
+                            </select>
+                            @if ($errors->has('identification_status'))
+                                @foreach ($errors->get('identification_status') as $error)
                                     <div class="text-danger">{{ $error }}</div>
                                 @endforeach
                             @endif

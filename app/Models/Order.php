@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Order extends Model
+
+class Order extends Authenticatable
 {
+    use Notifiable;
     use SoftDeletes;
 
     /**
@@ -15,33 +18,27 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'status', 'payment_id', 'order_shipping_address_id',
-        'message', 'note',
-        'sub_total', 'discount', 'shipping_cost', 'fee', 'total', 'payment_total',
-        'ordered_at', 'payment_at', 'shipping_at'
+        'user_id', 'product_id', 'order_date', 'settlement_date', 'return_date'
     ];
 
-    protected $dates = ['ordered_at', 'payment_at', 'shipping_at', 'created_at', 'updated_at', 'deleted_at'];
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    protected $dates = ['order_date', 'settlement_date', 'return_date', 'created_at', 'updated_at', 'deleted_at'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function payment()
+    public function product()
     {
-        return $this->belongsTo(Payment::class);
+        return $this->belongsTo(Product::class);
     }
-
-    public function order_shipping_address()
-    {
-        return $this->belongsTo(OrderShippingAddress::class);
-    }
-
-    public function order_details()
-    {
-        return $this->hasMany(OrderDetail::class);
-    }
-
-
 }

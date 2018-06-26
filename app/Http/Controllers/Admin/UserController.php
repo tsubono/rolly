@@ -115,6 +115,10 @@ class UserController extends Controller
     public function update($id, Request $request)
     {
         $user = $this->user->findOrFail($id);
+        $update = $request->input('user');
+        if (empty($update['password'])) {
+            unset($update['password']);
+        }
         $validator = Validator::make($request->input('user'), $this->getRules($user->id), $this->getMessages());
 
         if ($validator->fails()) {
@@ -156,8 +160,8 @@ class UserController extends Controller
 
     private function getRules($ignoreId = null) {
         return [
-            'last_name_kana' => 'regex:/[ァ-ヶ]/u',
-            'first_name_kana' => 'regex:/[ァ-ヶ]/u',
+//            'last_name_kana' => 'regex:/[ァ-ヶ]/u',
+//            'first_name_kana' => 'regex:/[ァ-ヶ]/u',
             'zip01' => 'digits:3',
             'zip02' => 'digits:4',
             'email' => [
@@ -166,21 +170,21 @@ class UserController extends Controller
                 'max:255',
                 Rule::unique('users')->ignore($ignoreId)->whereNull('deleted_at'),
             ],
-            'password' => 'required|min:6',
+            'password' => 'min:6',
         ];
     }
 
     private function getMessages() {
         return [
-            'last_name_kana.regex' => '全角カタカナで入力してください。',
-            'first_name_kana.regex' => '全角カタカナで入力してください。',
+//            'last_name_kana.regex' => '全角カタカナで入力してください。',
+//            'first_name_kana.regex' => '全角カタカナで入力してください。',
             'zip01.digits' => '3文字で入力してください。',
             'zip02.digits' => '4文字で入力してください。',
             'email.required' => 'メールアドレスを入力してください。',
             'email.email' => 'メールアドレスを正しく入力してください。',
             'email.max' => 'メールアドレスを255文字以内で入力してください。',
             'email.unique' => '既に使用されているメールアドレスです。',
-            'password.required' => 'パスワードを入力してください。',
+            // 'password.required' => 'パスワードを入力してください。',
             'password.min' => 'パスワードを6文字以上で入力してください。',
         ];
     }

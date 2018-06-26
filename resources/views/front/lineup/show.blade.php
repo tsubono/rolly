@@ -17,8 +17,8 @@
         <div class="wrap cf">
 
             <!-- サイドバーPC -->
-            @include('front.components.side')
-            <!--/ サイドバーPC -->
+        @include('front.components.side')
+        <!--/ サイドバーPC -->
 
             <div class="contents">
                 <div class="cf">
@@ -34,6 +34,16 @@
                                     <img src="{{ asset(env('PUBLIC', ''). $product->image2) }}" alt=""/>
                                 </li>
                             @endif
+                            @if (!empty($product->image3))
+                                <li class="item3">
+                                    <img src="{{ asset(env('PUBLIC', ''). $product->image3) }}" alt=""/>
+                                </li>
+                            @endif
+                            @if (!empty($product->image4))
+                                <li class="item4">
+                                    <img src="{{ asset(env('PUBLIC', ''). $product->image4) }}" alt=""/>
+                                </li>
+                            @endif
                         </ul>
                         <ul class="thumbimg cf">
                             @if (!empty($product->image1))
@@ -44,6 +54,16 @@
                             @if (!empty($product->image2))
                                 <li class="thumb2">
                                     <img src="{{ asset(env('PUBLIC', ''). $product->image2) }}" alt=""/>
+                                </li>
+                            @endif
+                            @if (!empty($product->image3))
+                                <li class="thumb3">
+                                    <img src="{{ asset(env('PUBLIC', ''). $product->image3) }}" alt=""/>
+                                </li>
+                            @endif
+                            @if (!empty($product->image4))
+                                <li class="thumb4">
+                                    <img src="{{ asset(env('PUBLIC', ''). $product->image4) }}" alt=""/>
                                 </li>
                             @endif
                         </ul>
@@ -86,12 +106,25 @@
                                 <dd>{{ config('const.product.status')[$product->status] }}</dd>
                             </dl>
                         </section>
+                        <form method="post" action="{{ url('order') }}" id="form1">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <div class="btn"><a id="submitBtn">この時計を申し込み</a></div>
+                        </form>
                     </div>
                 </div>
             </div>
             <!-- サイドバー sp -->
-            @include('front.components.side_sp')
-            <!--/ サイドバー sp -->
+        @include('front.components.side_sp')
+        <!--/ サイドバー sp -->
         </div>
     </div>
 @endsection
+
+@push('script')
+    <script>
+        $('#submitBtn').click (function() {
+          $('#form1').submit();
+        });
+    </script>
+@endpush

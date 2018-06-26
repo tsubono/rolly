@@ -29,46 +29,57 @@
         <div class="box-body">
             <table class="table">
                 <thead>
-                    <tr>
-                        <th>会員番号</th>
-                        <th>名前</th>
-                        <th>メールアドレス</th>
-                        <th>更新日</th>
-                        <th></th>
-                    </tr>
+                <tr>
+                    <th>会員番号</th>
+                    <th>名前</th>
+                    <th>メールアドレス</th>
+                    <th>本人確認</th>
+                    <th>更新日</th>
+                    <th></th>
+                </tr>
                 </thead>
                 <tbody>
-                    @foreach($users as $user)
+                @foreach($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
                         <td>{{ $user->last_name. $user->last_name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>
+                            @if ($user->identification_status==1)
+                                確認済み
+                            @else
+                                <span style="color: red;">未確認</span>
+                            @endif
+                        </td>
                         <td>{{ $user->updated_at->format('Y年m月d日 h:i:s') }}</td>
                         <td>
                             <a href="{{ url('/admin/users/'. $user->id. '/edit') }}" class="btn btn-sm btn-primary">
                                 <i class="fa fa-edit"></i>
                                 編集
                             </a>
-                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#user-{{ $user->id }}-delete-modal">
+                            <button type="button" class="btn btn-sm btn-danger" data-toggle="modal"
+                                    data-target="#user-{{ $user->id }}-delete-modal">
                                 <i class="fa fa-trash"></i>
                                 削除
                             </button>
 
                         </td>
                     </tr>
-                    @endforeach
+                @endforeach
                 </tbody>
             </table>
             {{ $users->appends(request()->all())->render() }}
         </div>
     </section>
     @foreach($users as $user)
-        <div class="modal fade" id="user-{{ $user->id }}-delete-modal" tabindex="-1" role="dialog" aria-labelledby="user-{{ $user->id }}-delete-modal-label">
+        <div class="modal fade" id="user-{{ $user->id }}-delete-modal" tabindex="-1" role="dialog"
+             aria-labelledby="user-{{ $user->id }}-delete-modal-label">
             <div class="modal-dialog" role="document">
                 <form action="{{ url('/admin/users/'. $user->id) }}" method="post">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
                             <h4 class="modal-title" id="user-{{ $user->id }}-delete-modal-label">
                                 <i class="fa fa-trash"></i>
                                 {{ $user->last_name. $user->first_name }}削除確認

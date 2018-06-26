@@ -7,6 +7,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script type="text/javascript" src="{{asset('js/jquery.matchHeight.js')}}"></script>
 <script src="{{asset('js/jquery.bxslider.js')}}"></script>
+<script src="{{asset('js/ajaxzip3.js')}}"></script>
+<script src="{{asset('js/globalnav.js')}}"></script>
 
 <script>
     /*match height
@@ -62,5 +64,15 @@
         });
     })(jQuery);
 
+    $('.login__btn').click (function() {
+       $('#login_form').submit();
+    });
+
+    $('#zip-btn').click (function() {
+        AjaxZip3.zip2addr('user[zip01]', 'user[zip02]', 'user[pref_id]', 'user[address1]');
+    });
+
 
 </script>
+
+@stack('script')

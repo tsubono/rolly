@@ -21,7 +21,7 @@
             <h3 class="box-title">会員登録</h3>
         </div>
         <div class="box-body">
-            <form class="form-horizontal" action="{{ url('/admin/users/'.$user->id) }}" method="post" enctype="multipart/form-data" enctype="multipart/form-data">
+            <form class="form-horizontal" action="{{ url('/admin/users/'.$user->id) }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 {{ method_field('PUT') }}
 
@@ -217,7 +217,8 @@
                             パスワード
                         </label>
                         <div class="col-md-6">
-                            <input type="password" id="user-password" name="user[password]" value="" class="form-control" required placeholder="※6文字以上で入力してください。"/>
+                            <a class="btn btn-success" id="passwordBtn">変更する</a>
+                            <input type="password" id="user-password" name="user[password]" value="" class="form-control" placeholder="※6文字以上で入力してください。" style="display: none"/>
                             @if ($errors->has('password'))
                                 @foreach ($errors->get('password') as $error)
                                     <div class="text-danger">{{ $error }}</div>
@@ -228,7 +229,7 @@
                     <div class="form-group {{ $errors->has('brand_id') ? 'has-error' : '' }}">
                         <label class="control-label col-md-3">希望</label>
                         <div class="col-md-6">
-                            <select name="user[brand_id]" class="form-control" required>
+                            <select name="user[brand_id]" class="form-control">
                                 <option value=""></option>
                                 @foreach($brands as $brand)
                                     <option value="{{ $brand->id }}" {{ old('user.brand_id')==$brand->id?"selected":"" }}>{{ $brand->name }}</option>
@@ -280,6 +281,22 @@
                             @endif
                         </div>
                     </div>
+                    <div class="form-group {{ $errors->has('identification_status') ? 'has-error' : '' }}">
+                        <label for="user-identification_status" class="control-label col-md-3">
+                            本人確認状況
+                        </label>
+                        <div class="col-md-6">
+                            <select name="user[identification_status]" class="form-control">
+                                <option value="">未確認</option>
+                                <option value="1" {{  old('user.identification_status', $user->identification_status)==1?"selected":"" }}>確認済み</option>
+                            </select>
+                            @if ($errors->has('identification_status'))
+                                @foreach ($errors->get('identification_status') as $error)
+                                    <div class="text-danger">{{ $error }}</div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
                     <div class="form-group {{ $errors->has('note') ? 'has-error' : '' }}">
                         <label for="user-note" class="control-label col-md-3">
                             備考
@@ -320,6 +337,12 @@
 
             $('#zip-btn').click(function(){
                 AjaxZip3.zip2addr('user[zip01]', 'user[zip02]', 'user[pref_id]', 'user[address1]');
+            });
+
+            $('#passwordBtn').click (function() {
+                $(this).css('display', 'none');
+                $('#user-password').fadeIn();
+                $('#user-password').attr('required', true);
             });
         }
     </script>

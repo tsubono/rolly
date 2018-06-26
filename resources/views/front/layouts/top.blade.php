@@ -14,12 +14,10 @@
 
 @yield('content')
 
-<address>
-    <p>copyright &copy; 2017 daishin Co.,Ltd. All Right Reserved.</p>
-</address>
 <div class="sidefix">
-    <a href="/lineup/">
-        <img src="{{ asset('img/lineup/tit_lineup_t.png') }}" ></a>
+    <a href="{{ url('lineup') }}">
+        <img src="{{ asset('img/lineup/tit_lineup_t.png') }}" >
+    </a>
 </div>
 
 <footer>

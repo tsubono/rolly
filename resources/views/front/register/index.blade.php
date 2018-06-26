@@ -6,16 +6,17 @@
             color: red;
         }
     </style>
-    <section class="concept">
+
+    <section class="concept_top">
         <h1 class="mb50"><img src="{{ asset('img/logo.png') }}" alt="時計レンタル ROLLY"></h1>
-        <p class="txt_c">
-            みんなの憧れ　高級時計。<br>
-            一度は手にしてみたい、、、<br>
-            そんな夢を“レンタル”という形でご提供致します。
-        </p>
+        <p class="txt_c"> みんなの憧れである、ROLEX。<br> 一度は手にしたい高級時計を
+            <br> レンタルという形でご提供致します。 </p>
     </section>
+
     <section class="plan cf mt90">
-        <h1 class="txt_c mb50"><img src="{{ asset('img/hd_plan.png') }}" alt="PLAN" width="86px"><em>ご利用プラン</em></h1>
+        <h1 class="txt_c mb50">
+            <img src="{{ asset('img/hd_plan.png') }}" alt="PLAN" width="86px"><em>ご利用プラン</em>
+        </h1>
         <ul class="recommend cf">
             <li>
                 <img src="{{ asset('img/plan_bro.png') }}" alt="ブロンズプラン" class="sp_none">
@@ -24,37 +25,57 @@
                     <dt>価格</dt>
                     <dd class="price">￥3,500</dd>
                     <dt>お取扱商品</dt>
-                    <dd>GAGA MIRANO</dd>
+                    <dd class="name">GAGA MIRANO</dd>
+                    <div class="btn_morebox">
+                        <div class="btn_moretext">
+                            <a href="{{ url('lineup') }}?p=1">＞&nbsp;詳細はこちら</a>
+                        </div>
+                    </div>
                 </dl>
             </li>
             <li>
-                <img src="{{ asset('img/plan_sil.png') }}" alt="シルバープラン" class="sp_none">
-                <img src="{{ asset('img/plan_sil_sp.png') }}" alt="シルバープラン" class="pc_none">
+                <img src="{{ asset('img/plan_pla.png') }}" alt="プラチナプラン" class="sp_none">
+                <img src="{{ asset('img/plan_pla_sp.png') }}" alt="プラチナプラン" class="pc_none">
                 <dl>
                     <dt>価格</dt>
-                    <dd class="price">￥5,800</dd>
+                    <dd class="price">￥18,800</dd>
                     <dt>お取扱商品</dt>
-                    <dd>OMEGA, CARTIER, IWC</dd>
+                    <dd class="name">ROLEX</dd>
+                    <div class="btn_morebox">
+                        <div class="btn_moretext">
+                            <a href="{{ url('lineup') }}?p=4">＞&nbsp;詳細はこちら</a>
+                        </div>
+                    </div>
                 </dl>
             </li>
         </ul>
         <ul class="cf">
+            <li>
+                <img src="{{ asset('img/plan_sil.png') }}" alt="シルバープラン">
+                <dl>
+                    <dt>価格</dt>
+                    <dd class="price">￥5,800</dd>
+                    <dt>お取扱商品</dt>
+                    <dd class="name">OMEGA, CARTIER, IWC</dd>
+                    <div class="btn_morebox">
+                        <div class="btn_moretext">
+                            <a href="{{ url('lineup') }}?p=2">＞&nbsp;詳細はこちら</a>
+                        </div>
+                    </div>
+                </dl>
+            </li>
             <li>
                 <img src="{{ asset('img/plan_gol.png') }}" alt="ゴールドプラン">
                 <dl>
                     <dt>価格</dt>
                     <dd class="price">￥8,800</dd>
                     <dt>お取扱商品</dt>
-                    <dd>FRANCK MULLER, TAGHEUER, PANERAI, IWC, OMEGA</dd>
-                </dl>
-            </li>
-            <li>
-                <img src="{{ asset('img/plan_pla.png') }}" alt="プラチナプラン">
-                <dl>
-                    <dt>価格</dt>
-                    <dd class="price">￥18,800</dd>
-                    <dt>お取扱商品</dt>
-                    <dd>ROLEX</dd>
+                    <dd class="name">FRANCK MULLER, TAGHEUER, PANERAI, IWC, OMEGA</dd>
+                    <div class="btn_morebox">
+                        <div class="btn_moretext">
+                            <a href="{{ url('lineup') }}?p=3">＞&nbsp;詳細はこちら</a>
+                        </div>
+                    </div>
                 </dl>
             </li>
             <li>
@@ -63,11 +84,16 @@
                     <dt>価格</dt>
                     <dd class="price">￥23,800</dd>
                     <dt>お取扱商品</dt>
-                    <dd>HUBLOT, ROLEX, FRANCK MULLER</dd>
+                    <dd class="name">HUBLOT, ROLEX, FRANCK MULLER</dd>
+                    <div class="btn_morebox">
+                        <div class="btn_moretext">
+                            <a href="{{ url('lineup') }}?p=5">＞&nbsp;詳細はこちら</a> </div>
+                    </div>
                 </dl>
             </li>
         </ul>
     </section>
+
     <section class="registform mt90" id="registerArea">
         <h1 class="txt_c mb50"><img src="{{ asset('img/hd_service.png') }}" alt="To use the service" width="233"><em>サービスご利用登録</em></h1>
         <div class="serviceimg">
@@ -126,13 +152,13 @@
                     <dt class="item_name">携帯電話番号</dt>
                     <dd class="item_content">
                         <ul class="innerlist_tel">
-                            <li><input type="number" name="user[mobile_tel01]" value="{{ old('user.mobile_tel01') }}" required /></li>
-                            <li><input type="number" name="user[mobile_tel02]" value="{{ old('user.mobile_tel02') }}" required /></li>
-                            <li><input type="number" name="user[mobile_tel03]" value="{{ old('user.mobile_tel03') }}" required /></li>
+                            <li><input type="number" name="user[mobile_tel01]" value="{{ old('user.mobile_tel01') }}" /></li>
+                            <li><input type="number" name="user[mobile_tel02]" value="{{ old('user.mobile_tel02') }}" /></li>
+                            <li><input type="number" name="user[mobile_tel03]" value="{{ old('user.mobile_tel03') }}" /></li>
                         </ul>
                     </dd>
                 </dl>
-                <!-- ▲FAX番号▲ -->
+                <!-- ▲携帯電話番号▲ -->
 
                 <!-- ▼お電話番号▼ -->
                 <dl class="formitem">

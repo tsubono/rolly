@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
 use App\Models\Plan;
+use App\Models\PlanDetail;
 use App\Models\Product;
 use App\Services\ProductService;
 use Illuminate\Http\Request;
@@ -147,17 +148,17 @@ class ProductController extends Controller
         // 検索条件: キーワードとカテゴリ
         if (!empty($search) && !empty($brand_search)) {
 
-            $query
-                ->where('id', 'LIKE', "%{$search}%")
-                ->orWhere('model_name', 'LIKE', "%{$search}%")
-                ->orWhere('name', 'LIKE', "%{$search}%")
-                ->orWhere('brand_id', $brand_search);
+            $query->where(function($query) use ($search){
+                $query->orWhere('id', 'LIKE', "%{$search}%")
+                    ->orWhere('model_number', 'LIKE', "%{$search}%")
+                    ->orWhere('model_name', 'LIKE', "%{$search}%");
+            })->where('brand_id', $brand_search);
 
             // 検索条件: キーワード
         } elseif (!empty($search)) {
             $query->where('id', 'LIKE', "%{$search}%");
+            $query->orWhere('model_number', 'LIKE', "%{$search}%");
             $query->orWhere('model_name', 'LIKE', "%{$search}%");
-            $query->orWhere('name', 'LIKE', "%{$search}%");
 
             // 検索条件: カテゴリ
         } elseif (!empty($brand_search)) {
@@ -180,20 +181,15 @@ class ProductController extends Controller
     public function ajaxSearch(Request $request)
     {
 
-        $id = $request->get('id');
-        $index = $request->get('index');
-        $user_id = $request->get('user_id');
-        $order_id = $request->get('order_id');
-        $json = $request->get('json');
-        $product = $this->product->findOrFail($id);
+        $product = $this->product->findOrFail($request->get('id'));
 
-        $viewStr = View::make('admin.orders.order_products')
-            ->with('product', $product)->with('index', $index)
-            ->with('user_id', $user_id)->with('order_id', $order_id)
-            ->with('json', $json)
-            ->render();
+        $plan_name_disp = $product->plan->name;
+        $plan_price_disp = $this->plan->getMonthlyPrice($product->plan_id);
+        $product_name_disp = $product->brand->name. ' '. $product->model_name;
+        $product_id = $product->id;
 
-        echo $viewStr;
+        echo json_encode(compact('product_id', 'plan_name_disp', 'plan_price_disp', 'product_name_disp'));
+
     }
 
 }

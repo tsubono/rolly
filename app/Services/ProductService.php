@@ -28,12 +28,20 @@ class ProductService
         if (empty($res["id"])) {
             $res["image1"] = $this->uploadFile($request, '1');
             $res["image2"] = $this->uploadFile($request, '2');
+            $res["image3"] = $this->uploadFile($request, '3');
+            $res["image4"] = $this->uploadFile($request, '4');
         }
         if (!empty($res["id"]) && ($request->hasFile('product.image1') || $res["image1_edit"] == "1")) {
             $res["image1"] = $this->uploadFile($request, '1');
         }
         if (!empty($res["id"]) && ($request->hasFile('product.image2') || $res["image2_edit"] == "1")) {
             $res["image2"] = $this->uploadFile($request, '2');
+        }
+        if (!empty($res["id"]) && ($request->hasFile('product.image3') || $res["image3_edit"] == "1")) {
+            $res["image3"] = $this->uploadFile($request, '3');
+        }
+        if (!empty($res["id"]) && ($request->hasFile('product.image4') || $res["image4_edit"] == "1")) {
+            $res["image4"] = $this->uploadFile($request, '4');
         }
 
         return $res;
@@ -80,38 +88,18 @@ class ProductService
      */
     public function deleteFiles($product) {
 
-        if (!empty($product->image)) {
-            unlink(public_path(). $product->image);
+        if (!empty($product->image1)) {
+            unlink(public_path(). $product->image1);
         }
-        if (!empty($product->image_600_layout)) {
-            unlink(public_path(). $product->image_600_layout);
+        if (!empty($product->image2)) {
+            unlink(public_path(). $product->image2);
         }
-        if (!empty($product->image_600_copy)) {
-            unlink(public_path(). $product->image_600_copy);
+        if (!empty($product->image3)) {
+            unlink(public_path(). $product->image3);
         }
-//        if (!empty($product->image_900_layout)) {
-//            unlink(public_path(). $product->image_900_layout);
-//        }
-//        if (!empty($product->image_900_copy)) {
-//            unlink(public_path(). $product->image_900_copy);
-//        }
-//        if (!empty($product->image_1200_layout)) {
-//            unlink(public_path(). $product->image_1200_layout);
-//        }
-//        if (!empty($product->image_1200_copy)) {
-//            unlink(public_path(). $product->image_1200_copy);
-//        }
-//        if (!empty($product->image_1500_layout)) {
-//            unlink(public_path(). $product->image_1500_layout);
-//        }
-//        if (!empty($product->image_1500_copy)) {
-//            unlink(public_path(). $product->image_1500_copy);
-//        }
-//        if (!empty($product->image_1800_layout)) {
-//            unlink(public_path(). $product->image_1800_layout);
-//        }
-//        if (!empty($product->image_1800_copy)) {
-//            unlink(public_path(). $product->image_1800_copy);
-//        }
+        if (!empty($product->image4)) {
+            unlink(public_path(). $product->image4);
+        }
+
     }
 }

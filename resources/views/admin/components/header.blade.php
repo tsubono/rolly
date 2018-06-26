@@ -11,22 +11,29 @@
         <ul class="nav navbar-nav">
             <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <span class="hidden-xs">{{\Auth::user()->name}}</span>
+                    <span class="hidden-xs">
+                        @if (!empty(\Auth::user()))
+                            {{ \Auth::user()->name }}
+                        @endif
+                    </span>
                 </a>
-                <ul class="dropdown-menu">
-                    <!-- Menu Body -->
-                    <li class="user-body">
-                        <div class="row">
-                            <div class="col-xs-12 text-center">
-                                <a href="{{ url('/admin/admins/'. \Auth::user()->id. '/edit') }}" class="btn btn-primary btn-flat">管理者情報変更</a>
+                @if (!empty(\Auth::user()))
+                    <ul class="dropdown-menu">
+                        <!-- Menu Body -->
+                        <li class="user-body">
+                            <div class="row">
+                                <div class="col-xs-12 text-center">
+                                    <a href="{{ url('/admin/admins/'. \Auth::user()->id. '/edit') }}"
+                                       class="btn btn-primary btn-flat">管理者情報変更</a>
+                                </div>
+                                <div class="col-xs-12 text-center mt-10">
+                                    <a href="{{ url('/admin/logout') }}" class="btn btn-primary btn-flat">ログアウト</a>
+                                </div>
                             </div>
-                            <div class="col-xs-12 text-center mt-10">
-                                <a href="{{ url('/admin/logout') }}" class="btn btn-primary btn-flat">ログアウト</a>
-                            </div>
-                        </div>
-                        <!-- /.row -->
-                    </li>
-                </ul>
+                            <!-- /.row -->
+                        </li>
+                    </ul>
+                @endif
             </li>
         </ul>
     </div>

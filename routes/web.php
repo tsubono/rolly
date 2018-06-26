@@ -38,6 +38,19 @@ Route::namespace('Front')->group(function() {
     Route::get('gallery',     'GalleryController@index')->name('gallery');
     Route::get('qa',     'QaController@index')->name('qa');
     Route::get('scene',     'SceneController@index')->name('scene');
+
+    Route::get('mypage',     'MypageController@index');
+    Route::get('mypage/edit',     'MypageController@getEdit')->name('front.mypage.edit');
+    Route::post('mypage/edit',     'MypageController@postEdit');
+    Route::get('mypage/status',     'MypageController@status');
+
+    Route::get('concept',     'ConceptController@index')->name('concept');
+    Route::get('plan',     'PlanController@index')->name('plan');
+
+    Route::post('order',     'OrderController@index')->name('order');
+    Route::post('order/payment',     'OrderController@postPayment');
+    Route::get('order/payment',     'OrderController@getPayment')->name('order.payment');
+
 });
 
 /*
@@ -74,9 +87,6 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->middleware('auth:admin
 
     /* orders */
     Route::resource('orders', OrderController::class);
-    Route::post('orders/ajaxValidation', 'OrderController@ajaxValidation');
-    Route::post('orders/saveDesign', 'OrderController@saveDesign');
-    Route::post('orders/saveDesignDB', 'OrderController@saveDesignDB');
 
     /* users */
     Route::resource('users', UserController::class);

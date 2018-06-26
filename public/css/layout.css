@@ -1,12 +1,11 @@
 @charset "utf-8";
-
 /* ----------------------------------------------------
 
 ★layout.css
 -------------------------------------------------------
 
 build:2017-07
-lastupdate:2017-07
+lastupdate:2018-05
 version:1.1
 author:om
 
@@ -17,615 +16,935 @@ author:om
 01.header
 02.navigation
 03.mainimg
-04.concept
-05.story
-06.umidoro
-07.features
-08.comparison
-09.voice
-10.benefits
-11.contact
-12.page
+04.scroll
+05.concept_top
+06.plan
+07.service
+08.form
+09.footer
+10.sidefix
+
 ---------------------------------------------------- */
 
+
+/* ■00.hamburger
+--------------------------------------------------- */
+.hamburger {
+	position: absolute;
+	display: block;
+	width: 32px;
+	top: 20px;
+	right: 10px;
+	height: 20px;
+	z-index: 99999;
+	box-sizing: border-box;
+	cursor: pointer;
+}
+.hamburger span {
+	display: inline-block;
+	transition: all .4s;
+	box-sizing: border-box;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 2px;
+	background-color: #333;
+	margin: 0 auto;
+}
+
+.hamburger.top span {
+	background-color: #fff;
+}
+
+.hamburger.active span {
+	background-color: #fff;
+}
+
+.hamburger span:nth-of-type(1) {
+	top: 0;
+}
+.hamburger span:nth-of-type(2) {
+	top: 9px;
+}
+.hamburger span:nth-of-type(3) {
+	bottom: 0;
+}
+.hamburger span:nth-of-type(1) {
+	-webkit-animation: menu-ber01 .75s forwards;
+	animation: menu-ber01 .75s forwards;
+}
+.hamburger span:nth-of-type(2) {
+	transition: all .25s .25s;
+	opacity: 1;
+}
+.hamburger span:nth-of-type(3) {
+	-webkit-animation: menu-ber02 .75s forwards;
+	animation: menu-ber02 .75s forwards;
+}
+.active span:nth-of-type(1) {
+	-webkit-animation: active-menu-ber01 .75s forwards;
+	animation: active-menu-ber01 .75s forwards;
+}
+.active span:nth-of-type(2) {
+	opacity: 0;
+}
+.active span:nth-of-type(3) {
+	-webkit-animation: active-menu-ber03 .75s forwards;
+	animation: active-menu-ber03 .75s forwards;
+}
+ @-webkit-keyframes menu-ber01 {
+ 0% {
+ -webkit-transform: translateY(8px) rotate(45deg);
+}
+ 50% {
+ -webkit-transform: translateY(8px) rotate(0);
+}
+ 100% {
+ -webkit-transform: translateY(0) rotate(0);
+}
+}
+ @keyframes menu-ber01 {
+ 0% {
+ transform: translateY(8px) rotate(45deg);
+}
+ 50% {
+ transform: translateY(8px) rotate(0);
+}
+ 100% {
+ transform: translateY(0) rotate(0);
+}
+}
+ @-webkit-keyframes menu-ber02 {
+ 0% {
+ -webkit-transform: translateY(-8px) rotate(-45deg);
+}
+ 50% {
+ -webkit-transform: translateY(-8px) rotate(0);
+}
+ 100% {
+ -webkit-transform: translateY(0) rotate(0);
+}
+}
+ @keyframes menu-ber02 {
+ 0% {
+ transform: translateY(-8px) rotate(-45deg);
+}
+ 50% {
+ transform: translateY(-8px) rotate(0);
+}
+ 100% {
+ transform: translateY(0) rotate(0);
+}
+}
+ @-webkit-keyframes active-menu-ber01 {
+ 0% {
+ -webkit-transform: translateY(0) rotate(0);
+}
+ 50% {
+ -webkit-transform: translateY(10px) rotate(0);
+}
+ 100% {
+ -webkit-transform: translateY(10px) rotate(45deg);
+}
+}
+ @keyframes active-menu-ber01 {
+ 0% {
+ transform: translateY(0) rotate(0);
+}
+ 50% {
+ transform: translateY(10px) rotate(0);
+}
+ 100% {
+ transform: translateY(10px) rotate(45deg);
+}
+}
+ @-webkit-keyframes active-menu-ber03 {
+ 0% {
+ -webkit-transform: translateY(0) rotate(0);
+}
+ 50% {
+ -webkit-transform: translateY(-8px) rotate(0);
+}
+ 100% {
+ -webkit-transform: translateY(-8px) rotate(-45deg);
+}
+}
+ @keyframes active-menu-ber03 {
+ 0% {
+ transform: translateY(0) rotate(0);
+}
+ 50% {
+ transform: translateY(-8px) rotate(0);
+}
+ 100% {
+ transform: translateY(-8px) rotate(-45deg);
+}
+}
+
+.globalnav_mini {
+	position: absolute;
+	display: none;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 99998;
+}
+.globalnav_mini .nav_inner {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+.globalnav_mini .nav_inner ul {
+	display: table-cell;
+	vertical-align: middle;
+	background-color: #333;
+}
+.globalnav_mini .nav_inner ul li a {
+	display: block;
+	position: relative;
+	text-decoration: none;
+	font-size: 2.4rem;
+	color: #333;
+	line-height: 40px;
+	text-align: center;
+}
+.globalnav_mini a {
+	display: block;
+	text-decoration: none;
+	transition: 0.5s;
+	padding: 0 5px;
+}
+.globalnav_mini img {
+	width: 100px;
+	max-width: 100%;
+}
+.globalnav_mini ul li a:hover {
+	opacity: 0.5;
+}
 
 /* ■01.header
 --------------------------------------------------- */
 
-.logo{
-    position: absolute;
-    z-index: 100;
-    top: 20px;
-    left: 2%;
-    padding: 45px 1.35%;
-    background-color: #fff;
+.logo {
+	position: absolute;
+	z-index: 100;
+	top: 20px;
+	left: 2%;
+	padding: 45px 1.35%;
+	background-color: #fff;
 }
-.logo img{ width: 100%; }
+.logo img {
+	width: 100%;
+}
 
-
-/* ■02.mainimg
+/* ■02.navigation
 --------------------------------------------------- */
-.mainwrap { 
-    max-height: 585px; 
-    overflow: hidden;
-    position: relative;
+
+.globalnav ul {
+	display: flex;
+	justify-content: center;
+	background-image: url(../img/common/bg_nav.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	list-style-type: none;
+	padding: 0 20px;
+}
+.globalnav a {
+	display: block;
+	text-decoration: none;
+	transition: 0.5s;
+	padding: 0 5px;
+}
+.globalnav img {
+	width: 125px;
+	max-width: 100%;
+}
+.globalnav ul li a:hover {
+	opacity: 0.5;
+}
+.fixed {
+	position: fixed;
+	top: 0;
+	padding: 0;
+	width: 100%;
+	z-index: 1000;
+}
+.globalnav.fixed ul {
+	background-image: url(../img/common/bg_nav_scroll.png);
 }
 
+/* ■03.mainimg
+--------------------------------------------------- */
+.mainwrap {
+	max-height: 585px;
+	overflow: hidden;
+	position: relative;
+}
 .mainwrap h2 {
-    width: 80%;
-    position: absolute;
-    bottom: 30px;
-    z-index: 999;
-    left: 5%;
+	width: 80%;
+	position: absolute;
+	bottom: 30px;
+	z-index: 999;
+	left: 5%;
 }
-.mainwrap h2 img { width: 100%;  max-width: 433px; }
+.mainwrap h2 img {
+	width: 100%;
+	max-width: 433px;
+}
 .mainimg {
-    position: relative;
+	position: relative;
 }
-
-.bxslider{ margin:0px; z-index: 1; }
-.bx-wrapper { position: relative; }
-.bx-wrapper img { width:100%; }
-.bx-viewport { max-height: 585px; }
-
-/* ■03.scroll
+.bxslider {
+	margin: 0px;
+	z-index: 1;
+}
+.bx-wrapper {
+	position: relative;
+}
+.bx-wrapper img {
+	width: 100%;
+}
+.bx-viewport {
+	max-height: 585px;
+}
+/* ■04.scroll
 --------------------------------------------------- */
 
 .scroll {
-    width: 100%;
-    height: 25px;
-    background-color: #333;
-    padding: 7px 0 5px 0;
-    
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
+	width: 100%;
+	height: 25px;
+	background-color: #333;
+	padding: 7px 0 5px 0;
+	overflow: hidden;
+	white-space: nowrap;
+	position: relative;
 }
 .scroll p {
-    color: #fff;
-    cursor: all-scroll;
-    line-height: 25px;
-    height: 25px;
-    left: 100%;
-    position: relative;
-    position: absolute;
+	color: #fff;
+	cursor: all-scroll;
+	line-height: 25px;
+	height: 25px;
+	left: 100%;
+	position: relative;
+	position: absolute;
 	left: 0;
 	white-space: nowrap;
 }
 
-/* ■04.concept
+/* ■05.concept_top
 --------------------------------------------------- */
 
-.concept h1 {
-    width: 30%;
-    max-width: 210px;
-    min-width: 160px;
-    margin: 80px auto 0 auto;
-    text-align: center;
+.concept_top h1 {
+	width: 30%;
+	max-width: 210px;
+	min-width: 160px;
+	margin: 80px auto 0 auto;
+	text-align: center;
 }
-.concept h1 img{
-    width: 90%;
-    max-width: 154px;
-    min-width: 154px;
+.concept_top h1 img {
+	width: 90%;
+	max-width: 154px;
+	min-width: 154px;
 }
-.concept p {
-    line-height: 2.4em;
+.concept_top p {
+	line-height: 2.4em;
 }
 
-/* ■05.plan
+/* ■06.plan
 --------------------------------------------------- */
 .plan h1 {
-    font-size: 200%;
+	font-size: 200%;
 }
 .plan h1 em {
-    display: block;
-    font-style: normal;
-    font-size: 45%;
-    font-weight: 500;
-    margin-top: 5px;
+	display: block;
+	font-style: normal;
+	font-size: 45%;
+	font-weight: 500;
+	margin-top: 5px;
 }
-
 .plan ul.recommend {
-    width: 100%;
-    max-width: 1020px;
-    margin: auto;
+	width: 100%;
+	max-width: 1020px;
+	margin: auto;
 }
 .plan ul.recommend li {
-    width: 49%;
-    margin-right: 2%;
-    margin-bottom: 20px;
+	width: 49%;
+	margin-right: 2%;
+	margin-bottom: 20px;
 }
-.plan ul.recommend li:last-child { margin-right: 0; }
+.plan ul.recommend li:last-child {
+	margin-right: 0;
+}
 .plan ul.recommend li img.pc_none {
-    display: none;
+	display: none;
 }
-
-.plan ul{
-    width: 100%;
-    max-width: 1020px;
-    margin: auto;
+.plan ul {
+	width: 100%;
+	max-width: 1020px;
+	margin: auto;
 }
 .plan ul li {
-    width: 32%;
-    margin-right: 2%;
+	width: 32%;
+	margin-right: 2%;
 }
 .plan ul li img {
-    width: 100%;
+	width: 100%;
 }
-.plan ul li dl{
-    width: 100%;
-    /*background-color: #e5e5e5;*/
-    padding: 5px 4% 20px 4%;
-    border-right: solid 1px #333;
-    border-bottom: solid 1px #333;
-    border-left: solid 1px #333;
-    box-sizing: border-box;
+.plan ul li dl {
+	width: 100%;
+	/*background-color: #e5e5e5;*/
+	padding: 5px 4% 20px 4%;
+	border-right: solid 1px #333;
+	border-bottom: solid 1px #333;
+	border-left: solid 1px #333;
+	box-sizing: border-box;
 }
 .plan ul li dl dt {
-    font-size: 110%;
-    text-align: center;
-    padding-bottom: 1px;
-    position: relative;
-    margin-top: 20px;
+	font-size: 110%;
+	text-align: center;
+	padding-bottom: 1px;
+	position: relative;
+	margin-top: 20px;
 }
 .plan ul li dl dt::after {
-    content: "";
-    border-bottom: solid 1px #333;
-    width: 7%;
-    position: absolute;
-    left: 46%;
-    right: 46%;
-    bottom: -2px;
+	content: "";
+	border-bottom: solid 1px #333;
+	width: 7%;
+	position: absolute;
+	left: 46%;
+	right: 46%;
+	bottom: -2px;
 }
 .plan ul li dl dd {
-    margin: 10px 0 10px 0;
-    text-align: center;
-    font-size: 114%;
+	margin: 10px 0 10px 0;
+	text-align: center;
+	font-size: 114%;
 }
 .plan ul li dl .price {
-    text-align: center;
-    font-size: 30px;
-    line-height: 1.3;
-    font-family: serif;
-    font-weight: 600;
+	text-align: center;
+	font-size: 30px;
+	line-height: 1.3;
+	font-family: serif;
+	font-weight: 600;
 }
-
-/* ■06.service
+.plan .btn_morebox {
+	display: flex;
+	justify-content: center;
+	margin: 20px 0;
+}
+.plan .btn_moretext {
+	border: 1px solid #333;
+	transition: 0.5s;
+}
+.plan .btn_morebox a {
+	display: block;
+	padding: 10px 30px;
+	text-decoration: none;
+	color: #333;
+}
+.plan .btn_morebox a:hover {
+	text-decoration: none;
+	color: #fff;
+}
+.plan .btn_moretext:hover {
+	background-color: #555;
+}
+/* ■07.service
 --------------------------------------------------- */
 .registform h1 {
-    font-size: 200%;
+	font-size: 200%;
 }
 .registform h1 em {
-    display: block;
-    font-style: normal;
-    font-size: 45%;
-    font-weight: 500;
-    margin-top: 5px;
+	display: block;
+	font-style: normal;
+	font-size: 45%;
+	font-weight: 500;
+	margin-top: 5px;
 }
 .serviceimg {
-    width: 100%;
-    max-height: 370px;
-    background: url("../img/rolly3.png") no-repeat;
-    background-size: cover;
-    background-position: center;
+	width: 100%;
+	max-height: 370px;
+	background: url("../img/rolly3.png") no-repeat;
+	background-size: cover;
+	background-position: center;
 }
 .serviceimg div {
-    width: 100%;
-    height: 370px;
+	width: 100%;
+	height: 370px;
 }
-.serviceimg img{
-    display: block;
-    width: 100%;
-    max-width: 580px;
-    margin: 0 auto;
-    padding: 40px 0;
+.serviceimg img {
+	display: block;
+	width: 100%;
+	max-width: 580px;
+	margin: 0 auto;
+	padding: 40px 0;
 }
-
 .registform .flow {
-    width: 55%;
-    margin: 50px auto;
+	width: 55%;
+	margin: 50px auto;
 }
 .registform .flow li {
-    font-size: 90%;
-    position: relative;
-    text-align: center;
-    width: 32%;
-    line-height: 1.6em;
-    margin-right: 2%;
-    padding: 7px 0;
+	font-size: 90%;
+	position: relative;
+	text-align: center;
+	width: 32%;
+	line-height: 1.6em;
+	margin-right: 2%;
+	padding: 7px 0;
 }
 .registform .flow li.selected {
-    color: #fff;
+	color: #fff;
 }
 .registform .flow li:last-child {
-    margin-right: 0;
+	margin-right: 0;
 }
 .registform .flow li::before {
-  content: '';/*ボックス作成*/
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background-color: #e5e5e5;
-  z-index: -1;
-  transform: skew(-35deg);
+	content: '';/*ボックス作成*/
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: #e5e5e5;
+	z-index: -1;
+	transform: skew(-35deg);
 }
 .registform .flow li.selected::before {
-  background-color: #333;
+	background-color: #333;
 }
-.registform .flow li em{
-    font-size: 117%;
-    font-style: normal;
-    font-weight: 600;
+.registform .flow li em {
+	font-size: 117%;
+	font-style: normal;
+	font-weight: 600;
 }
-
-
-/* ■13.page
+/* ■08.form
 --------------------------------------------------- */
 
 /* ■基本レイアウト　テーブル風 */
-#formwrap{
-    border: solid 1px #e5e5e5;
-    max-width: 1020px;
-    margin: auto;
+#formwrap {
+	border: solid 1px #e5e5e5;
+	max-width: 1020px;
+	margin: auto;
 }
-#formwrap dl.formitem{
-	display:table;
-	width:100%;
-	margin:0 auto;
+#formwrap dl.formitem {
+	display: table;
+	width: 100%;
+	margin: 0 auto;
 	padding: 3px 0 0 0;
 	background-position: left bottom;
 	border-bottom: solid 1px #e5e5e5;
 }
-#formwrap dl.formitem:first-child{
-    padding: 0;
+#formwrap dl.formitem:first-child {
+	padding: 0;
 }
-#formwrap dl dt.item_name{
-    background-color: #333;
-    font-size: 13px;
+#formwrap dl dt.item_name {
+	background-color: #333;
+	font-size: 13px;
 	color: #fff;
-    display: table-cell;
+	display: table-cell;
 	width: 25%;
-    padding: 13px 0 13px 1%; 
+	padding: 13px 0 13px 1%;
 	vertical-align: middle;
 }
-#formwrap dl dd.item_content{
-    display: table-cell;
-    width: 72%;
-    padding: 9px 1% 10px 2%;
-    font-size: 95%;
+#formwrap dl dd.item_content {
+	display: table-cell;
+	width: 72%;
+	padding: 9px 1% 10px 2%;
+	font-size: 95%;
 }
-
 /* ■共通入力パーツ1：フォームタグ */
-input[type=text],
-textarea{
+input[type=text],input[type=number],input[type=email],input[type=password],  textarea {
 	width: 98%;
 	padding: 4px 1%;
 	background: #fff;
 	border: solid 1px #ccc;
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
-input[type=text]:focus,
-textarea:focus,
-select:focus{
-	background-color:#e3f7e8!important;
-	border:solid 1px #6fe0b7!important;
-	transition-duration:0.2s;
+input[type=text]:focus,input[type=number]:focus,input[type=email]:focus,input[type=password]:focus,  textarea:focus, select:focus {
+	background-color: #e3f7e8!important;
+	border: solid 1px #6fe0b7!important;
+	transition-duration: 0.2s;
 }
-input[type=checkbox],
-input[type=radio]{
-	margin:0 0 0 0;
-	padding:0 0 0 0;
-	line-height:120%;
+input[type=checkbox], input[type=radio] {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+	line-height: 120%;
 	/*	height:2em;*/
 	vertical-align: text-bottom;
 }
-select{ height: 2em; }
-
-input::-webkit-input-placeholder{ color: #8d8d8d!important; }
-input:-ms-input-placeholder{ color: #8d8d8d!important; }
-input::-moz-placeholder{ color: #8d8d8d!important; }
-
+select {
+	height: 2em;
+}
+ input::-webkit-input-placeholder {
+color: #8d8d8d!important;
+}
+input:-ms-input-placeholder {
+color: #8d8d8d!important;
+}
+input::-moz-placeholder {
+color: #8d8d8d!important;
+}
 /* ■共通入力パーツ2：送信ボタン枠 */
 ul.sendarea {
-	display:table;
-	margin:2em auto 60px;
-	text-align:center;
-    width: 80%;
-    max-width: 1020px;
+	display: table;
+	margin: 2em auto 60px;
+	text-align: center;
+	width: 80%;
+	max-width: 1020px;
 }
 ul.sendarea li {
-    display: table-cell;
-    padding: 15px;
-    vertical-align: middle;
-    width: 50%;
+	display: table-cell;
+	padding: 15px;
+	vertical-align: middle;
+	width: 50%;
 }
 ul.sendarea li a {
-    text-decoration: none;
+	text-decoration: none;
 }
 ul.sendarea_c {
-	display:table;
-	margin:2em auto 60px;
-	text-align:center;
-    width: 40%;
-    max-width: 1020px;
+	display: table;
+	margin: 2em auto 60px;
+	text-align: center;
+	width: 40%;
+	max-width: 1020px;
 }
 ul.sendarea_c li {
-    display: table-cell;
-    padding: 15px;
-    vertical-align: middle;
+	display: table-cell;
+	padding: 15px;
+	vertical-align: middle;
 }
 ul.sendarea_c li a {
-    text-decoration: none;
+	text-decoration: none;
 }
 /* ■共通入力パーツ2-1：送信ボタン cssタイプ */
 
-input.btn_css_check{
+input.btn_css_check {
 	padding: 15px;
 	width: 100%;
 	background: #333;
 	border: none;
 	color: #fff;
-	-webkit-transition:all 0.4s ease-in-out;
-	transition:all 0.4s ease-in-out; 
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
 }
-input.btn_css_reset{
+input.btn_css_reset {
 	padding: 15px;
 	width: 100%;
 	background: #e5e5e5;
 	border: none;
 	color: #333;
-	-webkit-transition:all 0.4s ease-in-out;
-	transition:all 0.4s ease-in-out; 
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
 }
-input.btn_css_reset:hover,
-input.btn_css_back:hover{ opacity: 0.8; cursor: pointer; }
-input.btn_css_check:hover,
-input.btn_css_send:hover{
+input.btn_css_reset:hover, input.btn_css_back:hover {
+	opacity: 0.8;
+	cursor: pointer;
+}
+input.btn_css_check:hover, input.btn_css_send:hover {
 	opacity: 0.8;
 	cursor: pointer;
 }
 input.not_approval {
-    background: #e5e5e5;
-    color: #777;
+	background: #e5e5e5;
+	color: #777;
 }
 /* ■共通表示パーツ1：必須マーク */
-.hissu > dt:after{
+.hissu > dt:after {
 	background: #a49d79;
 	color: #fff;
 	content: "必須";
 	font-size: 80%;
 	padding: 1px 5px;
-    position: relative;
-    top: -1px;
-    left: 2%;
+	position: relative;
+	top: -1px;
+	left: 2%;
 }
-
-
 /* --------------------------------------------------- 
 各モジュールパーツ 
 --------------------------------------------------- */
 
-#textforscb3{ width: 70%; }
-
+#textforscb3 {
+	width: 70%;
+}
 /* ■名前 */
-.innerlist_name { display: block; list-style-type: none; }
+.innerlist_name {
+	display: block;
+	list-style-type: none;
+}
 .innerlist_name li {
 	display: table;
 	float: right;
 	width: 47.5%;
 }
-.innerlist_name li:first-child { float: left; }
+.innerlist_name li:first-child {
+	float: left;
+}
 .innerlist_name li::before {
 	content: "名：";
 	display: table-cell;
 	text-align: right;
 	width: 2em;
 }
-.innerlist_name li:first-child::before { content: "姓："; }
-.innerlist_name li input { display: table-cell; }
-
+.innerlist_name li:first-child::before {
+	content: "姓：";
+}
+.innerlist_name li input {
+	display: table-cell;
+}
 /* ■カナ */
 .innerlist_kana::after {
 	clear: both;
 	content: "";
 	display: block;
 }
-.innerlist_kana { display: block; list-style-type: none; }
+.innerlist_kana {
+	display: block;
+	list-style-type: none;
+}
 .innerlist_kana li {
 	display: table;
 	float: right;
 	width: 47.5%;
 }
-.innerlist_kana li:first-child { float: left; }
+.innerlist_kana li:first-child {
+	float: left;
+}
 .innerlist_kana li::before {
 	content: "めい：";
 	display: table-cell;
 	width: 4em;
 }
-.innerlist_kana li:first-child::before { content: "せい："; }
-.innerlist_kana li input { display: table-cell; }
-
-.name_conf > dt { display: inline; }
-
-/* ■郵便番号 */
-.innerlist_addressnumber{ margin-bottom: 10px; }
-.innerlist_addressnumber:before{ content:"〒"; }
-.innerlist_addressnumber input{ 
-	width: 5em; 
-	display:inline-block; 
-	margin: 0 6px; 
+.innerlist_kana li:first-child::before {
+	content: "せい：";
 }
-
+.innerlist_kana li input {
+	display: table-cell;
+}
+.name_conf > dt {
+	display: inline;
+}
+/* ■郵便番号 */
+.innerlist_addressnumber {
+	margin-bottom: 10px;
+}
+.innerlist_addressnumber:before {
+	content: "〒";
+}
+.innerlist_addressnumber input {
+	width: 5em;
+	display: inline-block;
+	margin: 0 6px;
+}
 /* ■住所 */
 
-.innerlist_address{
-	display:table;
-	width:100%;
-	margin:0;
+.innerlist_address {
+	display: table;
+	width: 100%;
+	margin: 0;
 	margin-bottom: 10px;
-    padding-top: 10px;
-    border-top: dotted 1px #e5e5e5;
+	padding-top: 10px;
+	border-top: dotted 1px #e5e5e5;
 }
-
-.innerlist_address.add01 { border-top: none; padding-top: 0; }
-.innerlist_address.add02 { margin: 12px 0 12px 0; }
-.innerlist_address.add02 input{ width: 100%;  }
-.innerlist_address.add04 { margin-bottom: 0; }
-.innerlist_kana li input{ display:table-cell; }
-
+.innerlist_address.add01 {
+	border-top: none;
+	padding-top: 0;
+}
+.innerlist_address.add02 {
+	margin: 12px 0 12px 0;
+}
+.innerlist_address.add02 input {
+	width: 100%;
+}
+.innerlist_address.add04 {
+	margin-bottom: 0;
+}
+.innerlist_kana li input {
+	display: table-cell;
+}
 .innerlist_address.add01 dd input {
-    display: inline-block;
-    width: 5em;
+	display: inline-block;
+	width: 5em;
 }
 .innerlist_address dt {
-    display: table-cell;
-    width: 17%;
-    padding-right: 1em;
+	display: table-cell;
+	width: 17%;
+	padding-right: 1em;
 }
-
 /* ■TEL */
-.innerlist_tel{ display: table; }
-.innerlist_tel li{ display: table-cell; }
-.innerlist_tel li:before{
-	content:"-";
-	display:inline-block;
-	padding:0 0.5em;
+.innerlist_tel {
+	display: table;
 }
-.innerlist_tel li:first-child:before{ content:""; padding: 0; }
-.innerlist_tel li input{ width: 4.65em; }
-
+.innerlist_tel li {
+	display: table-cell;
+}
+.innerlist_tel li:before {
+	content: "-";
+	display: inline-block;
+	padding: 0 0.5em;
+}
+.innerlist_tel li:first-child:before {
+	content: "";
+	padding: 0;
+}
+.innerlist_tel li input {
+	width: 4.65em;
+}
 /* ■メール */
 
 
 /* 個人情報保護方針 */
-#formwrap dl.privacy{
-    border-bottom: none;
+#formwrap dl.privacy {
+	border-bottom: none;
 }
-.innerlist_privacymsg{
-    border: solid 1px #ccc;
-    margin: 0 1% 10px 0;
+.innerlist_privacymsg {
+	border: solid 1px #ccc;
+	margin: 0 1% 10px 0;
 }
 .innerlist_privacymsg div {
-    width: 98%;
+	width: 98%;
 	height: 10em;
-	resize: none;  
+	resize: none;
 	font-size: 13px;
-    overflow: auto;
-    padding: 0 1%;
+	overflow: auto;
+	padding: 0 1%;
 }
-.innerlist_privacymsg h4{
-    font-weight: 600;
-    margin: 10px 0 5px;
+.innerlist_privacymsg h4 {
+	font-weight: 600;
+	margin: 10px 0 5px;
 }
-.innerlist_privacymsg h5{
-    font-size: 95%;
-    font-weight: 600;
-    margin: 10px 0 5px;
+.innerlist_privacymsg h5 {
+	font-size: 95%;
+	font-weight: 600;
+	margin: 10px 0 5px;
 }
-.innerlist_privacymsg p{
-    font-size: 90%;
-    margin-bottom: 10px;
+.innerlist_privacymsg p {
+	font-size: 90%;
+	margin-bottom: 10px;
 }
 .consent_area {
-    text-align: center;
+	text-align: center;
 }
 .consent_area label {
-    margin-right: 20px;
+	margin-right: 20px;
 }
-
-
 .formtxt {
-    width: 90%;
-    margin: auto;
+	width: 90%;
+	margin: auto;
 }
-
-/* ■12.footer
+/* ■09.footer
 --------------------------------------------------- */
 footer {
-    background-color: #333;
+	background-color: #333;
 }
-footer nav { 
-    padding: 18px 5% 14px;
-    background-color: #333;
+footer nav {
+	padding: 18px 5% 14px;
+	background-color: #333;
 }
-footer ul { 
-    margin: auto; 
-    width: 100%; 
-    max-width: 550px;
+footer ul {
+	margin: auto;
+	width: 100%;
+	text-align: center;
 }
-footer ul li { 
-    display: inline-block;
-    float: left;
-    margin-right: 8.5%;
+
+footer ul li {
+	display: inline-block;
+	margin: 0 2%;
 }
 footer ul li:last-child {
-    margin-right: 0;
+	margin-right: 0;
 }
-footer ul li a { color: #fff; }
-footer ul li a:hover { text-decoration: none; }
-address p {
-    color: #fff;
-    font-size: 80%;
-    font-style: normal;
-    text-align: center;
-    padding: 10px 0 0;
+footer ul li a {
+	color: #fff;
+}
+footer ul li a:hover {
+	text-decoration: none;
 }
 
+footer address {
+	text-align: center;
+}
 
-/* ■12.sidefix
+footer address p {
+	display: inline;
+	color: #fff;
+	font-size: 80%;
+	font-style: normal;
+	text-align: center;
+	padding: 10px;
+}
+/* ■10.sidefix
 --------------------------------------------------- */
-.sidefix a { 
-    z-index: 9999;
-    display: block;
-    position: fixed;
-    top: 0;
-    right: 0;
-    background-color: #333;
-    top: 10%;
-    right: 0;
-    padding: 10px;
-    border-radius: 5px 0 0 5px;
-    transition: 0.5s;
-    width: 5%;
-    max-width: 34px;
-    min-width: 20px;
+.sidefix a {
+	z-index: 9999;
+	display: block;
+	position: fixed;
+	top: 0;
+	right: 0;
+	background-color: #333;
+	top: 15%;
+	right: 0;
+	padding: 10px;
+	border-radius: 5px 0 0 5px;
+	transition: 0.5s;
+	width: 5%;
+	max-width: 34px;
+	min-width: 20px;
 }
 .sidefix a:hover {
-    background-color: #555;
+	background-color: #555;
 }
-.sidefix img { 
-    width: 100%;
-    max-width: 34px;
+.sidefix img {
+	width: 100%;
+	max-width: 34px;
 }
 
 /* ■02.横幅1000px以上（PC用）スクロールバー対策で+20pxを指定する
 --------------------------------------------------- */
 @media screen and (min-width:1020px) {
-	/* ▼PC用================================================================== */
+/* ▼PC用================================================================== */
 
-	/* css change */
-	.spnone{ display: none; }
-	.pcnone{ display: block; }
-
-	/*	.info_r .lang li{ width: 11.7%; }*/
-	.info_r .lang li{ width: 39%; max-width: 35px; }
-	.header-under .lang li{ width: 13%; }
-	.header-under .lang li{ float: right; }
+/* ■00.hamburger
+--------------------------------------------------- */	
+.hamburger {
+		display: none;
+	}	
 	
-	/* ■13.page
+.globalnav_mini {
+	display: none;
+}
+.nav_mini {
+	display: none;
+}
+	
+/* css change */
+.spnone {
+	display: none;
+}
+.pcnone {
+	display: block;
+}
+/*	.info_r .lang li{ width: 11.7%; }*/
+.info_r .lang li {
+	width: 39%;
+	max-width: 35px;
+}
+.header-under .lang li {
+	width: 13%;
+}
+.header-under .lang li {
+	float: right;
+}
+/* ■06.plan
 	--------------------------------------------------- */
-  	.plan ul li {
-        float: left;
-    }
-    .plan ul li:last-child {
-        margin-right: 0;
-    }
-	
+.plan ul li {
+	float: left;
+}
+.plan ul li:last-child {
+	margin-right: 0;
+}
 /* ▲PC用================================================================== */
 }
-
 
 /* ■03.横幅768px以上、1299px以下（Tab用）スクロールバー対策で+20pxを指定する
 --------------------------------------------------- */
@@ -633,31 +952,53 @@ address p {
 /* ▼Tab用================================================================= */
 	
 
-	/* css change */
-	.spnone{ display: none; }
-    .logo{
-        padding: 43px 2%;
-    }
-	/* ■13.page
-	--------------------------------------------------- */
-    
-    .plan ul.recommend, .plan ul { width: 90%; margin: auto; }
-  	.plan ul li {
-        float: left;
-    }
-    .plan ul li:last-child {
-        margin-right: 0;
-    }
-	/* ■05.service
-	--------------------------------------------------- */
-    
-    #formwrap { width: 90%; margin: auto; }
-    .registform .flow {
-        width: 65%;
-    }
+.spnone {
+	display: none;
+}
 	
 
+/* ■00.hamburger
+--------------------------------------------------- */
+	.hamburger {
+	display: none;
+}
 	
+.globalnav_mini {
+	display: none;
+}
+.nav_mini {
+	display: none;
+}
+	
+/* ■01.header
+--------------------------------------------------- */
+	.logo {
+	padding: 43px 2%;
+}
+		
+/* ■06.plan
+	--------------------------------------------------- */
+    
+.plan ul.recommend, .plan ul {
+	width: 90%;
+	margin: auto;
+}
+.plan ul li {
+	float: left;
+}
+.plan ul li:last-child {
+	margin-right: 0;
+}
+/* ■07.service
+	--------------------------------------------------- */
+    
+#formwrap {
+	width: 90%;
+	margin: auto;
+}
+.registform .flow {
+	width: 65%;
+}
 /* ▲Tab用================================================================= */
 }
 
@@ -665,96 +1006,129 @@ address p {
 --------------------------------------------------- */
 @media screen and (min-width:0px) and (max-width:767px) {
 /* ▼SP用================================================================ */
-		/* ■13.page
-	--------------------------------------------------- */
-    .logo{
-        width: 20%;
-        top: 10px;
-        padding: 5% 1.35%;
+	
 
-    }	
-    
-    .mainwrap h2 {
-        width: 60%;
-        bottom: 20px;
-    }
-    
-    .concept h1 {
-        width: 35%;
-        min-width: auto;
-    }
-    .concept h1 img{
-        width: 100%;
-        max-width: auto;
-        min-width: auto;
-    }
-		/* ■13.page
+/* ■00.hamburger
+--------------------------------------------------- */	
+.globalnav_mini {
+	display: none;
+	clear: both;
+}
+	
+/* ■01.header
 	--------------------------------------------------- */
-  	.plan ul.recommend li, .plan ul li {
-        width: 90%;
-        margin: 0 auto 30px auto;
-    }
-    .plan ul.recommend li:last-child { margin-right: auto; }
-    .plan ul.recommend li img.pc_none {
-        display: block;
-    }
-    .plan ul.recommend li img.sp_none {
-        display: none;
-    }
-
-	/* ■01.service
+.logo {
+	width: 20%;
+	top: 10px;
+	padding: 5% 1.35%;
+}
+	
+/* ■02.navigation
+--------------------------------------------------- */	
+	.globalnav {
+	display: none;
+}
+	
+/* ■03.mainimg
+--------------------------------------------------- */
+	.mainwrap h2 {
+	width: 60%;
+	bottom: 20px;
+}
+	
+/* ■05.concept_top
+--------------------------------------------------- */
+	.concept_top h1 {
+	width: 35%;
+	min-width: auto;
+}
+.concept_top h1 img {
+	width: 100%;
+	max-width: auto;
+	min-width: auto;
+}
+	
+/* ■06.plan
 	--------------------------------------------------- */
-    .serviceimg div {
-        width: 92%;
-        height: auto;
-        padding: 0 4%;
-    }
-    .registform .flow {
-        width: 90%;
-    }
-    .registform .flow li{
-        font-size: 90%;
-    }
-    .registform .flow li::before {
-        transform: skew(-15deg);
-    }
-    .registform .flow li em{
-        font-size: 94%;
-        font-style: normal;
-        font-weight: 600;
-        letter-spacing: 1px;
-    }
-    #formwrap { width: 90%; margin: auto; }
-    #formwrap dl.formitem{
-        display: block;
-        padding: 0;
-    }
-    .innerlist_name li {
-        float: none;
-    }
-    #formwrap dl dd.item_content {
-        display: block;
-        width: 95%;
-        padding: 14px 2% 14px 3%;
-    }
-    #formwrap dl dt.item_name {
-        padding: 7px 0 7px 2%;
-        display: block;
-        width: 98%;
-    }
-    .innerlist_address{
-        padding-top: 7px;
-    }
-    .innerlist_address dt {
-        display: block;
-        width: 30%;
-        padding-right: 1em;
-    }
-    /* ■共通入力パーツ1：フォームタグ */
-    input[type=text],
-    textarea{
-        width: 90%;
-    }
-    
-	/* ▲SP用================================================================ */
+.plan ul.recommend li, .plan ul li {
+	width: 90%;
+	margin: 0 auto 30px auto;
+}
+.plan ul.recommend li:last-child {
+	margin-right: auto;
+}
+.plan ul.recommend li img.pc_none {
+	display: block;
+}
+.plan ul.recommend li img.sp_none {
+	display: none;
+}
+/* ■07.service
+	--------------------------------------------------- */
+.serviceimg div {
+	width: 92%;
+	height: auto;
+	padding: 0 4%;
+}
+.registform .flow {
+	width: 90%;
+}
+.registform .flow li {
+	font-size: 90%;
+}
+.registform .flow li::before {
+	transform: skew(-15deg);
+}
+.registform .flow li em {
+	font-size: 94%;
+	font-style: normal;
+	font-weight: 600;
+	letter-spacing: 1px;
+}
+#formwrap {
+	width: 90%;
+	margin: auto;
+}
+#formwrap dl.formitem {
+	display: block;
+	padding: 0;
+}
+.innerlist_name li {
+	float: none;
+}
+#formwrap dl dd.item_content {
+	display: block;
+	width: 95%;
+	padding: 14px 2% 14px 3%;
+}
+#formwrap dl dt.item_name {
+	padding: 7px 0 7px 2%;
+	display: block;
+	width: 98%;
+}
+.innerlist_address {
+	padding-top: 7px;
+}
+.innerlist_address dt {
+	display: block;
+	width: 30%;
+	padding-right: 1em;
+}
+/* ■共通入力パーツ1：フォームタグ */
+input[type=text],input[type=number],input[type=email], input[type=password],  textarea {
+	width: 90%;
+}
+	
+/* ■09.footer
+	--------------------------------------------------- */
+footer ul {
+	max-width: 500px;
+}
+	
+footer address p {
+	display: block;
+	padding: 0;
+}	
+	
+/* ▲SP用================================================================ */
 }

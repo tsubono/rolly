@@ -24,6 +24,9 @@ author:om
 08.contract
 09.gallery
 10.Q&A
+11.concept
+12.login
+13.mypage
 
 ---------------------------------------------------- */
 
@@ -39,7 +42,7 @@ header h1 a { transition: 0.3s; }
 header h1 a:hover { opacity: 0.6; }
 header h1 img {
     width: 100%;
-    max-width: 77px;
+    max-width: 110px;
 }
 .mainimg {
     background: url(../img/bx_rolly1.png) no-repeat;
@@ -63,6 +66,9 @@ header h1 img {
     position: absolute; 
     top: 40%;
     left: 15%;
+    color: #fff;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 
@@ -137,7 +143,7 @@ header h1 img {
 
 /* ■02.lineup
 --------------------------------------------------- */
-.lineup .mainimg h1.title img { max-width: 127px; }
+.lineup .mainimg h1.title img { width: 90%; max-width: 170px; }
 
 .item_list li {
     width: 30.6%;
@@ -252,7 +258,7 @@ header h1 img {
 
 /* ■04.company
 --------------------------------------------------- */
-.company .mainimg h1.title img { width: 90%; max-width: 111px; }
+.company .mainimg h1.title img { width: 90%; max-width: 160px; }
 .guide .contents table { width: 100%; margin-bottom: 50px; }
 .guide .contents table tr{
     border-bottom: dotted 1px #ccc;
@@ -270,7 +276,7 @@ header h1 img {
 
 /* ■05.policy
 --------------------------------------------------- */
-.policy .mainimg h1.title img { width: 90%; max-width: 256px; }
+.policy .mainimg h1.title img { width: 90%; max-width: 380px; }
 
 .guide .contents h2 {
     font-size: 127%;
@@ -457,10 +463,10 @@ header h1 img {
 .planint .btn { 
     margin-top: 30px; 
     float: left; 
-    width: 50%;
+    width: 100%;
     text-align: center;
 }
-.planint .btn a { 
+.planint .btn a, .lineup .btn a {
     width: 90%;
     display: inline-block;
     text-decoration: none;
@@ -472,14 +478,18 @@ header h1 img {
     text-align: center;
     transition: .3s;
 }
-.planint .btn a:hover {
+.lineup .btn a {
+    text-align: center;
+    margin-top: 25px;
+}
+.planint .btn a:hover, .lineup .btn a:hover {
     background-color: #666;
 }
 
 
 /* ■07.scene
 --------------------------------------------------- */
-.scene .mainimg h1.title img { max-width: 148px; }
+.scene .mainimg h1.title img { max-width: 140px; }
 .scene .list li {
     width: 48.7%;
     margin-right: 2.5%;
@@ -496,6 +506,8 @@ header h1 img {
 
 /* ■08.contract
 --------------------------------------------------- */
+.contract .mainimg h1.title img { width: 90%; max-width: 180px; }
+
 
 .contract .contents h2 {
 	margin: 50px auto 30px;
@@ -529,7 +541,7 @@ header h1 img {
 }
 
 .contract .contents ul.list_circ2 {
-    padding: 0 0 30px;
+    padding: 0 0 20px;
 	margin-bottom: 0px;
 }
 
@@ -555,7 +567,7 @@ header h1 img {
 
 /* ■09.gallery 
 --------------------------------------------------- */
-.gallery .mainimg h1.title img { max-width: 148px; }
+.gallery .mainimg h1.title img { max-width: 180px; }
 .gallery .contents { position: relative; }
 #gallery li img { width: 100%; }
 .custom-thumb { margin: 30px auto; }
@@ -685,6 +697,124 @@ header h1 img {
 	display: inline-block;
 	float: right;
 	width: 70%;
+}
+
+/* ■11.concept
+--------------------------------------------------- */
+.concept .mainimg h1.title img {
+    width: 90%;
+max-width: 200px;
+}
+.concept .concept_img {
+    max-width: 750px;
+}
+
+.concept .concept_img img {
+    width: 100%;
+}
+
+
+/* ■13.mypage
+--------------------------------------------------- */
+.mypage .confirm1__list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.mypage .confirm1__list dt:nth-of-type(n+2),
+.mypage .confirm1__list dd:nth-of-type(n+2) {
+    margin-top: 10px;
+}
+.mypage .confirm1__list dt {
+    width: 200px;
+}
+.mypage .confirm1__list dd {
+    width: calc(100% - 200px);
+}
+.mypage .confirm1__name input {
+    width: 300px;
+}
+.mypage .confirm1__tel,
+.mypage .confirm1__address1 {
+    display: flex;
+}
+.mypage .confirm1__tel input,
+.mypage .confirm1__address1 input {
+    display: block;
+    width: 60px;
+}
+.mypage .confirm1__birthday input {
+    width: auto;
+}
+.mypage .confirm1__file input,
+.mypage .confirm1__file img {
+    display: block;
+}
+.mypage .confirm1__file img {
+    margin-top: 10px;
+}
+.mypage .confirm1__btn {
+    display: block;
+    margin: 0 auto;
+}
+.mypage .confirm2__list {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.mypage .confirm2__list dt {
+    width: 30%;
+}
+.mypage .confirm2__list dd {
+    width: 70%;
+}
+.mypage .confirm2__list dt:nth-of-type(n+2),
+.mypage .confirm2__list dd:nth-of-type(n+2) {
+    margin-top: 10px;
+}
+
+/* ■14.order
+--------------------------------------------------- */
+.order .order__list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.order .order__list dt {
+    width: 200px;
+}
+.order .order__list dd {
+    width: calc(100% - 200px);
+}
+.order .order__list dt:nth-of-type(n+2),
+.order .order__list dd:nth-of-type(n+2) {
+    margin-top: 10px;
+}
+.order .order__address {
+    margin-top: 0 !important;
+    width: 100% !important;
+}
+.order .order__address dl {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.order .order__address dt {
+    box-sizing: border-box;
+    width: 200px;
+    margin-top: 5px !important;
+    padding-left: 20px;
+}
+.order .order__address dd {
+    width: calc(100% - 200px);
+    margin-top: 5px !important;
+}
+.order .order__attention li {
+    padding-left: 1em;
+    text-indent: -1em;
+}
+.order .order__attention li::before {
+    content: "※";
 }
 
 

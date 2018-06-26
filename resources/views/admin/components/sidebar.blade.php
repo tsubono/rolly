@@ -28,27 +28,27 @@
                 </li>
             </ul>
         </li>
-        {{--<li class="{{ request()->is('admin/orders', 'admin/orders/*') ? 'active' : '' }} treeview">--}}
-            {{--<a href="#">--}}
-                {{--<i class="fa fa-shopping-cart"></i>--}}
-                {{--<span>受注管理</span>--}}
-                {{--<span class="pull-right-container">--}}
-                    {{--<i class="fa fa-angle-left pull-right"></i>--}}
-                {{--</span>--}}
-            {{--</a>--}}
-            {{--<ul class="treeview-menu">--}}
-                {{--<li class="{{ request()->is('admin/orders') ? 'active' : '' }} ">--}}
-                    {{--<a href="{{ url('/admin/orders') }}">--}}
-                        {{--<span>受注一覧</span>--}}
-                    {{--</a>--}}
-                {{--</li>--}}
-                {{--<li class="{{ request()->is('admin/orders/create') ? 'active' : '' }} ">--}}
-                    {{--<a href="{{ url('/admin/orders/create') }}">--}}
-                        {{--<span>受注登録</span>--}}
-                    {{--</a>--}}
-                {{--</li>--}}
-            {{--</ul>--}}
-        {{--</li>--}}
+        <li class="{{ request()->is('admin/orders', 'admin/orders/*') ? 'active' : '' }} treeview">
+            <a href="#">
+                <i class="fa fa-shopping-cart"></i>
+                <span>受注管理</span>
+                <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </span>
+            </a>
+            <ul class="treeview-menu">
+                <li class="{{ request()->is('admin/orders') ? 'active' : '' }} ">
+                    <a href="{{ url('/admin/orders') }}">
+                        <span>受注一覧</span>
+                    </a>
+                </li>
+                <li class="{{ request()->is('admin/orders/create') ? 'active' : '' }} ">
+                    <a href="{{ url('/admin/orders/create') }}">
+                        <span>受注登録</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <li class="{{ request()->is('admin/users', 'admin/users/*') ? 'active' : '' }} treeview">
             <a href="#">
                 <i class="fa fa-users"></i>

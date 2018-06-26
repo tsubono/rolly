@@ -5,6 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
 
 class Handler extends ExceptionHandler
 {
@@ -47,6 +48,34 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        if($this->isHttpException($exception)) {
+
+            if ($request->is('admin/*')) {
+                // 403
+                if($exception->getStatusCode() == 403) {
+                    return response()->view('admin.errors.403');
+                }
+                // 404
+                if($exception->getStatusCode() == 404) {
+                    return response()->view('admin.errors.404');
+                }
+                // 500
+                return response()->view('admin.errors.500');
+            } else {
+                // 403
+                if($exception->getStatusCode() == 403) {
+                    return response()->view('front.errors.403');
+                }
+                // 404
+                if($exception->getStatusCode() == 404) {
+                    return response()->view('front.errors.404');
+                }
+                // 500
+                return response()->view('front.errors.500');
+            }
+
+        }
+
         return parent::render($request, $exception);
     }
 

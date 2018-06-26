@@ -33,8 +33,8 @@
 
                 <!-- ▼お電話番号▼ -->
                 <dl class="formitem hissu">
-                    <dt class="item_name">携帯電話番号</dt>
-                    <dd class="item_content">{{ $user['mobile_tel01'] }} - {{ $user['mobile_tel02'] }} - {{ $user['mobile_tel03'] }}</dd>
+                    <dt class="item_name">お電話番号</dt>
+                    <dd class="item_content">{{ $user['mobile_tel01'] }} - {{ $user['mobile_tel02'] }} - {{$user['mobile_tel03'] }}</dd>
                     <input type="hidden" name="user[mobile_tel01]" value="{{ $user['mobile_tel01'] }}">
                     <input type="hidden" name="user[mobile_tel02]" value="{{ $user['mobile_tel02'] }}">
                     <input type="hidden" name="user[mobile_tel03]" value="{{ $user['mobile_tel03'] }}">
@@ -43,8 +43,12 @@
 
                 <!-- ▼FAX番号▼ -->
                 <dl class="formitem">
-                    <dt class="item_name">お電話番号</dt>
-                    <dd class="item_content">{{ $user['tel01'] }} - {{ $user['tel02'] }} - {{$user['tel03'] }}</dd>
+                    <dt class="item_name">FAX番号</dt>
+                    <dd class="item_content">
+                        @if (!empty($user['tel01']) && !empty($user['tel02']) && !empty($user['tel03']))
+                            {{ $user['tel01'] }} - {{ $user['tel02'] }} - {{$user['tel03'] }}
+                        @endif
+                    </dd>
                     <input type="hidden" name="user[tel01]" value="{{ $user['tel01'] }}">
                     <input type="hidden" name="user[tel02]" value="{{ $user['tel02'] }}">
                     <input type="hidden" name="user[tel03]" value="{{ $user['tel03'] }}">

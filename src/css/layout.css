@@ -1,0 +1,760 @@
+@charset "utf-8";
+
+/* ----------------------------------------------------
+
+★layout.css
+-------------------------------------------------------
+
+build:2017-07
+lastupdate:2017-07
+version:1.1
+author:om
+
+-------------------------------------------------------
+
+★目次
+00.hamburger
+01.header
+02.navigation
+03.mainimg
+04.concept
+05.story
+06.umidoro
+07.features
+08.comparison
+09.voice
+10.benefits
+11.contact
+12.page
+---------------------------------------------------- */
+
+
+/* ■01.header
+--------------------------------------------------- */
+
+.logo{
+    position: absolute;
+    z-index: 100;
+    top: 20px;
+    left: 2%;
+    padding: 45px 1.35%;
+    background-color: #fff;
+}
+.logo img{ width: 100%; }
+
+
+/* ■02.mainimg
+--------------------------------------------------- */
+.mainwrap { 
+    max-height: 585px; 
+    overflow: hidden;
+    position: relative;
+}
+
+.mainwrap h2 {
+    width: 80%;
+    position: absolute;
+    bottom: 30px;
+    z-index: 999;
+    left: 5%;
+}
+.mainwrap h2 img { width: 100%;  max-width: 433px; }
+.mainimg {
+    position: relative;
+}
+
+.bxslider{ margin:0px; z-index: 1; }
+.bx-wrapper { position: relative; }
+.bx-wrapper img { width:100%; }
+.bx-viewport { max-height: 585px; }
+
+/* ■03.scroll
+--------------------------------------------------- */
+
+.scroll {
+    width: 100%;
+    height: 25px;
+    background-color: #333;
+    padding: 7px 0 5px 0;
+    
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.scroll p {
+    color: #fff;
+    cursor: all-scroll;
+    line-height: 25px;
+    height: 25px;
+    left: 100%;
+    position: relative;
+    position: absolute;
+	left: 0;
+	white-space: nowrap;
+}
+
+/* ■04.concept
+--------------------------------------------------- */
+
+.concept h1 {
+    width: 30%;
+    max-width: 210px;
+    min-width: 160px;
+    margin: 80px auto 0 auto;
+    text-align: center;
+}
+.concept h1 img{
+    width: 90%;
+    max-width: 154px;
+    min-width: 154px;
+}
+.concept p {
+    line-height: 2.4em;
+}
+
+/* ■05.plan
+--------------------------------------------------- */
+.plan h1 {
+    font-size: 200%;
+}
+.plan h1 em {
+    display: block;
+    font-style: normal;
+    font-size: 45%;
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+.plan ul.recommend {
+    width: 100%;
+    max-width: 1020px;
+    margin: auto;
+}
+.plan ul.recommend li {
+    width: 49%;
+    margin-right: 2%;
+    margin-bottom: 20px;
+}
+.plan ul.recommend li:last-child { margin-right: 0; }
+.plan ul.recommend li img.pc_none {
+    display: none;
+}
+
+.plan ul{
+    width: 100%;
+    max-width: 1020px;
+    margin: auto;
+}
+.plan ul li {
+    width: 32%;
+    margin-right: 2%;
+}
+.plan ul li img {
+    width: 100%;
+}
+.plan ul li dl{
+    width: 100%;
+    /*background-color: #e5e5e5;*/
+    padding: 5px 4% 20px 4%;
+    border-right: solid 1px #333;
+    border-bottom: solid 1px #333;
+    border-left: solid 1px #333;
+    box-sizing: border-box;
+}
+.plan ul li dl dt {
+    font-size: 110%;
+    text-align: center;
+    padding-bottom: 1px;
+    position: relative;
+    margin-top: 20px;
+}
+.plan ul li dl dt::after {
+    content: "";
+    border-bottom: solid 1px #333;
+    width: 7%;
+    position: absolute;
+    left: 46%;
+    right: 46%;
+    bottom: -2px;
+}
+.plan ul li dl dd {
+    margin: 10px 0 10px 0;
+    text-align: center;
+    font-size: 114%;
+}
+.plan ul li dl .price {
+    text-align: center;
+    font-size: 30px;
+    line-height: 1.3;
+    font-family: serif;
+    font-weight: 600;
+}
+
+/* ■06.service
+--------------------------------------------------- */
+.registform h1 {
+    font-size: 200%;
+}
+.registform h1 em {
+    display: block;
+    font-style: normal;
+    font-size: 45%;
+    font-weight: 500;
+    margin-top: 5px;
+}
+.serviceimg {
+    width: 100%;
+    max-height: 370px;
+    background: url("../img/rolly3.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.serviceimg div {
+    width: 100%;
+    height: 370px;
+}
+.serviceimg img{
+    display: block;
+    width: 100%;
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.registform .flow {
+    width: 55%;
+    margin: 50px auto;
+}
+.registform .flow li {
+    font-size: 90%;
+    position: relative;
+    text-align: center;
+    width: 32%;
+    line-height: 1.6em;
+    margin-right: 2%;
+    padding: 7px 0;
+}
+.registform .flow li.selected {
+    color: #fff;
+}
+.registform .flow li:last-child {
+    margin-right: 0;
+}
+.registform .flow li::before {
+  content: '';/*ボックス作成*/
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: #e5e5e5;
+  z-index: -1;
+  transform: skew(-35deg);
+}
+.registform .flow li.selected::before {
+  background-color: #333;
+}
+.registform .flow li em{
+    font-size: 117%;
+    font-style: normal;
+    font-weight: 600;
+}
+
+
+/* ■13.page
+--------------------------------------------------- */
+
+/* ■基本レイアウト　テーブル風 */
+#formwrap{
+    border: solid 1px #e5e5e5;
+    max-width: 1020px;
+    margin: auto;
+}
+#formwrap dl.formitem{
+	display:table;
+	width:100%;
+	margin:0 auto;
+	padding: 3px 0 0 0;
+	background-position: left bottom;
+	border-bottom: solid 1px #e5e5e5;
+}
+#formwrap dl.formitem:first-child{
+    padding: 0;
+}
+#formwrap dl dt.item_name{
+    background-color: #333;
+    font-size: 13px;
+	color: #fff;
+    display: table-cell;
+	width: 25%;
+    padding: 13px 0 13px 1%; 
+	vertical-align: middle;
+}
+#formwrap dl dd.item_content{
+    display: table-cell;
+    width: 72%;
+    padding: 9px 1% 10px 2%;
+    font-size: 95%;
+}
+
+/* ■共通入力パーツ1：フォームタグ */
+input[type=text],
+textarea{
+	width: 98%;
+	padding: 4px 1%;
+	background: #fff;
+	border: solid 1px #ccc;
+    box-sizing: border-box;
+}
+input[type=text]:focus,
+textarea:focus,
+select:focus{
+	background-color:#e3f7e8!important;
+	border:solid 1px #6fe0b7!important;
+	transition-duration:0.2s;
+}
+input[type=checkbox],
+input[type=radio]{
+	margin:0 0 0 0;
+	padding:0 0 0 0;
+	line-height:120%;
+	/*	height:2em;*/
+	vertical-align: text-bottom;
+}
+select{ height: 2em; }
+
+input::-webkit-input-placeholder{ color: #8d8d8d!important; }
+input:-ms-input-placeholder{ color: #8d8d8d!important; }
+input::-moz-placeholder{ color: #8d8d8d!important; }
+
+/* ■共通入力パーツ2：送信ボタン枠 */
+ul.sendarea {
+	display:table;
+	margin:2em auto 60px;
+	text-align:center;
+    width: 80%;
+    max-width: 1020px;
+}
+ul.sendarea li {
+    display: table-cell;
+    padding: 15px;
+    vertical-align: middle;
+    width: 50%;
+}
+ul.sendarea li a {
+    text-decoration: none;
+}
+ul.sendarea_c {
+	display:table;
+	margin:2em auto 60px;
+	text-align:center;
+    width: 40%;
+    max-width: 1020px;
+}
+ul.sendarea_c li {
+    display: table-cell;
+    padding: 15px;
+    vertical-align: middle;
+}
+ul.sendarea_c li a {
+    text-decoration: none;
+}
+/* ■共通入力パーツ2-1：送信ボタン cssタイプ */
+
+input.btn_css_check{
+	padding: 15px;
+	width: 100%;
+	background: #333;
+	border: none;
+	color: #fff;
+	-webkit-transition:all 0.4s ease-in-out;
+	transition:all 0.4s ease-in-out; 
+}
+input.btn_css_reset{
+	padding: 15px;
+	width: 100%;
+	background: #e5e5e5;
+	border: none;
+	color: #333;
+	-webkit-transition:all 0.4s ease-in-out;
+	transition:all 0.4s ease-in-out; 
+}
+input.btn_css_reset:hover,
+input.btn_css_back:hover{ opacity: 0.8; cursor: pointer; }
+input.btn_css_check:hover,
+input.btn_css_send:hover{
+	opacity: 0.8;
+	cursor: pointer;
+}
+input.not_approval {
+    background: #e5e5e5;
+    color: #777;
+}
+/* ■共通表示パーツ1：必須マーク */
+.hissu > dt:after{
+	background: #a49d79;
+	color: #fff;
+	content: "必須";
+	font-size: 80%;
+	padding: 1px 5px;
+    position: relative;
+    top: -1px;
+    left: 2%;
+}
+
+
+/* --------------------------------------------------- 
+各モジュールパーツ 
+--------------------------------------------------- */
+
+#textforscb3{ width: 70%; }
+
+/* ■名前 */
+.innerlist_name { display: block; list-style-type: none; }
+.innerlist_name li {
+	display: table;
+	float: right;
+	width: 47.5%;
+}
+.innerlist_name li:first-child { float: left; }
+.innerlist_name li::before {
+	content: "名：";
+	display: table-cell;
+	text-align: right;
+	width: 2em;
+}
+.innerlist_name li:first-child::before { content: "姓："; }
+.innerlist_name li input { display: table-cell; }
+
+/* ■カナ */
+.innerlist_kana::after {
+	clear: both;
+	content: "";
+	display: block;
+}
+.innerlist_kana { display: block; list-style-type: none; }
+.innerlist_kana li {
+	display: table;
+	float: right;
+	width: 47.5%;
+}
+.innerlist_kana li:first-child { float: left; }
+.innerlist_kana li::before {
+	content: "めい：";
+	display: table-cell;
+	width: 4em;
+}
+.innerlist_kana li:first-child::before { content: "せい："; }
+.innerlist_kana li input { display: table-cell; }
+
+.name_conf > dt { display: inline; }
+
+/* ■郵便番号 */
+.innerlist_addressnumber{ margin-bottom: 10px; }
+.innerlist_addressnumber:before{ content:"〒"; }
+.innerlist_addressnumber input{ 
+	width: 5em; 
+	display:inline-block; 
+	margin: 0 6px; 
+}
+
+/* ■住所 */
+
+.innerlist_address{
+	display:table;
+	width:100%;
+	margin:0;
+	margin-bottom: 10px;
+    padding-top: 10px;
+    border-top: dotted 1px #e5e5e5;
+}
+
+.innerlist_address.add01 { border-top: none; padding-top: 0; }
+.innerlist_address.add02 { margin: 12px 0 12px 0; }
+.innerlist_address.add02 input{ width: 100%;  }
+.innerlist_address.add04 { margin-bottom: 0; }
+.innerlist_kana li input{ display:table-cell; }
+
+.innerlist_address.add01 dd input {
+    display: inline-block;
+    width: 5em;
+}
+.innerlist_address dt {
+    display: table-cell;
+    width: 17%;
+    padding-right: 1em;
+}
+
+/* ■TEL */
+.innerlist_tel{ display: table; }
+.innerlist_tel li{ display: table-cell; }
+.innerlist_tel li:before{
+	content:"-";
+	display:inline-block;
+	padding:0 0.5em;
+}
+.innerlist_tel li:first-child:before{ content:""; padding: 0; }
+.innerlist_tel li input{ width: 4.65em; }
+
+/* ■メール */
+
+
+/* 個人情報保護方針 */
+#formwrap dl.privacy{
+    border-bottom: none;
+}
+.innerlist_privacymsg{
+    border: solid 1px #ccc;
+    margin: 0 1% 10px 0;
+}
+.innerlist_privacymsg div {
+    width: 98%;
+	height: 10em;
+	resize: none;  
+	font-size: 13px;
+    overflow: auto;
+    padding: 0 1%;
+}
+.innerlist_privacymsg h4{
+    font-weight: 600;
+    margin: 10px 0 5px;
+}
+.innerlist_privacymsg h5{
+    font-size: 95%;
+    font-weight: 600;
+    margin: 10px 0 5px;
+}
+.innerlist_privacymsg p{
+    font-size: 90%;
+    margin-bottom: 10px;
+}
+.consent_area {
+    text-align: center;
+}
+.consent_area label {
+    margin-right: 20px;
+}
+
+
+.formtxt {
+    width: 90%;
+    margin: auto;
+}
+
+/* ■12.footer
+--------------------------------------------------- */
+footer {
+    background-color: #333;
+}
+footer nav { 
+    padding: 18px 5% 14px;
+    background-color: #333;
+}
+footer ul { 
+    margin: auto; 
+    width: 100%; 
+    max-width: 550px;
+}
+footer ul li { 
+    display: inline-block;
+    float: left;
+    margin-right: 8.5%;
+}
+footer ul li:last-child {
+    margin-right: 0;
+}
+footer ul li a { color: #fff; }
+footer ul li a:hover { text-decoration: none; }
+address p {
+    color: #fff;
+    font-size: 80%;
+    font-style: normal;
+    text-align: center;
+    padding: 10px 0 0;
+}
+
+
+/* ■12.sidefix
+--------------------------------------------------- */
+.sidefix a { 
+    z-index: 9999;
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #333;
+    top: 10%;
+    right: 0;
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    transition: 0.5s;
+    width: 5%;
+    max-width: 34px;
+    min-width: 20px;
+}
+.sidefix a:hover {
+    background-color: #555;
+}
+.sidefix img { 
+    width: 100%;
+    max-width: 34px;
+}
+
+/* ■02.横幅1000px以上（PC用）スクロールバー対策で+20pxを指定する
+--------------------------------------------------- */
+@media screen and (min-width:1020px) {
+	/* ▼PC用================================================================== */
+
+	/* css change */
+	.spnone{ display: none; }
+	.pcnone{ display: block; }
+
+	/*	.info_r .lang li{ width: 11.7%; }*/
+	.info_r .lang li{ width: 39%; max-width: 35px; }
+	.header-under .lang li{ width: 13%; }
+	.header-under .lang li{ float: right; }
+	
+	/* ■13.page
+	--------------------------------------------------- */
+  	.plan ul li {
+        float: left;
+    }
+    .plan ul li:last-child {
+        margin-right: 0;
+    }
+	
+/* ▲PC用================================================================== */
+}
+
+
+/* ■03.横幅768px以上、1299px以下（Tab用）スクロールバー対策で+20pxを指定する
+--------------------------------------------------- */
+@media screen and (min-width:768px) and (max-width:1020px) {
+/* ▼Tab用================================================================= */
+	
+
+	/* css change */
+	.spnone{ display: none; }
+    .logo{
+        padding: 43px 2%;
+    }
+	/* ■13.page
+	--------------------------------------------------- */
+    
+    .plan ul.recommend, .plan ul { width: 90%; margin: auto; }
+  	.plan ul li {
+        float: left;
+    }
+    .plan ul li:last-child {
+        margin-right: 0;
+    }
+	/* ■05.service
+	--------------------------------------------------- */
+    
+    #formwrap { width: 90%; margin: auto; }
+    .registform .flow {
+        width: 65%;
+    }
+	
+
+	
+/* ▲Tab用================================================================= */
+}
+
+/* ■04.横幅767px以下（SP用）
+--------------------------------------------------- */
+@media screen and (min-width:0px) and (max-width:767px) {
+/* ▼SP用================================================================ */
+		/* ■13.page
+	--------------------------------------------------- */
+    .logo{
+        width: 20%;
+        top: 10px;
+        padding: 5% 1.35%;
+
+    }	
+    
+    .mainwrap h2 {
+        width: 60%;
+        bottom: 20px;
+    }
+    
+    .concept h1 {
+        width: 35%;
+        min-width: auto;
+    }
+    .concept h1 img{
+        width: 100%;
+        max-width: auto;
+        min-width: auto;
+    }
+		/* ■13.page
+	--------------------------------------------------- */
+  	.plan ul.recommend li, .plan ul li {
+        width: 90%;
+        margin: 0 auto 30px auto;
+    }
+    .plan ul.recommend li:last-child { margin-right: auto; }
+    .plan ul.recommend li img.pc_none {
+        display: block;
+    }
+    .plan ul.recommend li img.sp_none {
+        display: none;
+    }
+
+	/* ■01.service
+	--------------------------------------------------- */
+    .serviceimg div {
+        width: 92%;
+        height: auto;
+        padding: 0 4%;
+    }
+    .registform .flow {
+        width: 90%;
+    }
+    .registform .flow li{
+        font-size: 90%;
+    }
+    .registform .flow li::before {
+        transform: skew(-15deg);
+    }
+    .registform .flow li em{
+        font-size: 94%;
+        font-style: normal;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+    #formwrap { width: 90%; margin: auto; }
+    #formwrap dl.formitem{
+        display: block;
+        padding: 0;
+    }
+    .innerlist_name li {
+        float: none;
+    }
+    #formwrap dl dd.item_content {
+        display: block;
+        width: 95%;
+        padding: 14px 2% 14px 3%;
+    }
+    #formwrap dl dt.item_name {
+        padding: 7px 0 7px 2%;
+        display: block;
+        width: 98%;
+    }
+    .innerlist_address{
+        padding-top: 7px;
+    }
+    .innerlist_address dt {
+        display: block;
+        width: 30%;
+        padding-right: 1em;
+    }
+    /* ■共通入力パーツ1：フォームタグ */
+    input[type=text],
+    textarea{
+        width: 90%;
+    }
+    
+	/* ▲SP用================================================================ */
+}
