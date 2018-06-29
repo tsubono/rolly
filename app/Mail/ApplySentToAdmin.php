@@ -2,26 +2,26 @@
 
 namespace App\Mail;
 
-use App\Models\User;
+use App\Models\Order;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class RegisterNotifySent extends Mailable
+class ApplySentToAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $user;
+    public $order;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct(Order $order)
     {
-        $this->user = $user;
+        $this->order = $order;
     }
 
     /**
@@ -33,7 +33,7 @@ class RegisterNotifySent extends Mailable
     {
         return $this
             ->from('rolly-rental@daishin.jp.net', '自動送信メール')
-            ->subject('ホームページから新規ご登録を受け付けました')
-            ->view('mails.notify');
+            ->subject('お申込みを受け付けました')
+            ->view('mails.apply_admin');
     }
 }

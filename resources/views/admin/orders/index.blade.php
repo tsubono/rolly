@@ -45,12 +45,14 @@
                     <tr>
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->order_date->format('Y年m月d日') }}</td>
-                        <td>{{ $order->user->first_name }} {{ $order->user->last_name }}</td>
+                        <td>{{ $order->user->last_name }} {{ $order->user->first_name }}</td>
                         <td>{{ $order->product->brand->name }} {{ $order->product->model_name }}</td>
                         <td>{{ $order->product->plan->name }}</td>
                         <td>
                             @if ($order->user->identification_status==1)
                                 確認済み
+                            @elseif ($order->user->identification_status==2)
+                                <span>確認済み（未）</span>
                             @else
                                 <span style="color: red;">未確認</span>
                             @endif

@@ -39,18 +39,30 @@
                             <label for="order-id" class="control-label col-md-3">
                                 会員ID
                             </label>
-                            <input type="hidden" name="user[id]" value="{{ old('user.id') }}">
+                            <input type="hidden" name="user[id]" value="{{ old('user.id') }}" class="user_form">
                             <input type="hidden" name="order[user_id]" value="{{ old('order.user_id') }}">
-                            <div class="col-md-8" id="user_id_disp"></div>
+                            <div class="col-md-8" id="user_id_disp">{{ old('user.id') }}</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-identification_status" class="control-label col-md-3">
+                                本人確認状況
+                            </label>
+                            <div class="col-md-6">
+                                <select name="user[identification_status]" class="form-control user_form">
+                                    <option value="">未確認</option>
+                                    <option value="1" {{  old('user.identification_status')==1?"selected":"" }}>確認済み</option>
+                                    <option value="2" {{  old('user.identification_status')==2?"selected":"" }}>確認済み（未）</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="user-first_name" class="control-label col-md-3">
                                 名前
                             </label>
                             <div class="col-md-8 form-inline">
-                                <input type="text" id="user-last_name" name="user[last_name]" class="form-control"
+                                <input type="text" id="user-last_name" name="user[last_name]" class="form-control user_form"
                                        value="{{ old('user.last_name') }}" required>
-                                <input type="text" id="user-first_name" name="user[first_name]" class="form-control"
+                                <input type="text" id="user-first_name" name="user[first_name]" class="form-control user_form"
                                        value="{{ old('user.first_name') }}" required>
                             </div>
                         </div>
@@ -59,9 +71,9 @@
                                 名前（ふりがな）
                             </label>
                             <div class="col-md-8 form-inline">
-                                <input type="text" id="user-last_name_kana" name="user[last_name_kana]" class="form-control"
+                                <input type="text" id="user-last_name_kana" name="user[last_name_kana]" class="form-control user_form"
                                        value="{{ old('user.last_name_kana') }}" required>
-                                <input type="text" id="user-first_name_kana" name="user[first_name_kana]" class="form-control"
+                                <input type="text" id="user-first_name_kana" name="user[first_name_kana]" class="form-control user_form"
                                        value="{{ old('user.first_name_kana') }}" required>
                             </div>
                         </div>
@@ -70,13 +82,13 @@
                                 携帯電話番号
                             </label>
                             <div class="col-md-8 form-inline">
-                                <input type="number" id="user-mobile_tel01" name="user[mobile_tel01]" class="form-control"
+                                <input type="number" id="user-mobile_tel01" name="user[mobile_tel01]" class="form-control user_form"
                                        value="{{ old('user.mobile_tel01') }}" required>
                                 -
-                                <input type="number" id="user-mobile_tel02" name="user[mobile_tel02]" class="form-control"
+                                <input type="number" id="user-mobile_tel02" name="user[mobile_tel02]" class="form-control user_form"
                                        value="{{ old('user.mobile_tel02') }}" required>
                                 -
-                                <input type="number" id="user-mobile_tel03" name="user[mobile_tel03]" class="form-control"
+                                <input type="number" id="user-mobile_tel03" name="user[mobile_tel03]" class="form-control user_form"
                                        value="{{ old('user.mobile_tel03') }}" required>
                             </div>
                         </div>
@@ -85,13 +97,13 @@
                                 電話番号
                             </label>
                             <div class="col-md-8 form-inline">
-                                <input type="number" id="user-tel01" name="user[tel01]" class="form-control"
+                                <input type="number" id="user-tel01" name="user[tel01]" class="form-control user_form"
                                        value="{{ old('user.tel01') }}">
                                 -
-                                <input type="number" id="user-tel02" name="user[tel02]" class="form-control"
+                                <input type="number" id="user-tel02" name="user[tel02]" class="form-control user_form"
                                        value="{{ old('user.tel02') }}">
                                 -
-                                <input type="number" id="user-tel03" name="user[tel03]" class="form-control"
+                                <input type="number" id="user-tel03" name="user[tel03]" class="form-control user_form"
                                        value="{{ old('user.tel03') }}">
                             </div>
                         </div>
@@ -101,10 +113,10 @@
                             </label>
                             <div class="col-md-8 input_zip form-inline">
                                 〒
-                                <input type="number" id="user-zip01" name="user[zip01]" class="form-control"
+                                <input type="number" id="user-zip01" name="user[zip01]" class="form-control user_form"
                                        value="{{ old('user.zip01') }}" required>
                                 -
-                                <input type="number" id="user-zip02" name="user[zip02]" class="form-control"
+                                <input type="number" id="user-zip02" name="user[zip02]" class="form-control user_form"
                                        value="{{ old('user.zip02') }}" required>
                                 <span>
                                 <button type="button" id="user-zip-btn"
@@ -127,7 +139,7 @@
                                 都道府県
                             </label>
                             <div class="col-md-8">
-                                <select id="user-pref_id" name="user[pref_id]" class="form-control" required>
+                                <select id="user-pref_id" name="user[pref_id]" class="form-control user_form" required>
                                     @foreach(config('pref') as $key => $name)
                                         <option value="{{ $key }}" {{ old('user.pref_id') == $key ? "selected" : "" }}>{{ $name }}</option>
                                     @endforeach
@@ -139,7 +151,7 @@
                             </label>
                             <div class="col-md-8">
                                 <input type="text" id="user-address1" name="user[address1]"
-                                       value="{{ old('user.address1') }}" class="form-control" required placeholder="市区町村"/>
+                                       value="{{ old('user.address1') }}" class="form-control user_form" required placeholder="市区町村"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -147,7 +159,7 @@
                             </label>
                             <div class="col-md-8">
                                 <input type="text" id="user-address2" name="user[address2]"
-                                       value="{{ old('user.address2') }}" class="form-control"
+                                       value="{{ old('user.address2') }}" class="form-control user_form"
                                        placeholder="番地・ビル名"/>
                             </div>
                         </div>

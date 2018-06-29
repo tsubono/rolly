@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Mail\SettlementSentToAdmin;
+use App\Mail\SettlementSentToUser;
 use App\Models\Order;
 use App\Models\User;
 use App\Services\UserService;
@@ -10,7 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
-
+use Mail;
 
 class OrderController extends Controller
 {
@@ -76,7 +78,14 @@ class OrderController extends Controller
         } else {
             $order["return_date"] = NULL;
         }
-        $this->order->create($order);
+        $order = $this->order->create($order);
+
+        if (!empty($order->settlement_date)) {
+            //　管理者にメール送信
+            Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->queue(new SettlementSentToAdmin($order));
+            // ユーザーにメール送信
+            Mail::to($order->user->email)->queue(new SettlementSentToUser($order));
+        }
 
         return redirect()->route('admin.orders.index')->with('success', '受注情報を登録しました。');
     }
@@ -131,6 +140,8 @@ class OrderController extends Controller
 
         // 受注更新
         $order = $this->order->findOrFail($id);
+        $old_settlement_date = $order->settlement_date;
+
         $update_order = $request->input('order');
         if (!empty($update_order["settlement_date"])) {
             $update_order["return_date"] = Carbon::parse($update_order["settlement_date"])->addMonth(1);
@@ -138,6 +149,13 @@ class OrderController extends Controller
             $update_order["return_date"] = NULL;
         }
         $order->update($update_order);
+
+        if (!empty($order->settlement_date) && !Carbon::parse($old_settlement_date)->isSameDay(Carbon::parse($order->settlement_date))) {
+            //　管理者にメール送信
+            Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->queue(new SettlementSentToAdmin($order));
+            // ユーザーにメール送信
+            Mail::to($order->user->email)->queue(new SettlementSentToUser($order));
+        }
 
         return redirect()->route('admin.orders.index')->with('success', '受注情報を更新しました。');
     }

@@ -67,7 +67,7 @@
                         </dl>
                         <dl class="innerlist_address add02">
                             <dt>都道府県</dt>
-                            <dd>{{ config('pref')[1] }}{{ $user['pref_id'] }}</dd>
+                            <dd>{{ config('pref')[1] }}</dd>
                             <input type="hidden" name="user[pref_id]" value="{{ $user['pref_id'] }}">
                         </dl>
                         <dl class="innerlist_address add03">
@@ -113,7 +113,7 @@
             <!-- ▼▼送信ボタン -->
             <ul class="sendarea">
                 <li><input type="button" id="back" value="入力画面へ戻る" class="btn_css_reset"></li>
-                <li><input type="submit" name="submit" id="submit" class="btn_css_check true"></li>
+                <li><input type="submit" name="submit" id="submit" class="btn_css_check true" value="送信"></li>
             </ul>
             <input type="hidden" name="back" value="">
         <!-- ▲▲送信ボタン -->

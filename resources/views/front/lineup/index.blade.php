@@ -20,7 +20,12 @@
                     @foreach($products as $product)
                         <li>
                             <div class="inner">
-                                <p class="plan cf {{ $product->plan->class }}"><span>{{ $product->plan->name }}</span></p>
+                                <p class="plan cf {{ $product->plan->class }}">
+                                    <span>{{ $product->plan->name }}</span>
+                                    @if (config('const.product.status')[$product->status] == "レンタル中")
+                                        <span class="rental">レンタル中</span>
+                                    @endif
+                                </p>
                                 <div class="link">
                                     <a href="{{ url('/lineup/'. $product->id) }}">
                                         <img src="{{ asset(env('PUBLIC', ''). $product->image1) }}" alt="">

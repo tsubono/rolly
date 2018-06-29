@@ -301,6 +301,7 @@
                             <select name="user[identification_status]" class="form-control">
                                 <option value="">未確認</option>
                                 <option value="1" {{  old('user.identification_status')==1?"selected":"" }}>確認済み</option>
+                                <option value="2" {{  old('user.identification_status')==2?"selected":"" }}>確認済み（未）</option>
                             </select>
                             @if ($errors->has('identification_status'))
                                 @foreach ($errors->get('identification_status') as $error)

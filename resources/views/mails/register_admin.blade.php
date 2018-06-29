@@ -25,6 +25,9 @@
 【メールアドレス】<br>
 {{ $user['email'] }}<br>
 <br>
+【パスワード】<br>
+{{ $password }}<br>
+<br>
 <br>
 【ご希望のレンタル時計】<br>
 @if (!empty($user['brand_id']))

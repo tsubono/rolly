@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Mail\RegisterNotifySent;
-use App\Mail\RegisterReplySent;
+use App\Mail\ApplySentToAdmin;
+use App\Mail\ApplySentToUser;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -49,11 +49,16 @@ class OrderController extends Controller
         $user->update($update);
 
         // 受注情報作成
-        $this->order->create([
+        $order = $this->order->create([
             'user_id' => $user->id,
             'product_id' => $product->id,
             'order_date' => Carbon::now(),
         ]);
+
+        //　管理者にメール送信
+        Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->queue(new ApplySentToAdmin($order));
+        // ユーザーにメール送信
+        Mail::to($order->user->email)->queue(new ApplySentToUser($order));
 
         session(['price' => $product->plan->getMonthlyPrice($product->plan->id)]);
         return redirect()->route('order.payment');

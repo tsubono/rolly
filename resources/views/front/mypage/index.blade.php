@@ -18,6 +18,16 @@
                 <ul class="top__list">
                     <li><a href="{{ url('mypage/edit') }}">登録者情報のご確認・編集</a></li>
                     <li><a href="{{ url('mypage/status') }}">ご利用状況のご確認</a></li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('admin.logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            ログアウトする
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
             <!-- サイドバー sp -->

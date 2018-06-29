@@ -106,11 +106,15 @@
                                 <dd>{{ config('const.product.status')[$product->status] }}</dd>
                             </dl>
                         </section>
-                        <form method="post" action="{{ url('order') }}" id="form1">
-                            {{ csrf_field() }}
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <div class="btn"><a id="submitBtn">この時計を申し込み</a></div>
-                        </form>
+                        @if (config('const.product.status')[$product->status] == "レンタル中")
+                        @else
+                            <form method="post" action="{{ url('order') }}" id="form1">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                <div class="btn"><a id="submitBtn">この時計を申し込み</a></div>
+                            </form>
+                        @endif
+
                     </div>
                 </div>
             </div>
@@ -123,8 +127,8 @@
 
 @push('script')
     <script>
-        $('#submitBtn').click (function() {
-          $('#form1').submit();
+        $('#submitBtn').click(function () {
+            $('#form1').submit();
         });
     </script>
 @endpush

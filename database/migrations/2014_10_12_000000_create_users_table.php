@@ -32,7 +32,7 @@ class CreateUsersTable extends Migration
             $table->string('identification_doc')->comment('身分証明書類')->nullable();
             $table->string('doc_other')->comment('その他の証明書類')->nullable();
             $table->string('identification_no')->comment('身分証No')->nullable();
-            $table->tinyInteger('identification_status')->comment('本人確認 null,0:未確認 1:確認済み')->nullable();
+            $table->tinyInteger('identification_status')->comment('本人確認 null,0:未確認 1:確認済み 2:確認済み（未）')->nullable();
             $table->text('note')->comment('備考')->nullable();
             $table->rememberToken();
             $table->timestamps();

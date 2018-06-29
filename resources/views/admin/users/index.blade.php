@@ -47,6 +47,8 @@
                         <td>
                             @if ($user->identification_status==1)
                                 確認済み
+                            @elseif ($user->identification_status==2)
+                                <span>確認済み（未）</span>
                             @else
                                 <span style="color: red;">未確認</span>
                             @endif

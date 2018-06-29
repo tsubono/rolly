@@ -3,6 +3,11 @@
 @section('title', 'お申込み | 時計レンタル ROLLY')
 
 @section('content')
+    <style>
+        .red {
+            color: red;
+        }
+    </style>
     <div class="order">
         <section class="mainimg">
             <div class="wrap">
@@ -51,10 +56,6 @@
                             @else
                                 <input type="hidden" name="user[identification_doc_edit]" value="1">
                                 <input type="file" name="user[identification_doc]">
-                                <ul class="order__attention">
-                                    <li>ご本人確認が済んでいない方はアップロードをお願いいたします。</li>
-                                    <li>免許証などの身分証明書とお顔がわかる写真をアップロードしてください。</li>
-                                </ul>
                             @endif
                         </dd>
                         <dt>その他の証明書類</dt>
@@ -64,11 +65,11 @@
                             @else
                                 <input type="hidden" name="user[doc_other_edit]" value="1">
                                 <input type="file" name="user[doc_other]">
-                                <ul class="order__attention">
-                                    <li>未成年のお客様は、追加の証明書類をアップロードください。</li>
-                                    <li>パスポート、保険証、学生証など</li>
-                                </ul>
                             @endif
+                            <br><br>
+                            <p class="red">★時計のレンタルには本人確認が必要です★</p>
+                            <p class="red">※顔写真付きの身分証明書をお持ちになり、お顔がわかる状態で撮影した写真をアップロードしてください。</p>
+                            <p class="red">※顔写真付きの身分証明書をお持ちでないお客様は、健康保険証、住民票の写しの2点をアップロードしてください。</p>
                         </dd>
                     </dl>
                     <br>

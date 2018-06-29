@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Mail\RegisterNotifySent;
-use App\Mail\RegisterReplySent;
+use App\Mail\RegisterSentToAdmin;
+use App\Mail\RegisterSentToUser;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
@@ -63,9 +63,9 @@ class RegisterController extends Controller
         $user = $this->user->create($create);
 
         //　管理者にメール送信
-        Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->send(new RegisterNotifySent($user));
+        Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->queue(new RegisterSentToAdmin($user, $request->input('user.password')));
         // ユーザーにメール送信
-        Mail::to($user->email)->send(new RegisterReplySent($user));
+        Mail::to($user->email)->queue(new RegisterSentToUser($user, $request->input('user.password')));
 
         return redirect()->route('register.complete');
     }
