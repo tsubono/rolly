@@ -185,6 +185,13 @@
                     <fieldset>
                         <div class="form-group">
                             <label for="order-id" class="control-label col-md-3">
+                                商品ID
+                            </label>
+                            <input type="hidden" name="product_id_disp" value="{{ old('product_id_disp') }}">
+                            <div class="col-md-8" id="product_id_disp">{{ old('product_id_disp') }}</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-id" class="control-label col-md-3">
                                 レンタル時計
                             </label>
                             <input type="hidden" name="order[product_id]" value="{{ old('order.product_id') }}">
@@ -205,7 +212,13 @@
                             <input type="hidden" name="plan_price_disp" value="{{ old('plan_price_disp') }}">
                             <div class="col-md-8" id="plan_price_disp">{{ old('plan_price_disp') }}</div>
                         </div>
-
+                        <div class="form-group">
+                            <label for="order-id" class="control-label col-md-3">
+                                ステータス
+                            </label>
+                            <input type="hidden" name="product_status_disp" value="{{ old('product_status_disp') }}">
+                            <div class="col-md-8" id="product_status_disp">{{ old('product_status_disp') }}</div>
+                        </div>
                     </fieldset>
                 </div>
                 <!-- レンタル商品情報ボディ -->

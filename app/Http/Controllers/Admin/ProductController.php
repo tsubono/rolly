@@ -187,8 +187,9 @@ class ProductController extends Controller
         $plan_price_disp = $this->plan->getMonthlyPrice($product->plan_id);
         $product_name_disp = $product->brand->name. ' '. $product->model_name;
         $product_id = $product->id;
+        $product_status_disp = config('const.product.status')[$product->status];
 
-        echo json_encode(compact('product_id', 'plan_name_disp', 'plan_price_disp', 'product_name_disp'));
+        echo json_encode(compact('product_id', 'plan_name_disp', 'plan_price_disp', 'product_name_disp', 'product_status_disp'));
 
     }
 

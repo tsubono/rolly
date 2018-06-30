@@ -43,12 +43,16 @@
 
             $('[name="order[product_id]"]').val(data["product_id"]);
 
+            $('#product_id_disp').text(data["product_id"]);
+            $('[name=product_id_disp]').val(data["product_id"]);
             $('#product_name_disp').text(data["product_name_disp"]);
             $('[name=product_name_disp]').val(data["product_name_disp"]);
             $('#plan_name_disp').text(data["plan_name_disp"]);
             $('[name=plan_name_disp]').val(data["plan_name_disp"]);
             $('#plan_price_disp').text(data["plan_price_disp"].toLocaleString());
             $('[name=plan_price_disp]').val(data["plan_price_disp"].toLocaleString());
+            $('#product_status_disp').text(data["product_status_disp"]);
+            $('[name=product_status_disp]').val(data["product_status_disp"]);
 
             $('.product_result_area').html('');
 

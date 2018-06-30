@@ -25,6 +25,12 @@
             <div class="box form-horizontal">
                 <div class="box-body">
                     <div class="form-group input_row">
+                        <label class="control-label col-md-3">商品ID</label>
+                        <div class="col-md-6">
+                            {{ $product->id }}
+                        </div>
+                    </div>
+                    <div class="form-group input_row">
                         <label class="control-label col-md-3">ブランド名</label>
                         <div class="col-md-6">
                             <select name="product[brand_id]" class="form-control" required>

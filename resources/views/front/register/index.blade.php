@@ -34,24 +34,8 @@
                 </dl>
             </li>
             <li>
-                <img src="{{ asset('img/plan_pla.png') }}" alt="プラチナプラン" class="sp_none">
-                <img src="{{ asset('img/plan_pla_sp.png') }}" alt="プラチナプラン" class="pc_none">
-                <dl>
-                    <dt>価格</dt>
-                    <dd class="price">￥18,800</dd>
-                    <dt>お取扱商品</dt>
-                    <dd class="name">ROLEX</dd>
-                    <div class="btn_morebox">
-                        <div class="btn_moretext">
-                            <a href="{{ url('lineup') }}?p=4">＞&nbsp;詳細はこちら</a>
-                        </div>
-                    </div>
-                </dl>
-            </li>
-        </ul>
-        <ul class="cf">
-            <li>
-                <img src="{{ asset('img/plan_sil.png') }}" alt="シルバープラン">
+                <img src="{{ asset('img/plan_sil.png') }}" alt="シルバープラン" class="sp_none">
+                <img src="{{ asset('img/plan_sil_sp.png') }}" alt="シルバープラン" class="pc_none">
                 <dl>
                     <dt>価格</dt>
                     <dd class="price">￥5,800</dd>
@@ -64,6 +48,8 @@
                     </div>
                 </dl>
             </li>
+        </ul>
+        <ul class="cf">
             <li>
                 <img src="{{ asset('img/plan_gol.png') }}" alt="ゴールドプラン">
                 <dl>
@@ -74,6 +60,20 @@
                     <div class="btn_morebox">
                         <div class="btn_moretext">
                             <a href="{{ url('lineup') }}?p=3">＞&nbsp;詳細はこちら</a>
+                        </div>
+                    </div>
+                </dl>
+            </li>
+            <li>
+                <img src="{{ asset('img/plan_pla.png') }}" alt="プラチナプラン">
+                <dl>
+                    <dt>価格</dt>
+                    <dd class="price">￥18,800</dd>
+                    <dt>お取扱商品</dt>
+                    <dd class="name">ROLEX</dd>
+                    <div class="btn_morebox">
+                        <div class="btn_moretext">
+                            <a href="{{ url('lineup') }}?p=4">＞&nbsp;詳細はこちら</a>
                         </div>
                     </div>
                 </dl>

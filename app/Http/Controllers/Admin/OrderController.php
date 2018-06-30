@@ -74,7 +74,7 @@ class OrderController extends Controller
         // 受注更新
         $order = $request->input('order');
         if (!empty($order["settlement_date"])) {
-            $order["return_date"] = Carbon::parse($order["settlement_date"])->addMonth(1);
+            $order["return_date"] = Carbon::parse($order["settlement_date"])->addMonth(1)->subDay(1);
         } else {
             $order["return_date"] = NULL;
         }
@@ -144,7 +144,7 @@ class OrderController extends Controller
 
         $update_order = $request->input('order');
         if (!empty($update_order["settlement_date"])) {
-            $update_order["return_date"] = Carbon::parse($update_order["settlement_date"])->addMonth(1);
+            $update_order["return_date"] = Carbon::parse($update_order["settlement_date"])->addMonth(1)->subDay(1);
         } else {
             $update_order["return_date"] = NULL;
         }
