@@ -89,7 +89,10 @@ class OrderController extends Controller
 
         if (!empty($order->settlement_date)) {
             //　管理者にメール送信
-            Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->queue(new SettlementSentToAdmin($order));
+            Mail::to(env('MAIL_TO', 'rolly-rental@daishin.jp.net'))->queue(new SettlementSentToAdmin($order));
+            if (!empty(env('MAIL_TO_2', ''))) {
+                Mail::to(env('MAIL_TO_2', 'rolly-rental@daishin.jp.net'))->queue(new SettlementSentToAdmin($order));
+            }
             // ユーザーにメール送信
             Mail::to($order->user->email)->queue(new SettlementSentToUser($order));
         }
@@ -163,7 +166,10 @@ class OrderController extends Controller
 
         if (!empty($order->settlement_date) && (empty($old_settlement_date) || !Carbon::parse($old_settlement_date)->isSameDay(Carbon::parse($order->settlement_date)))) {
             //　管理者にメール送信
-            Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->queue(new SettlementSentToAdmin($order));
+            Mail::to(env('MAIL_TO', 'rolly-rental@daishin.jp.netp'))->queue(new SettlementSentToAdmin($order));
+            if (!empty(env('MAIL_TO_2', ''))) {
+                Mail::to(env('MAIL_TO_2', 'rolly-rental@daishin.jp.net'))->queue(new SettlementSentToAdmin($order));
+            }
             // ユーザーにメール送信
             Mail::to($order->user->email)->queue(new SettlementSentToUser($order));
         }

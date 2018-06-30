@@ -56,7 +56,10 @@ class OrderController extends Controller
         ]);
 
         //　管理者にメール送信
-        Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->queue(new ApplySentToAdmin($order));
+        Mail::to(env('MAIL_TO', 'rolly-rental@daishin.jp.net'))->queue(new ApplySentToAdmin($order));
+        if (!empty(env('MAIL_TO_2', ''))) {
+            Mail::to(env('MAIL_TO_2', 'rolly-rental@daishin.jp.net'))->queue(new ApplySentToAdmin($order));
+        }
         // ユーザーにメール送信
         Mail::to($order->user->email)->queue(new ApplySentToUser($order));
 

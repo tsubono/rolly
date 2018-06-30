@@ -9,6 +9,7 @@
             <li class="fl">STEP.2<br><em>登録確認画面</em></li>
             <li class="selected fl">STEP.3<br><em>完了</em></li>
         </ul>
+
         <p class="txt_c">この度はご登録をいただきありがとうござます。</p>
         <p class="txt_c mb30">後ほど担当者より改めてご連絡させていただきます。<br>今しばらくお待ちください。</p>
         <ul class="sendarea_c"><li><a href="{{ url('/') }}"><input name="back" value="TOPへ戻る" class="btn_css_reset" type="button"></a></li></ul></p>

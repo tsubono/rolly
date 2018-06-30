@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->integer('pref_id')->comment('都道府県ID');
             $table->string('address1')->comment('住所１');
             $table->string('address2')->comment('住所2')->nullable();
-            $table->string('email')->unique()->comment('メールアドレス');
+            $table->string('email')->comment('メールアドレス');
             $table->string('password')->comment('パスワード');
             $table->integer('brand_id')->comment('希望ブランド')->nullable();
             $table->date('birthday')->nullable()->comment('生年月日');

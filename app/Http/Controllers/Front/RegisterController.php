@@ -63,7 +63,10 @@ class RegisterController extends Controller
         $user = $this->user->create($create);
 
         //　管理者にメール送信
-        Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->queue(new RegisterSentToAdmin($user, $request->input('user.password')));
+        Mail::to(env('MAIL_TO', 'rolly-rental@daishin.jp.net'))->queue(new RegisterSentToAdmin($user, $request->input('user.password')));
+        if (!empty(env('MAIL_TO_2', ''))) {
+            Mail::to(env('MAIL_TO_2', 'rolly-rental@daishin.jp.net'))->queue(new RegisterSentToAdmin($user, $request->input('user.password')));
+        }
         // ユーザーにメール送信
         Mail::to($user->email)->queue(new RegisterSentToUser($user, $request->input('user.password')));
 
