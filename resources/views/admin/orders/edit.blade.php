@@ -198,6 +198,7 @@
                         レンタル時計
                     </label>
                     <input type="hidden" name="order[product_id]" value="{{ old('order.product_id', $order->product->id) }}">
+                    <input type="hidden" name="product[id]" value="{{ old('product.id', $order->product->id) }}">
                     <input type="hidden" name="product_name_disp" value="{{ old('product_name_disp', $order->product->brand->name. " ". $order->product->model_name) }}">
                     <div class="col-md-8" id="product_name_disp">{{ old('product_name_disp', $order->product->brand->name. " ". $order->product->model_name) }}</div>
                 </div>
@@ -219,8 +220,13 @@
                     <label for="order-id" class="control-label col-md-3">
                         ステータス
                     </label>
-                    <input type="hidden" name="product_status_disp" value="{{ old('product_status_disp', config('const.product.status')[$order->product->status]) }}">
-                    <div class="col-md-8" id="product_status_disp">{{ old('product_status_disp', config('const.product.status')[$order->product->status]) }}</div>
+                    <div class="col-md-8">
+                        <select name="product[status]" class="form-control">
+                            @foreach (config('const.product.status') as $key => $status)
+                                <option value="{{ $key }}" {{ old('product.status', $order->product->status)==$key?"selected":"" }}>{{ $status }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
             </fieldset>
         </div>

@@ -42,6 +42,7 @@
             data = $.parseJSON(data);
 
             $('[name="order[product_id]"]').val(data["product_id"]);
+            $('[name="product[id]"]').val(data["product_id"]);
 
             $('#product_id_disp').text(data["product_id"]);
             $('[name=product_id_disp]').val(data["product_id"]);
@@ -51,8 +52,8 @@
             $('[name=plan_name_disp]').val(data["plan_name_disp"]);
             $('#plan_price_disp').text(data["plan_price_disp"].toLocaleString());
             $('[name=plan_price_disp]').val(data["plan_price_disp"].toLocaleString());
-            $('#product_status_disp').text(data["product_status_disp"]);
-            $('[name=product_status_disp]').val(data["product_status_disp"]);
+
+            $('[name="product[status]"]').val(data["status"]);
 
             $('.product_result_area').html('');
 

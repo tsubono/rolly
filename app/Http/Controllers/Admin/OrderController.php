@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Mail\SettlementSentToAdmin;
 use App\Mail\SettlementSentToUser;
 use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use App\Services\UserService;
 use Carbon\Carbon;
@@ -18,12 +19,14 @@ class OrderController extends Controller
 {
     private $order;
     private $user;
+    private $product;
     private $userService;
 
-    public function __construct(Order $order, User $user, UserService $userService)
+    public function __construct(Order $order, User $user, Product $product, UserService $userService)
     {
         $this->order = $order;
         $this->user = $user;
+        $this->product = $product;
         $this->userService = $userService;
     }
 
@@ -70,6 +73,10 @@ class OrderController extends Controller
         // ユーザー更新
         $user = $this->user->findOrFail($request->input('user')['id']);
         $user->update($this->userService->getDataForDB($request));
+
+        // 商品更新
+        $product = $this->product->findOrFail($request->input('product')['id']);
+        $product->update($request->input('product'));
 
         // 受注更新
         $order = $request->input('order');
@@ -137,6 +144,10 @@ class OrderController extends Controller
         // ユーザー更新
         $user = $this->user->findOrFail($request->input('user')['id']);
         $user->update($this->userService->getDataForDB($request));
+
+        // 商品更新
+        $product = $this->product->findOrFail($request->input('product')['id']);
+        $product->update($request->input('product'));
 
         // 受注更新
         $order = $this->order->findOrFail($id);
