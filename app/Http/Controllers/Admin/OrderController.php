@@ -161,7 +161,7 @@ class OrderController extends Controller
         }
         $order->update($update_order);
 
-        if (!empty($order->settlement_date) && !Carbon::parse($old_settlement_date)->isSameDay(Carbon::parse($order->settlement_date))) {
+        if (!empty($order->settlement_date) && (empty($old_settlement_date) || !Carbon::parse($old_settlement_date)->isSameDay(Carbon::parse($order->settlement_date)))) {
             //　管理者にメール送信
             Mail::to(env('MAIL_TO', 'tsubono@ga-design.jp'))->queue(new SettlementSentToAdmin($order));
             // ユーザーにメール送信
