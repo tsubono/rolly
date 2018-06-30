@@ -217,11 +217,13 @@
                             <label for="order-id" class="control-label col-md-3">
                                 ステータス
                             </label>
-                            <select name="product[status]" class="form-control">
-                                @foreach (config('const.product.status') as $key => $status)
-                                    <option value="{{ $key }}" {{ old('product.status')==$key?"selected":"" }}>{{ $status }}</option>
-                                @endforeach
-                            </select>
+                            <div class="col-md-8">
+                                <select name="product[status]" class="form-control">
+                                    @foreach (config('const.product.status') as $key => $status)
+                                        <option value="{{ $key }}" {{ old('product.status')==$key?"selected":"" }}>{{ $status }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
                     </fieldset>
                 </div>
