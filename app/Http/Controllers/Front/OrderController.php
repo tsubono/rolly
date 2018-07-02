@@ -41,19 +41,17 @@ class OrderController extends Controller
 
     public function postPayment(Request $request)
     {
-        $product = $this->product->findOrFail($request->input('product')['id']);
+        $create_order = $request->input('order');
+        $product = $this->product->findOrFail($create_order['product_id']);
         $user = Auth::user();
 
         // 身分証明関連ファイルがあれば登録する
         $update = $this->userService->getDataForDB($request);
         $user->update($update);
 
+        $create_order['order_date'] = Carbon::now();
         // 受注情報作成
-        $order = $this->order->create([
-            'user_id' => $user->id,
-            'product_id' => $product->id,
-            'order_date' => Carbon::now(),
-        ]);
+        $order = $this->order->create($create_order);
 
         //　管理者にメール送信
         Mail::to(env('MAIL_TO', 'rolly-rental@daishin.jp.net'))->queue(new ApplySentToAdmin($order));

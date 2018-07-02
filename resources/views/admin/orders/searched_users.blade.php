@@ -84,6 +84,30 @@
                 $('[name="user[address2]"]').val(data["address2"]);
             }
 
+            if (data["identification_doc"] != "" && data["identification_doc"] != null) {
+                $('#identification_doc_none').css('display', 'none');
+                $('#identification_doc_btn').fadeIn();
+
+                $('[name="user[identification_doc]"]').val(data["identification_doc"]);
+                $('#identification_doc_btn').attr('href', '/admin/getDocument?url='+ data["identification_doc"]);
+            } else {
+                $('[name="user[identification_doc]"]').val("");
+                $('#identification_doc_btn').css('display', 'none');
+                $('#identification_doc_none').fadeIn();
+            }
+
+            if (data["doc_other"] != "" && data["doc_other"] != null) {
+                $('#doc_other_none').css('display', 'none');
+                $('#doc_other_btn').fadeIn();
+
+                $('[name="user[doc_other]"]').val(data["doc_other"]);
+                $('#doc_other_btn').attr('href', '/admin/getDocument?url='+ data["doc_other"]);
+            } else {
+                $('[name="user[doc_other]"]').val("");
+                $('#doc_other_btn').css('display', 'none');
+                $('#doc_other_none').fadeIn();
+            }
+
             $('.user_result_area').html('');
 
             $('#user-search-modal').modal('hide');

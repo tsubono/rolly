@@ -205,4 +205,14 @@ class OrderController extends Controller
             'zip02.digits' => '4文字で入力してください。',
         ];
     }
+
+    /**
+     * 資料表示
+     */
+    public function getDocument(Request $request) {
+        $url = $request->get('url', '');
+        if (!empty($url)) {
+            return response()->file(public_path(). $url);
+        }
+    }
 }

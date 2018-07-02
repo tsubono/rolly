@@ -163,6 +163,44 @@
                                        placeholder="番地・ビル名"/>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label for="user-identification_doc" class="control-label col-md-3">
+                                身分証明書類
+                            </label>
+                            <div class="col-md-8 form-inline">
+                                <input type="hidden" name="user[identification_doc]" value="{{ old('user.identification_doc') }}">
+                                @if (!empty(old('user.identification_doc')))
+                                    <a class="btn" id="identification_doc_btn"
+                                       href="{{ url('/admin/getDocument?url='. old('user.identification_doc')) }}"
+                                       target="_blank">表示する</a>
+                                    <p id="identification_doc_none" style="display: none;">未登録</p>
+                                @else
+                                    <a class="btn" id="identification_doc_btn"
+                                       href="{{ url('/admin/getDocument?url='. old('user.identification_doc')) }}"
+                                       target="_blank" style="display: none;">表示する</a>
+                                    <p id="identification_doc_none">未登録</p>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-doc_other" class="control-label col-md-3">
+                                その他の証明書類
+                            </label>
+                            <div class="col-md-8 form-inline">
+                                <input type="hidden" name="user[doc_other]" value="{{ old('user.doc_other') }}">
+                            @if (!empty(old('user.doc_other')))
+                                    <a class="btn" id="doc_other_btn"
+                                       href="{{ url('/admin/getDocument?url='. old('user.doc_other')) }}"
+                                       target="_blank">表示する</a>
+                                    <p id="doc_other_none" style="display: none;">未登録</p>
+                                @else
+                                    <a class="btn" id="doc_other_btn"
+                                       href="{{ url('/admin/getDocument?url='. old('user.doc_other')) }}"
+                                       target="_blank" style="display: none;">表示する</a>
+                                    <p id="doc_other_none">未登録</p>
+                                @endif
+                            </div>
+                        </div>
                     </fieldset>
                 </div>
                 <!-- /会員情報ボディ -->
@@ -222,6 +260,19 @@
                                     @foreach (config('const.product.status') as $key => $status)
                                         <option value="{{ $key }}" {{ old('product.status')==$key?"selected":"" }}>{{ $status }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-id" class="control-label col-md-3">
+                                ベルトの長さ
+                            </label>
+                            <div class="col-md-8">
+                                <select name="order[belt_length]" class="form-control" required>
+                                    <option value=""></option>
+                                    @for ($i=8; $i<=24; $i+=0.5)
+                                        <option value="{{ $i }}" {{ old('order.belt_length')==$i?"selected":"" }}>{{ number_format($i, 1) }}</option>
+                                    @endfor
                                 </select>
                             </div>
                         </div>

@@ -43,6 +43,8 @@ Route::namespace('Front')->group(function () {
 
     Route::get('concept', 'ConceptController@index')->name('concept');
     Route::get('plan', 'PlanController@index')->name('plan');
+
+    Route::get('getBeltPdf', 'PdfController@belt');
 });
 
 /*
@@ -100,6 +102,7 @@ Route::namespace('Admin')->prefix('admin')->as('admin.')->middleware('auth:admin
 
     /* orders */
     Route::resource('orders', OrderController::class);
+    Route::get('getDocument', 'OrderController@getDocument');
 
     /* users */
     Route::resource('users', UserController::class);

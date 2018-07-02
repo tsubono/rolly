@@ -69,7 +69,7 @@
                         </ul>
                     </div>
                     <div class="right">
-                        <h2>ROLEX<br>サブマリーナデイト</h2>
+                        <h2>{{ $product->brand->name }}<br>{{ $product->model_name }}</h2>
 
                         <section class="detailbox">
                             <h1>商品詳細</h1>
@@ -106,12 +106,13 @@
                                 <dd>{{ config('const.product.status')[$product->status] }}</dd>
                             </dl>
                         </section>
+                        <div class="btn"><a href="{{ url('getBeltPdf') }}" target="_blank">ベルトの長さを見る</a></div>
                         @if (config('const.product.status')[$product->status] == "レンタル中")
                         @else
                             <form method="post" action="{{ url('order') }}" id="form1">
                                 {{ csrf_field() }}
                                 <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                <div class="btn"><a id="submitBtn">この時計を申し込み</a></div>
+                                <div class="btn"><a id="submitBtn">この時計を申し込む</a></div>
                             </form>
                         @endif
 

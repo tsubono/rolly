@@ -18,7 +18,7 @@ class Order extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'user_id', 'product_id', 'order_date', 'settlement_date', 'return_date'
+        'user_id', 'product_id', 'belt_length', 'order_date', 'settlement_date', 'return_date'
     ];
 
     /**

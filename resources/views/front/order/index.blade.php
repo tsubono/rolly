@@ -49,6 +49,14 @@
                         <dd><span>{{ $product->plan->name }}</span>プラン</dd>
                         <dt>ご利用金額（月額）</dt>
                         <dd><span>{{ number_format($product->plan->getMonthlyPrice($product->plan->id)) }}</span>円</dd>
+                        <dt>ベルトの長さ</dt>
+                        <dd>
+                            <select name="order[belt_length]">
+                                @for ($i=8; $i<=24; $i+=0.5)
+                                    <option value="{{ $i }}">{{ number_format($i, 1) }}</option>
+                                @endfor
+                            </select>
+                        </dd>
                         <dt>身分証明書</dt>
                         <dd>
                             @if (!empty($user->identification_doc))
@@ -73,8 +81,8 @@
                         </dd>
                     </dl>
                     <br>
-                    <input type="hidden" name="user[id]" value="{{ $user->id }}">
-                    <input type="hidden" name="product[id]" value="{{ $product->id }}">
+                    <input type="hidden" name="order[user_id]" value="{{ $user->id }}">
+                    <input type="hidden" name="order[product_id]" value="{{ $product->id }}">
                     <button class="order__btn" type="submit">送信する</button>
                 </form>
             </div>
