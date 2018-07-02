@@ -212,7 +212,12 @@ class OrderController extends Controller
     public function getDocument(Request $request) {
         $url = $request->get('url', '');
         if (!empty($url)) {
-            return response()->file(public_path(). $url);
+            if (file_exists(public_path(). $url)) {
+                return response()->file(public_path(). $url);
+            } else {
+                echo 'ファイルが不正です。再度アップロード依頼をだしてください。';
+                exit;
+            }
         }
     }
 }
