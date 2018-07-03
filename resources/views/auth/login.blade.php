@@ -21,13 +21,20 @@
                         @csrf
                         <dl class="login__list">
                             <dt>ID（メールアドレス）</dt>
-                            <dd><input type="email" name="email" style="width: 50%;" required></dd>
+                            <dd><input type="email" name="email" style="width: 50%;" value="{{ old('email') }}" required></dd>
                             <dt>パスワード</dt>
-                            <dd><input type="password" name="password" style="width: 50%;" required></dd>
+                            <dd><input type="password" name="password" style="width: 50%;" value="" required></dd>
                         </dl>
                     </form><br>
                     <button class="login__btn">ログイン</button>
                 </section>
+                <div class="form-group row mb-0">
+                    <div class="col-md-8 offset-md-4">
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            ログイン出来ない方はこちら
+                        </a>
+                    </div>
+                </div>
             </div>
             <!-- サイドバー sp -->
         @include('front.components.side_sp')

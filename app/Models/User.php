@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Notifications\PasswordResetNotification;
 
 
 class User extends Authenticatable
@@ -42,5 +43,10 @@ class User extends Authenticatable
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PasswordResetNotification($token));
     }
 }
