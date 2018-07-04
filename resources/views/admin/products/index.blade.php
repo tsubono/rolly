@@ -30,6 +30,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>管理コード</th>
                         <th>ブランド名</th>
                         <th>型番号</th>
                         <th>モデル名</th>
@@ -43,6 +44,7 @@
                 <tbody>
                     @foreach($products as $product)
                     <tr>
+                        <td>{{ $product->management_code }}</td>
                         <td>{{ $product->brand->name }}</td>
                         <td>{{ $product->model_number }}</td>
                         <td>{{ $product->model_name }}</td>

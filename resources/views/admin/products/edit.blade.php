@@ -31,6 +31,13 @@
                         </div>
                     </div>
                     <div class="form-group input_row">
+                        <label class="control-label col-md-3">管理コード</label>
+                        <div class="col-md-6">
+                            <input type="text" name="product[management_code]" value="{{ old('product.management_code', $product->management_code) }}"
+                                   class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group input_row">
                         <label class="control-label col-md-3">ブランド名</label>
                         <div class="col-md-6">
                             <select name="product[brand_id]" class="form-control" required>
