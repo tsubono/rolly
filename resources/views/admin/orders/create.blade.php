@@ -230,6 +230,13 @@
                         </div>
                         <div class="form-group">
                             <label for="order-id" class="control-label col-md-3">
+                                管理コード
+                            </label>
+                            <input type="hidden" name="management_code_disp" value="{{ old('management_code_disp') }}">
+                            <div class="col-md-8" id="management_code_disp">{{ old('management_code_disp') }}</div>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-id" class="control-label col-md-3">
                                 レンタル時計
                             </label>
                             <input type="hidden" name="order[product_id]" value="{{ old('order.product_id') }}">

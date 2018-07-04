@@ -38,9 +38,45 @@ class OrderController extends Controller
      */
     public function index(Request $request)
     {
-        $orders = $this->order->orderBy('created_at', 'desc')->paginate(15);
+        // $orders = $this->order->orderBy('created_at', 'desc')->paginate(15);
 
-        return view('admin.orders.index', compact('orders'));
+        $search = $request->get('search', []);
+
+        $query = $this->order->query();
+
+        foreach ($search as $key => $val) {
+            if (($key!='identification_status' && !empty($val)) || ($key=='identification_status' && $val!=-1)) {
+                if ($key == 'brand_id') {
+                    $query->whereHas('product', function ($q) use ($key, $val) {
+                        $q->where($key, $val);
+                    });
+                } elseif ($key == 'model_name') {
+                    $query->whereHas('product', function ($q) use ($key, $val) {
+                        $q->where($key, 'like', '%' . $val . '%');
+                    });
+                } elseif ($key == 'name') {
+                    $query->whereHas('user', function ($q) use ($key, $val) {
+                        $q->where(function ($q) use ($val) {
+                            $q->where('last_name', 'like', '%' . $val . '%')
+                                ->orWhere('first_name', 'like', '%' . $val . '%');
+                        });
+                    });
+                } elseif ($key == 'identification_status') {
+                    if ($val==0) {
+                        $val = null;
+                    }
+                    $query->whereHas('user', function ($q) use ($key, $val) {
+                        $q->where($key, $val);
+                    });
+                } else {
+                    $query->where($key, 'like', '%' . $val . '%');
+                }
+            }
+        }
+
+        $orders = $query->orderBy('created_at', 'desc')->paginate(15);
+
+        return view('admin.orders.index', compact('orders', 'search'));
     }
 
     /**

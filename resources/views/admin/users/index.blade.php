@@ -18,6 +18,48 @@
 
     <section class="box box-default">
         <div class="box-header">
+            <h3 class="box-title">検索</h3>
+        </div>
+        <div class="box-body">
+            <form action="{{ url('/admin/users') }}" method="get">
+                <div class="form-group col-sm-6">
+                    <label>会員番号</label>
+                    <input type="text" class="form-control" name="search[id]"
+                           value="{{ isset($search['id'])?$search['id']:'' }}">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>お名前</label>
+                    <input type="text" class="form-control" name="search[name]"
+                           value="{{ isset($search['name'])?$search['name']:'' }}">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>メールアドレス</label>
+                    <input type="text" class="form-control" name="search[email]"
+                           value="{{ isset($search['email'])?$search['email']:'' }}">
+                </div>
+                <div class="form-group col-sm-6">
+                    <label>本人確認状況</label>
+                    <select name="search[identification_status]" class="form-control">
+                        <option value="-1"></option>
+                        <option value="0" {{ (isset($search['identification_status'])?$search['identification_status']:'-1') == "0"?"selected":"" }}>
+                            未確認
+                        </option>
+                        <option value="1" {{ (isset($search['identification_status'])?$search['identification_status']:'') == "1"?"selected":"" }}>
+                            確認済み
+                        </option>
+                        <option value="2" {{ (isset($search['identification_status'])?$search['identification_status']:'') == "2"?"selected":"" }}>
+                            確認済み（未）
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-success pull-right">検索する</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="box box-default">
+        <div class="box-header">
             <h3 class="box-title">会員一覧</h3>
             <div class="box-tools">
                 <a href="{{ url('/admin/users/create') }}" class="btn btn-sm btn-primary">

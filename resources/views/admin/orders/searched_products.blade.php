@@ -46,6 +46,8 @@
 
             $('#product_id_disp').text(data["product_id"]);
             $('[name=product_id_disp]').val(data["product_id"]);
+            $('#management_code_disp').text(data["management_code"]);
+            $('[name=management_code_disp]').val(data["management_code"]);
             $('#product_name_disp').text(data["product_name_disp"]);
             $('[name=product_name_disp]').val(data["product_name_disp"]);
             $('#plan_name_disp').text(data["plan_name_disp"]);

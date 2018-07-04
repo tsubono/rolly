@@ -35,9 +35,24 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->product->orderBy('created_at', 'desc')->paginate(15);
+        // $products = $this->product->orderBy('created_at', 'desc')->paginate(15);
+        $search = $request->get('search', []);
 
-        return view('admin.products.index', compact('products'));
+        $query = $this->product->query();
+
+        foreach ($search as $key => $val) {
+            if (!empty($val)) {
+                if ($key == 'brand_id') {
+                    $query->where('brand_id', $val);
+                } else {
+                    $query->where($key, 'like', '%' . $val . '%');
+                }
+            }
+        }
+
+        $products = $query->paginate(15);
+
+        return view('admin.products.index', compact('products', 'search'));
     }
 
     /**
@@ -187,9 +202,10 @@ class ProductController extends Controller
         $plan_price_disp = $this->plan->getMonthlyPrice($product->plan_id);
         $product_name_disp = $product->brand->name. ' '. $product->model_name;
         $product_id = $product->id;
+        $management_code = $product->management_code;
         $status = $product->status;
 
-        echo json_encode(compact('product_id', 'plan_name_disp', 'plan_price_disp', 'product_name_disp', 'status'));
+        echo json_encode(compact('product_id','management_code', 'plan_name_disp', 'plan_price_disp', 'product_name_disp', 'status'));
 
     }
 

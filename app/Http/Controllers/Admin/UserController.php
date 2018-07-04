@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
 use Illuminate\Validation\Rule;
 use App\Models\Order;
+
 class UserController extends Controller
 {
     private $user;
@@ -37,9 +38,33 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $users = $this->user->orderBy('created_at', 'desc')->paginate(15);
+        // $users = $this->user->orderBy('created_at', 'desc')->paginate(15);
 
-        return view('admin.users.index', compact('users'));
+        $search = $request->get('search', []);
+
+        $query = $this->user->query();
+
+        foreach ($search as $key => $val) {
+            if (($key != 'identification_status' && !empty($val)) || ($key == 'identification_status' && $val != -1)) {
+                if ($key == 'name') {
+                    $query->where(function ($q) use ($val) {
+                        $q->where('last_name', 'like', '%' . $val . '%')
+                            ->orWhere('first_name', 'like', '%' . $val . '%');
+                    });
+                } elseif ($key == 'identification_status') {
+                    if ($val == 0) {
+                        $val = null;
+                    }
+                    $query->where($key, $val);
+                } else {
+                    $query->where($key, 'like', '%' . $val . '%');
+                }
+            }
+        }
+
+        $users = $query->orderBy('created_at', 'desc')->paginate(15);
+
+        return view('admin.users.index', compact('users', 'search'));
     }
 
     /**
@@ -158,7 +183,8 @@ class UserController extends Controller
         return redirect()->route('admin.users.index')->with('success', '会員を削除しました。');
     }
 
-    private function getRules($ignoreId = null) {
+    private function getRules($ignoreId = null)
+    {
         return [
 //            'last_name_kana' => 'regex:/[ァ-ヶ]/u',
 //            'first_name_kana' => 'regex:/[ァ-ヶ]/u',
@@ -174,7 +200,8 @@ class UserController extends Controller
         ];
     }
 
-    private function getMessages() {
+    private function getMessages()
+    {
         return [
 //            'last_name_kana.regex' => '全角カタカナで入力してください。',
 //            'first_name_kana.regex' => '全角カタカナで入力してください。',
@@ -195,7 +222,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return $viewStr
      */
-    public function ajaxSearchList(Request $request) {
+    public function ajaxSearchList(Request $request)
+    {
 
         $search = $request->get('search');
 
@@ -215,13 +243,15 @@ class UserController extends Controller
         $viewStr = View::make('admin.orders.searched_users')->with('users', $users)->render();
         echo $viewStr;
     }
+
     /**
      *会員検索(ajax)
      *
      * @param  \Illuminate\Http\Request $request
      * @return $user
      */
-    public function ajaxSearch(Request $request) {
+    public function ajaxSearch(Request $request)
+    {
 
         $id = $request->get('id');
         $user = $this->user->findOrFail($id);
