@@ -42,7 +42,9 @@
     <h2><img src="{{ asset('img/catch.png') }}" alt="You only live once"></h2>
 </div>
 <div class="scroll">
-    <p class="txt"> <span>現在、新規会員募集継続中　※混雑を防ぐため先着500名までとさせていただいております。サービス開始時には順次ご案内いたしますので●月●日まで今しばらくお待ちください。</span> </p>
+    <p class="txt">
+        <span>時計レンタルのROLLY（ローリー）サービス開始！新規会員募集中！！</span>
+    </p>
 </div>
 <nav class="globalnav">
     <ul>
