@@ -50,7 +50,7 @@ class ProductController extends Controller
             }
         }
 
-        $products = $query->paginate(15);
+        $products = $query->orderBy('created_at', 'desc')->paginate(15);
 
         return view('admin.products.index', compact('products', 'search'));
     }

@@ -33,6 +33,9 @@ class OrderController extends Controller
 
     public function index(Request $request)
     {
+        if (empty($request->input('product_id'))) {
+            return redirect('/lineup');
+        }
         $product = $this->product->findOrFail($request->input('product_id'));
         $user = Auth::user();
 

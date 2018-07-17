@@ -56,6 +56,7 @@
                                     <option value="{{ $i }}">{{ number_format($i, 1) }}</option>
                                 @endfor
                             </select>
+                            <p class="red">※ベルトの最大の長さは商品詳細ページでご確認ください。</p>
                         </dd>
                         <dt>身分証明書</dt>
                         <dd>

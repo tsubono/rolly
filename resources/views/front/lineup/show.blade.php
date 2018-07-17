@@ -105,6 +105,14 @@
                                 <dt>レンタル状況</dt>
                                 <dd>{{ config('const.product.status')[$product->status] }}</dd>
                             </dl>
+                            <dl>
+                                <dt>ベルトの最大の長さ</dt>
+                                <dd>
+                                    @if (!empty($product->max_belt_length))
+                                        {{ number_format($product->max_belt_length, 1) }}
+                                    @endif
+                                </dd>
+                            </dl>
                         </section>
                         <div class="btn"><a href="{{ url('getBeltPdf') }}" target="_blank">ベルトの長さを見る</a></div>
                         @if (config('const.product.status')[$product->status] == "レンタル中")

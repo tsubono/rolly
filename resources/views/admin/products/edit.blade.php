@@ -77,6 +77,13 @@
                         </div>
                     </div>
                     <div class="form-group input_row">
+                        <label class="control-label col-md-3">ベルトの最大の長さ</label>
+                        <div class="col-md-6">
+                            <input type="text" name="product[max_belt_length]" value="{{ old('product.max_belt_length', $product->max_belt_length) }}"
+                                   class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="form-group input_row">
                         <label class="control-label col-md-3">写真01</label>
                         <div class="col-md-6">
                             <input type="hidden" name="product[image1_edit]" value="-1">

@@ -59,6 +59,7 @@ Route::namespace('Front')->middleware('auth:user')->group(function () {
     Route::post('mypage/edit', 'MypageController@postEdit');
     Route::get('mypage/status', 'MypageController@status');
 
+    Route::get('order', 'OrderController@index');
     Route::post('order', 'OrderController@index')->name('order');
     Route::post('order/payment', 'OrderController@postPayment');
     Route::get('order/payment', 'OrderController@getPayment')->name('order.payment');
