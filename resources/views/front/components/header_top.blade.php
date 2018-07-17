@@ -7,6 +7,7 @@
 <div class="globalnav_mini">
     <div class="nav_inner">
         <ul>
+            <li><a href="/"><img src="{{ asset('img/common/nav_top.png') }}" alt="TOP トップ"></a></li>
             <li><a href="{{ url('concept') }}"><img src="{{ asset('img/common/nav_concept.png') }}" alt="CONCEPT コンセプト"></a>
             </li>
             <li><a href="{{ url('lineup') }}"><img src="{{ asset('img/common/nav_lineup.png') }}" alt="LINEUP ラインナップ"></a>
@@ -48,6 +49,7 @@
 </div>
 <nav class="globalnav">
     <ul>
+        <li><a href="/"><img src="{{ asset('img/common/nav_top.png') }}" alt="TOP トップ"></a></li>
         <li><a href="{{ url('concept') }}"><img src="{{ asset('img/common/nav_concept.png') }}" alt="CONCEPT コンセプト"></a>
         </li>
         <li><a href="{{ url('lineup') }}"><img src="{{ asset('img/common/nav_lineup.png') }}" alt="LINEUP ラインナップ"></a>

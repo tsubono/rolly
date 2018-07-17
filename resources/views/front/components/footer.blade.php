@@ -11,6 +11,7 @@
     </ul>
 </nav>
 <address>
-    <p> 大阪府公安委員会 古物商許可番号 第 621060141013 号</p>
-    <p>copyright &copy; 2018 daishin Co.,Ltd. All Right Reserved.</p>
+    <p class="number"> 大阪府公安委員会 古物商許可番号 第 621060141013 号</p>
+    <p class="hour">営業時間：11：00～16：00　お問い合わせ：<a href="mailto:rolly-rental@daishin.jp.net">rolly-rental@daishin.jp.net</a></p>
+    <p>copyright &copy; ROLLY All Right Reserved.</p>
 </address>

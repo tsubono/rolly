@@ -254,10 +254,10 @@ author:om
 	display: block;
 	text-decoration: none;
 	transition: 0.5s;
-	padding: 0 5px;
+	padding: 10px 5px;
 }
 .globalnav img {
-	width: 125px;
+	width: 111px;
 	max-width: 100%;
 }
 .globalnav ul li a:hover {
@@ -866,13 +866,21 @@ footer address {
 }
 
 footer address p {
-	display: inline;
+	/*display: inline;*/
 	color: #fff;
 	font-size: 80%;
 	font-style: normal;
 	text-align: center;
-	padding: 10px;
+	padding: 10px 0;
 }
+footer address p a { color: #fff; }
+footer address p a:hover { text-decoration: none; }
+footer address .number ,
+footer address .hour {
+    font-size: .75rem;
+	padding: 5px 0 0;
+}
+
 /* ■10.sidefix
 --------------------------------------------------- */
 .sidefix a {

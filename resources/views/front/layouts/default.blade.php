@@ -22,11 +22,11 @@
 
 @yield('content')
 
-<div class="sidefix">
+<!--<div class="sidefix">
     <a href="{{ url('lineup') }}">
         <img src="{{ asset('img/lineup/tit_lineup_t.png') }}">
     </a>
-</div>
+</div>-->
 
 
 <footer>
