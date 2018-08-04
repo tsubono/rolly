@@ -82,6 +82,7 @@
                         </dd>
                     </dl>
                     <br>
+                    <input type="hidden" name="user[id]" value="{{ $user->id }}">
                     <input type="hidden" name="order[user_id]" value="{{ $user->id }}">
                     <input type="hidden" name="order[product_id]" value="{{ $product->id }}">
                     <button class="order__btn" type="submit">送信する</button>
