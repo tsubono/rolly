@@ -67,7 +67,7 @@
                         </dl>
                         <dl class="innerlist_address add02">
                             <dt>都道府県</dt>
-                            <dd>{{ config('pref')[1] }}</dd>
+                            <dd>{{ config('pref')[$user['pref_id']] }}</dd>
                             <input type="hidden" name="user[pref_id]" value="{{ $user['pref_id'] }}">
                         </dl>
                         <dl class="innerlist_address add03">
