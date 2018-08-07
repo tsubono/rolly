@@ -35,7 +35,8 @@
 
                     <!-- ジョブタイプ -->
                     <!-- AUTH:仮売上 CAPTURE:仮実同時売上 -->
-                    <input type="hidden" name="jb" value="AUTH">
+                    {{--<input type="hidden" name="jb" value="AUTH">--}}
+                    <input type="hidden" name="jb" value="CAPTURE">
                     <!-- /ジョブタイプ -->
 
                     <!-- 商品コード -->
