@@ -70,7 +70,7 @@
                     <dt>価格</dt>
                     <dd class="price">￥18,800</dd>
                     <dt>お取扱商品</dt>
-                    <dd class="name">ROLEX</dd>
+                    <dd class="name">ROLEX, PANERAI</dd>
                     <div class="btn_morebox">
                         <div class="btn_moretext">
                             <a href="{{ url('lineup') }}?p=4">＞&nbsp;詳細はこちら</a>

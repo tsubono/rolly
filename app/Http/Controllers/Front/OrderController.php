@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Front;
 use App\Mail\ApplySentToAdmin;
 use App\Mail\ApplySentToUser;
 use App\Models\Order;
+use App\Models\OrderCredit;
 use App\Models\Product;
 use App\Models\User;
+use App\Services\OrderService;
 use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -20,15 +22,19 @@ class OrderController extends Controller
 {
     private $user;
     private $order;
+    private $orderCredit;
     private $product;
     private $userService;
+    private $orderService;
 
-    public function __construct(User $user, Order $order, Product $product, UserService $userService)
+    public function __construct(User $user, Order $order, OrderCredit $orderCredit, Product $product, UserService $userService, OrderService $orderService)
     {
         $this->user = $user;
+        $this->orderCredit = $orderCredit;
         $this->order = $order;
         $this->product = $product;
         $this->userService = $userService;
+        $this->orderService = $orderService;
     }
 
     public function index(Request $request)
@@ -53,6 +59,13 @@ class OrderController extends Controller
         $user->update($update);
 
         $create_order['order_date'] = Carbon::now();
+
+        // 名義者情報作成
+        $formOrderCredit = $this->orderService->getCreditDataForDB($request);
+        $OrderCredit = $this->orderCredit->create($formOrderCredit);
+
+        $create_order['order_credit_id'] = $OrderCredit->id;
+
         // 受注情報作成
         $order = $this->order->create($create_order);
 

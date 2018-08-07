@@ -5,12 +5,29 @@
 <![endif]-->
 <!-- ■JQUERY -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
+
 <script type="text/javascript" src="{{asset('js/jquery.matchHeight.js')}}"></script>
 <script src="{{asset('js/jquery.bxslider.js')}}"></script>
 <script src="{{asset('js/ajaxzip3.js')}}"></script>
 <script src="{{asset('js/globalnav.js')}}"></script>
 
 <script>
+    //郵便番号入力
+    //https://github.com/ninton/jquery.jpostal.js
+    $(window).ready( function() {
+        $('#zip0').jpostal({
+            postcode:[
+                '#zip0',
+                '#zip1'
+            ],
+            address:{
+                '#address1':'%3',
+                '#address2':'%4%5'
+            }
+        });
+    });
+
     /*match height
     -------------------------*/
     $(function () {

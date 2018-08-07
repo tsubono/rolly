@@ -4,6 +4,10 @@
 <head>
     @include('admin.components.head')
     @include('admin.components.css')
+
+    <!-- Scripts -->
+    @include('admin.components.js')
+    <!-- end Scripts -->
 </head>
 
 <body class="hold-transition skin-yellow-light sidebar-mini">
@@ -44,9 +48,6 @@
 </div>
 <!-- end wrapper -->
 
-<!-- Scripts -->
-@include('admin.components.js')
-<!-- end Scripts -->
 
 </body>
 </html>

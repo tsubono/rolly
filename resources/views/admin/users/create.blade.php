@@ -266,8 +266,8 @@
                             @endif
                         </div>
                     </div>
-                    <div class="form-group {{ $errors->has('identification_doc') ? 'has-error' : '' }}">
-                        <label for="user-identification_doc" class="control-label col-md-3">
+                    <div class="form-group {{ $errors->has('doc_other') ? 'has-error' : '' }}">
+                        <label for="user-doc_other" class="control-label col-md-3">
                             その他の証明書類
                         </label>
                         <div class="col-md-6">
@@ -276,6 +276,34 @@
                             @if ($errors->has('doc_other'))
                                 @foreach ($errors->get('doc_other') as $error)
                                     <div class="text-doc_other">{{ $error }}</div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group {{ $errors->has('doc_other_2') ? 'has-error' : '' }}">
+                        <label for="user-doc_other_2" class="control-label col-md-3">
+                            その他の証明書類2
+                        </label>
+                        <div class="col-md-6">
+                            <input class="upload_file" name="user[doc_other_2]" type="file"
+                                   multiple="" accept="">
+                            @if ($errors->has('doc_other_2'))
+                                @foreach ($errors->get('doc_other_2') as $error)
+                                    <div class="text-doc_other_2">{{ $error }}</div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group {{ $errors->has('doc_other_3') ? 'has-error' : '' }}">
+                        <label for="user-doc_other_3" class="control-label col-md-3">
+                            その他の証明書類3
+                        </label>
+                        <div class="col-md-6">
+                            <input class="upload_file" name="user[doc_other_3]" type="file"
+                                   multiple="" accept="">
+                            @if ($errors->has('doc_other_3'))
+                                @foreach ($errors->get('doc_other_3') as $error)
+                                    <div class="text-doc_other_3">{{ $error }}</div>
                                 @endforeach
                             @endif
                         </div>

@@ -36,22 +36,38 @@ class UserService
         }
 
         // ファイルたち
+        // 新規登録時
         if (empty($res["id"])) {
-            $res["identification_doc"] = $this->uploadFile($request, true);
-            $res["doc_other"] = $this->uploadFile($request);
-        }
-
-        if (!isset($res["identification_doc_edit"] )) {
-            $res["identification_doc_edit"]  = 0;
-        }
-        if (!empty($res["id"]) && ($request->hasFile('user.identification_doc') || $res["identification_doc_edit"] == "1")) {
-            $res["identification_doc"] = $this->uploadFile($request, true);
-        }
-        if (!isset($res["doc_other_edit"] )) {
-            $res["doc_other_edit"]  = 0;
-        }
-        if (!empty($res["id"]) && ($request->hasFile('user.doc_other') || $res["doc_other_edit"] == "1")) {
-            $res["doc_other"] = $this->uploadFile($request);
+            $res["identification_doc"] = $this->uploadFile($request, 'identification_doc');
+            $res["doc_other"] = $this->uploadFile($request, 'doc_other');
+            $res["doc_other_2"] = $this->uploadFile($request, 'doc_other_2');
+            $res["doc_other_3"] = $this->uploadFile($request, 'doc_other_3');
+        // 編集時
+        } else {
+            if (!isset($res["identification_doc_edit"] )) {
+                $res["identification_doc_edit"]  = 0;
+            }
+            if ($request->hasFile('user.identification_doc') || $res["identification_doc_edit"] == "1") {
+                $res["identification_doc"] = $this->uploadFile($request, 'identification_doc');
+            }
+            if (!isset($res["doc_other_edit"] )) {
+                $res["doc_other_edit"]  = 0;
+            }
+            if ($request->hasFile('user.doc_other') || $res["doc_other_edit"] == "1") {
+                $res["doc_other"] = $this->uploadFile($request, 'doc_other');
+            }
+            if (!isset($res["doc_other_2_edit"] )) {
+                $res["doc_other_2_edit"]  = 0;
+            }
+            if ($request->hasFile('user.doc_other_2') || $res["doc_other_2_edit"] == "1") {
+                $res["doc_other_2"] = $this->uploadFile($request, 'doc_other_2');
+            }
+            if (!isset($res["doc_other_3_edit"] )) {
+                $res["doc_other_3_edit"]  = 0;
+            }
+            if ($request->hasFile('user.doc_other_3') || $res["doc_other_3_edit"] == "1") {
+                $res["doc_other_3"] = $this->uploadFile($request, 'doc_other_3');
+            }
         }
 
         return $res;
@@ -60,19 +76,11 @@ class UserService
     /**
      * ファイルをアップロードする
      */
-    public function uploadFile($request, $identification_doc_flg=false)
+    public function uploadFile($request, $type=NULL)
     {
         $path = "";
 
-        if (!empty($request->input('product.id'))) {
-            // 既存ファイルがあれば削除
-            $user = $this->user->findOrFail($request->input('user.id'));
-            if (!empty($user->identification_doc)) {
-                unlink(public_path(). $user->identification_doc);
-            }
-        }
-
-        if ($identification_doc_flg) {
+        if ($type == 'identification_doc') {
             $file = $request->file('user.identification_doc');
 
             if (!empty($file)) {
@@ -83,7 +91,7 @@ class UserService
                 $path = "/storage/identification_docs/" . $filename;
             }
         } else {
-            $file = $request->file('user.doc_other');
+            $file = $request->file('user.'. $type);
 
             if (!empty($file)) {
                 $datetime = Carbon::now()->format('YmdHis');

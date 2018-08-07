@@ -15,11 +15,10 @@
 @endsection
 
 @section('content')
-    <form class="form-horizontal" id="form1" action="{{ url('/admin/orders/'. $order->id) }}" method="post">
+    <form class="form-horizontal" id="form1" action="{{ url('/admin/orders/'. $order->id) }}" method="post" enctype="multipart/form-data">
         {{ csrf_field() }}
         {{ method_field('PUT') }}
         <input type="hidden" name="order[id]" value="{{ $order->id }}">
-
 
         <!-- 会員情報 -->
         <section class="box box-default user_section">
@@ -224,11 +223,183 @@
                             @endif
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label for="user-doc_other_2" class="control-label col-md-3">
+                            その他の証明書類2
+                        </label>
+                        <div class="col-md-8 form-inline">
+                            <input type="hidden" name="user[doc_other_2]"
+                                   value="{{ old('user.doc_other_2', $order->user->doc_other_2) }}">
+                            @if (!empty(old('user.doc_other_2', $order->user->doc_other_2)))
+                                <a class="btn" id="doc_other_2_btn"
+                                   href="{{ url('/admin/getDocument?url='. old('user.doc_other_2', $order->user->doc_other_2)) }}"
+                                   target="_blank">表示する</a>
+                                <p id="doc_other_2_none" style="display: none;">未登録</p>
+                            @else
+                                <a class="btn" id="doc_other_2_btn"
+                                   href="{{ url('/admin/getDocument?url='. old('user.doc_other_2', $order->user->doc_other_2)) }}"
+                                   target="_blank" style="display: none;">表示する</a>
+                                <p id="doc_other_2_none">未登録</p>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-doc_other_3" class="control-label col-md-3">
+                            その他の証明書類3
+                        </label>
+                        <div class="col-md-8 form-inline">
+                            <input type="hidden" name="user[doc_other_3]"
+                                   value="{{ old('user.doc_other_3', $order->user->doc_other_3) }}">
+                            @if (!empty(old('user.doc_other_3', $order->user->doc_other_3)))
+                                <a class="btn" id="doc_other_3_btn"
+                                   href="{{ url('/admin/getDocument?url='. old('user.doc_other_3', $order->user->doc_other_3)) }}"
+                                   target="_blank">表示する</a>
+                                <p id="doc_other_3_none" style="display: none;">未登録</p>
+                            @else
+                                <a class="btn" id="doc_other_3_btn"
+                                   href="{{ url('/admin/getDocument?url='. old('user.doc_other_3', $order->user->doc_other_3)) }}"
+                                   target="_blank" style="display: none;">表示する</a>
+                                <p id="doc_other_3_none">未登録</p>
+                            @endif
+                        </div>
+                    </div>
                 </fieldset>
             </div>
             <!-- /会員情報ボディ -->
         </section>
         <!-- /会員情報 -->
+
+        <!-- クレジットカード名義者情報 -->
+        <section class="box box-default user_section">
+            <!-- クレジットカード名義者情報ヘッダー -->
+            <div class="box-header">
+                <h3 class="box-title">クレジットカード名義者情報</h3>
+                <input type="hidden" name="order_credit[id]" value="{{ $order->order_credit->id }}">
+            </div>
+            <!-- /クレジットカード名義者情報ヘッダー -->
+            <!-- クレジットカード名義者情報ボディ -->
+            <div class="box-body" id="userArea">
+                <fieldset>
+                    <div class="form-group">
+                        <label for="order_credit-name" class="control-label col-md-3">
+                            名前
+                        </label>
+                        <div class="col-md-6">
+                            <input type="text" id="order_credit-name" name="order_credit[name]" class="form-control"
+                                   value="{{ old('order_credit.name', $order->order_credit->name) }}">
+                        </div>
+                    </div>
+                    <div class="form-group {{ ($errors->has('order_credit_zip01')||$errors->has('order_credit_zip02')) ? 'has-error' : '' }}">
+                        <label for="order_credit-zip01" class="control-label col-md-3">
+                            郵便番号
+                        </label>
+                        <div class="col-md-8 input_zip form-inline">
+                            〒
+                            <input type="number" id="order_credit-zip01" name="order_credit[zip01]" class="form-control"
+                                   value="{{ old('order_credit.zip01', !empty($order->order_credit->zip_code) ? explode("-", $order->order_credit->zip_code)[0] : "") }}"
+                            >
+                            -
+                            <input type="number" id="order_credit-zip02" name="order_credit[zip02]" class="form-control"
+                                   value="{{ old('order_credit.zip02', !empty($order->order_credit->zip_code) ? explode("-", $order->order_credit->zip_code)[1] : "") }}"
+                            >
+                            <span>
+                                <button type="button" id="order_credit-zip-btn"
+                                        class="btn btn-default btn-sm">郵便番号から自動入力</button>
+                            </span>
+                            @if ($errors->has('order_credit_zip01'))
+                                @foreach ($errors->get('order_credit_zip01') as $error)
+                                    <div class="text-danger float-left col-md-4">{{ $error }}</div>
+                                @endforeach
+                            @endif
+                            @if ($errors->has('order_credit_zip02'))
+                                @foreach ($errors->get('order_credit_zip02') as $error)
+                                    <div class="text-danger col-md-4">{{ $error }}</div>
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_credit-pref_id" class="control-label col-md-3">
+                            都道府県
+                        </label>
+                        <div class="col-md-8">
+                            <select id="order_credit-pref_id" name="order_credit[pref_id]" class="form-control">
+                                <option value=""></option>
+                                @foreach(config('pref') as $key => $name)
+                                    <option value="{{ $key }}" {{ old('order_credit.pref_id', $order->order_credit->pref_id) == $key ? "selected" : "" }}>{{ $name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_credit-address1" class="control-label col-md-3">
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" id="order_credit-address1" name="order_credit[address1]"
+                                   value="{{ old('order_credit.address1', $order->order_credit->address1) }}"
+                                   class="form-control" placeholder="市区町村"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_credit-address2" class="control-label col-md-3">
+                        </label>
+                        <div class="col-md-8">
+                            <input type="text" id="order_credit-address2" name="order_credit[address2]"
+                                   value="{{ old('order_credit.address2', $order->order_credit->address2) }}"
+                                   class="form-control"
+                                   placeholder="番地・ビル名"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_credit-tel01" class="control-label col-md-3">
+                            電話番号
+                        </label>
+                        <div class="col-md-8 form-inline">
+                            <input type="number" id="order_credit-tel01" name="order_credit[tel01]" class="form-control"
+                                   value="{{ old('order_credit.tel01', !empty($order->order_credit->tel) ? explode("-", $order->order_credit->tel)[0] : "") }}">
+                            -
+                            <input type="number" id="order_credit-tel02" name="order_credit[tel02]" class="form-control"
+                                   value="{{ old('order_credit.tel02', !empty($order->order_credit->tel) ? explode("-", $order->order_credit->tel)[1] : "") }}">
+                            -
+                            <input type="number" id="order_credit-tel03" name="order_credit[tel03]" class="form-control"
+                                   value="{{ old('order_credit.tel03', !empty($order->order_credit->tel) ? explode("-", $order->order_credit->tel)[2] : "") }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_credit-relationship" class="control-label col-md-3">
+                            申込者のと関係
+                        </label>
+                        <div class="col-md-6">
+                            <input type="text" id="order_credit-relationship" name="order_credit[relationship]"
+                                   class="form-control"
+                                   value="{{ old('order_credit.relationship', $order->order_credit->relationship) }}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_credit-doc_1" class="control-label col-md-3">
+                            名義者本人確認書類1
+                        </label>
+                        <div class="col-md-8 form-inline">
+                            <input type="hidden" name="order_credit[doc_1_edit]" value="-1">
+                            <input class="upload_file" name="order_credit[doc_1]" type="file"
+                                   multiple="" accept="">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="order_credit-doc_2" class="control-label col-md-3">
+                            名義者本人確認書類2
+                        </label>
+                        <div class="col-md-8 form-inline">
+                            <input type="hidden" name="order_credit[doc_2_edit]" value="-1">
+                            <input class="upload_file" name="order_credit[doc_2]" type="file"
+                                   multiple="" accept="">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <!-- /クレジットカード名義者情報ボディ -->
+        </section>
+        <!-- /クレジットカード名義者情報 -->
 
         <!-- レンタル商品情報 -->
         <section class="box box-default">
@@ -257,8 +428,10 @@
                         <label for="order-id" class="control-label col-md-3">
                             管理コード
                         </label>
-                        <input type="hidden" name="management_code_disp" value="{{ old('management_code_disp', $order->product->management_code) }}">
-                        <div class="col-md-8" id="management_code_disp">{{ old('management_code_disp', $order->product->management_code) }}</div>
+                        <input type="hidden" name="management_code_disp"
+                               value="{{ old('management_code_disp', $order->product->management_code) }}">
+                        <div class="col-md-8"
+                             id="management_code_disp">{{ old('management_code_disp', $order->product->management_code) }}</div>
                     </div>
                     <div class="form-group">
                         <label for="order-id" class="control-label col-md-3">
@@ -456,6 +629,52 @@
         </div>
     </div>
     <!-- /商品検索モーダル -->
+
+    <script>
+        window.onload = function () {
+            $("[name='order_credit[doc_1]']").fileinput({
+                maxFilePreviewSize: 10240,
+                showUpload: false,
+                maxFileCount: 1,
+                browseClass: 'btn btn-info fileinput-browse-button',
+                browseLabel: '',
+                showRemove: true,
+                removeLabel: '',
+                removeClass: 'btn btn-danger',
+                @if (!empty(old('order_credit.doc_1', $order->order_credit->doc_1)))
+                initialPreview: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_1', $order->order_credit->doc_1)) }}",
+                initialPreviewAsData: true,
+                overwriteInitial : true,
+                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_1', $order->order_credit->doc_1)) }}"
+                @endif
+            });
+            $("[name='order_credit[doc_1]']").on('filecleared', function(event) {
+                $("[name='order_credit[doc_1_edit]']").val(1);
+            });
+
+            $("[name='order_credit[doc_2]']").fileinput({
+                maxFilePreviewSize: 10240,
+                showUpload: false,
+                maxFileCount: 1,
+                browseClass: 'btn btn-info fileinput-browse-button',
+                browseLabel: '',
+                showRemove: true,
+                removeLabel: '',
+                removeClass: 'btn btn-danger',
+                @if (!empty(old('order_credit.doc_2', $order->order_credit->doc_2)))
+                initialPreview: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_2', $order->order_credit->doc_2)) }}",
+                initialPreviewAsData: true,
+                overwriteInitial : true,
+                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_2', $order->order_credit->doc_2)) }}"
+                @endif
+            });
+            $("[name='order_credit[doc_2]']").on('filecleared', function(event) {
+                $("[name='order_credit[doc_2_edit]']").val(1);
+            });
+
+
+        };
+    </script>
 
     <!-- JS -->
     @include('admin.orders.js')

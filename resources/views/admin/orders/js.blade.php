@@ -1,5 +1,5 @@
 <script>
-    window.onload = function () {
+    $(function() {
 
         // 郵便番号から自動入力
         $('#user-zip-btn').click(function () {
@@ -7,6 +7,9 @@
         });
         $('#order_shipping_address-zip-btn').click(function () {
             AjaxZip3.zip2addr('order_shipping_address[zip01]', 'order_shipping_address[zip02]', 'order_shipping_address[pref_id]', 'order_shipping_address[address1]');
+        });
+        $('#order_credit-zip-btn').click(function () {
+            AjaxZip3.zip2addr('order_credit[zip01]', 'order_credit[zip02]', 'order_credit[pref_id]', 'order_credit[address1]');
         });
 
         // 会員検索ボタン押下時
@@ -69,6 +72,6 @@
 
             $('#submitBtn').trigger('click');
         });
-    };
+    });
 
 </script>

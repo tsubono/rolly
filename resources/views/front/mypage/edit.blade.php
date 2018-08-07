@@ -146,7 +146,36 @@
                                 <input type="hidden" name="user[doc_other_edit]" value="1">
                             @endif
                                 <input type="hidden" name="user[doc_other_flg]" value="false">
-                            {{--<img src="https://placehold.jp/24/cccccc/999999/300x200.jpg?text=%E3%81%9D%E3%81%AE%E4%BB%96%E3%81%AE%E8%A8%BC%E6%98%8E%E6%9B%B8%E9%A1%9E" alt="">--}}
+                        </dd>
+                        <dt>その他の証明書類2</dt>
+                        <dd class="confirm1__file">
+                            @if (!empty($user->doc_other_2))
+                                <div id="doc_other_2_old">
+                                    登録済み
+                                    <button id="doc_other_2_update" type="button">更新する</button>
+                                </div>
+                                <input type="file" name="user[doc_other_2]" style="display: none;">
+                                <input type="hidden" name="user[doc_other_2_edit]" value="-1">
+                            @else
+                                <input type="file" name="user[doc_other_2]">
+                                <input type="hidden" name="user[doc_other_2_edit]" value="1">
+                            @endif
+                            <input type="hidden" name="user[doc_other_2_flg]" value="false">
+                        </dd>
+                        <dt>その他の証明書類3</dt>
+                        <dd class="confirm1__file">
+                            @if (!empty($user->doc_other_3))
+                                <div id="doc_other_3_old">
+                                    登録済み
+                                    <button id="doc_other_3_update" type="button">更新する</button>
+                                </div>
+                                <input type="file" name="user[doc_other_3]" style="display: none;">
+                                <input type="hidden" name="user[doc_other_3_edit]" value="-1">
+                            @else
+                                <input type="file" name="user[doc_other_3]">
+                                <input type="hidden" name="user[doc_other_3_edit]" value="1">
+                            @endif
+                            <input type="hidden" name="user[doc_other_3_flg]" value="false">
                         </dd>
                         <dt>備考</dt>
                         <dd>
@@ -176,6 +205,18 @@
             $('[name="user[doc_other]"]').fadeIn();
             $('[name="user[doc_other_flg]"]').val(1);
             $('[name="user[doc_other_edit]"]').val(1);
+        });
+        $('#doc_other_2_update').click (function() {
+            $('#doc_other_2_old').css('display', 'none');
+            $('[name="user[doc_other_2]"]').fadeIn();
+            $('[name="user[doc_other_2_flg]"]').val(1);
+            $('[name="user[doc_other_2_edit]"]').val(1);
+        });
+        $('#doc_other_3_update').click (function() {
+            $('#doc_other_3_old').css('display', 'none');
+            $('[name="user[doc_other_3]"]').fadeIn();
+            $('[name="user[doc_other_3_flg]"]').val(1);
+            $('[name="user[doc_other_3_edit]"]').val(1);
         });
     </script>
 @endpush

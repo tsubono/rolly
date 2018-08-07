@@ -53,7 +53,6 @@ class MypageController extends Controller
                 ->withErrors($validator)
                 ->withInput();
         }
-
         $update = $this->userService->getDataForDB($request);
 
         // 身分証明書類更新
@@ -64,7 +63,14 @@ class MypageController extends Controller
         if ($request->hasFile('user.doc_other') && $update['doc_other_flg']==1) {
             unlink(public_path(). $user->doc_other);
         }
-
+        // その他証明書類2更新
+        if ($request->hasFile('user.doc_other_2') && $update['doc_other_2_flg']==1) {
+            unlink(public_path(). $user->doc_other_2);
+        }
+        // その他証明書類3更新
+        if ($request->hasFile('user.doc_other_3') && $update['doc_other_3_flg']==1) {
+            unlink(public_path(). $user->doc_other_3);
+        }
         $user->update($update);
 
         return redirect()->route('front.mypage.edit')->with('success', '登録情報を更新しました。');

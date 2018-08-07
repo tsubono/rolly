@@ -7,6 +7,15 @@
         .red {
             color: red;
         }
+        .w45 {
+            width: 45% !important;
+        }
+        .w10 {
+            width: 10% !important;
+        }
+        .line35 {
+            line-height: 35px;
+        }
     </style>
     <div class="order">
         <section class="mainimg">
@@ -24,6 +33,8 @@
                 <form action="{{ url('order/payment') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <dl class="order__list">
+                        <dt><b>申し込み者情報</b></dt>
+                        <dd></dd>
                         <dt>お名前</dt>
                         <dd><span>{{ $user->last_name }}</span>&nbsp;<span>{{ $user->first_name }}</span></dd>
                         <dt>ふりがな</dt>
@@ -75,10 +86,73 @@
                                 <input type="hidden" name="user[doc_other_edit]" value="1">
                                 <input type="file" name="user[doc_other]">
                             @endif
-                            <br><br>
-                            <p class="red">★時計のレンタルには本人確認が必要です★</p>
-                            <p class="red">※顔写真付きの身分証明書をお持ちになり、お顔がわかる状態で撮影した写真をアップロードしてください。</p>
-                            <p class="red">※顔写真付きの身分証明書をお持ちでないお客様は、健康保険証、住民票の写しの2点をアップロードしてください。</p>
+                        </dd>
+                        <dt>その他の証明書類2</dt>
+                        <dd>
+                            @if (!empty($user->doc_other_2))
+                                登録済み
+                            @else
+                                <input type="hidden" name="user[doc_other_2_edit]" value="1">
+                                <input type="file" name="user[doc_other_2]">
+                            @endif
+                        </dd>
+                        <dt>その他の証明書類3</dt>
+                        <dd>
+                            @if (!empty($user->doc_other_3))
+                                登録済み
+                            @else
+                                <input type="hidden" name="user[doc_other_3_edit]" value="1">
+                                <input type="file" name="user[doc_other_3]">
+                            @endif
+                                <br>
+                                <p class="red">★時計のレンタルには本人確認が必要です★</p>
+                                <p class="red">※運転免許証、パスポート、健康保険証のいずれかを添付してください。</p>
+                                <p class="red">※パスポート、健康保険証の場合は、合わせて、住民票もしくはクレジットカード・携帯料金・公共料金の請求書の添付もお願い致します。</p>
+                        </dd>
+                        <dt>
+                            <hr>
+                            <b>クレジットカード名義者情報</b>
+                        </dt>
+                        <dd>
+                            <hr>
+                            <p class="red">※ご家族などのクレジットカードをご利用になる場合は、クレジットカードの名義人様の各種情報の入力をお願い致します。</p>
+                            <p class="red">※名義人ご本人様にご確認のご連絡を差し上げる場合がございますのでご了承ください。</p>
+                        </dd>
+                        <dt>名前</dt>
+                        <dd>
+                            <input type="text" name="order_credit[name]" class="w45">
+                        </dd>
+                        <dt>住所</dt>
+                        <dd class="line35">
+                            郵便番号: <input type="text" name="order_credit[zip01]" class="w10" id="zip0"> -
+                                        <input type="text" name="order_credit[zip02]" class="w10" id="zip1"><br>
+                            都道府県:
+                            <select name="order_credit[pref_id]" id="address1">
+                                <option value=""></option>
+                                @foreach (config('pref') as $key => $value)
+                                    <option value="{{ $key }}">{{ $value }}</option>
+                                @endforeach
+                            </select><br>
+                            市区町村番地: <input type="text" name="order_credit[address1]" class="w45" id="address2"><br>
+                            その他（建物など）: <input type="text" name="order_credit[address2]" class="w45"><br>
+                        </dd>
+                        <dt>電話番号<br>（申込者と同じは不可）</dt>
+                        <dd>
+                            <input type="text" name="order_credit[tel01]" class="w10"> -
+                            <input type="text" name="order_credit[tel02]" class="w10"> -
+                            <input type="text" name="order_credit[tel03]" class="w10">
+                        </dd>
+                        <dt>申込者のと関係</dt>
+                        <dd>
+                            <input type="text" name="order_credit[relationship]" class="w45">
+                        </dd>
+                        <dt>名義者本人確認書類1</dt>
+                        <dd>
+                            <input type="file" name="order_credit[doc_1]">
+                        </dd>
+                        <dt>名義者本人確認書類2</dt>
+                        <dd>
+                            <input type="file" name="order_credit[doc_2]">
                         </dd>
                     </dl>
                     <br>

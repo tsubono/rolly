@@ -41,6 +41,19 @@
                     <!-- 商品コード -->
                     <input type="hidden" name="iid" value="">
                     <!-- /商品コード -->
+
+                    <!-- 自動課金周期 -->
+                    <input type="hidden" name="actp" value="4">
+                    <!-- /自動課金周期 -->
+
+                    <!-- 自動課金金額 -->
+                    <input type="hidden" name="acam" value="{{ $price }}">
+                    <!-- /自動課金金額 -->
+
+                    <!-- 自動課金税額 -->
+                    <input type="hidden" name="actx" value="{{ $price * 0.08 }}">
+                    <!-- /自動課金税額 -->
+
                     <input class="payment__btn" type="submit" name="submit" value="決済へ進む">
                 </form>
                 <p class="payment__attention">クレジットカード決済には、株式会社ROBOT PAYMENTの決済代行サービスを使用しています。決済情報はSSLで暗号化され、安全性を確保しております。</p>

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Mail\SettlementSentToAdmin;
 use App\Mail\SettlementSentToUser;
 use App\Models\Order;
+use App\Models\OrderCredit;
 use App\Models\Product;
 use App\Models\User;
+use App\Services\OrderService;
 use App\Services\UserService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -18,16 +20,20 @@ use Mail;
 class OrderController extends Controller
 {
     private $order;
+    private $orderCredit;
     private $user;
     private $product;
     private $userService;
+    private $orderService;
 
-    public function __construct(Order $order, User $user, Product $product, UserService $userService)
+    public function __construct(Order $order, OrderCredit $orderCredit, User $user, Product $product, UserService $userService, OrderService $orderService)
     {
         $this->order = $order;
+        $this->orderCredit = $orderCredit;
         $this->user = $user;
         $this->product = $product;
         $this->userService = $userService;
+        $this->orderService = $orderService;
     }
 
     /**
@@ -114,23 +120,29 @@ class OrderController extends Controller
         $product = $this->product->findOrFail($request->input('product')['id']);
         $product->update($request->input('product'));
 
-        // 受注更新
         $order = $request->input('order');
         if (!empty($order["settlement_date"])) {
             $order["return_date"] = Carbon::parse($order["settlement_date"])->addMonth(1)->subDay(1);
         } else {
             $order["return_date"] = NULL;
         }
+
+        // 名義人情報更新
+        $formOrderCredit = $this->orderService->getCreditDataForDB($request);
+        $orderCredit = $this->orderCredit->create($formOrderCredit);
+
+        $order['order_credit_id'] = $orderCredit->id;
+        // 受注更新
         $order = $this->order->create($order);
 
         if (!empty($order->settlement_date)) {
-            //　管理者にメール送信
-            Mail::to(env('MAIL_TO', 'rolly-rental@daishin.jp.net'))->queue(new SettlementSentToAdmin($order));
-            if (!empty(env('MAIL_TO_2', ''))) {
-                Mail::to(env('MAIL_TO_2', 'rolly-rental@daishin.jp.net'))->queue(new SettlementSentToAdmin($order));
-            }
-            // ユーザーにメール送信
-            Mail::to($order->user->email)->queue(new SettlementSentToUser($order));
+//            //　管理者にメール送信
+//            Mail::to(env('MAIL_TO', 'rolly-rental@daishin.jp.net'))->queue(new SettlementSentToAdmin($order));
+//            if (!empty(env('MAIL_TO_2', ''))) {
+//                Mail::to(env('MAIL_TO_2', 'rolly-rental@daishin.jp.net'))->queue(new SettlementSentToAdmin($order));
+//            }
+//            // ユーザーにメール送信
+//            Mail::to($order->user->email)->queue(new SettlementSentToUser($order));
         }
 
         return redirect()->route('admin.orders.index')->with('success', '受注情報を登録しました。');
@@ -171,7 +183,6 @@ class OrderController extends Controller
      */
     public function update($id, Request $request)
     {
-
         $validator = Validator::make($request->input('user'), $this->getRules(), $this->getMessages());
 
         if ($validator->fails()) {
@@ -200,14 +211,20 @@ class OrderController extends Controller
         }
         $order->update($update_order);
 
+        // 名義人情報更新
+        $orderCredit = $this->orderCredit->findOrFail($request->input('order_credit')['id']);
+        $formOrderCredit = $this->orderService->getCreditDataForDB($request);
+        $orderCredit->update($formOrderCredit);
+
+
         if (!empty($order->settlement_date) && (empty($old_settlement_date) || !Carbon::parse($old_settlement_date)->isSameDay(Carbon::parse($order->settlement_date)))) {
             //　管理者にメール送信
-            Mail::to(env('MAIL_TO', 'rolly-rental@daishin.jp.netp'))->queue(new SettlementSentToAdmin($order));
-            if (!empty(env('MAIL_TO_2', ''))) {
-                Mail::to(env('MAIL_TO_2', 'rolly-rental@daishin.jp.net'))->queue(new SettlementSentToAdmin($order));
-            }
-            // ユーザーにメール送信
-            Mail::to($order->user->email)->queue(new SettlementSentToUser($order));
+//            Mail::to(env('MAIL_TO', 'rolly-rental@daishin.jp.netp'))->queue(new SettlementSentToAdmin($order));
+//            if (!empty(env('MAIL_TO_2', ''))) {
+//                Mail::to(env('MAIL_TO_2', 'rolly-rental@daishin.jp.net'))->queue(new SettlementSentToAdmin($order));
+//            }
+//            // ユーザーにメール送信
+//            Mail::to($order->user->email)->queue(new SettlementSentToUser($order));
         }
 
         return redirect()->route('admin.orders.index')->with('success', '受注情報を更新しました。');
