@@ -10,8 +10,8 @@
         .w45 {
             width: 45% !important;
         }
-        .w10 {
-            width: 10% !important;
+        .w25 {
+            width: 25% !important;
         }
         .line35 {
             line-height: 35px;
@@ -124,8 +124,8 @@
                         </dd>
                         <dt>住所</dt>
                         <dd class="line35">
-                            郵便番号: <input type="text" name="order_credit[zip01]" class="w10" id="zip0"> -
-                                        <input type="text" name="order_credit[zip02]" class="w10" id="zip1"><br>
+                            郵便番号: <input type="text" name="order_credit[zip01]" class="w25" id="zip0"> -
+                                        <input type="text" name="order_credit[zip02]" class="w25" id="zip1"><br>
                             都道府県:
                             <select name="order_credit[pref_id]" id="address1">
                                 <option value=""></option>
@@ -138,9 +138,9 @@
                         </dd>
                         <dt>電話番号<br>（申込者と同じは不可）</dt>
                         <dd>
-                            <input type="text" name="order_credit[tel01]" class="w10"> -
-                            <input type="text" name="order_credit[tel02]" class="w10"> -
-                            <input type="text" name="order_credit[tel03]" class="w10">
+                            <input type="text" name="order_credit[tel01]" class="w25"> -
+                            <input type="text" name="order_credit[tel02]" class="w25"> -
+                            <input type="text" name="order_credit[tel03]" class="w25">
                         </dd>
                         <dt>申込者のと関係</dt>
                         <dd>
