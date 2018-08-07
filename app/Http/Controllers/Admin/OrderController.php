@@ -209,12 +209,19 @@ class OrderController extends Controller
         } else {
             $update_order["return_date"] = NULL;
         }
-        $order->update($update_order);
 
         // 名義人情報更新
-        $orderCredit = $this->orderCredit->findOrFail($request->input('order_credit')['id']);
         $formOrderCredit = $this->orderService->getCreditDataForDB($request);
-        $orderCredit->update($formOrderCredit);
+
+        if (empty($request->input('order_credit')['id'])) {
+            $orderCredit = $this->orderCredit->create($formOrderCredit);
+            $order['order_credit_id'] = $orderCredit->id;
+        } else {
+            $orderCredit = $this->orderCredit->findOrFail($request->input('order_credit')['id']);
+            $orderCredit->update($formOrderCredit);
+        }
+
+        $order->update($update_order);
 
 
         if (!empty($order->settlement_date) && (empty($old_settlement_date) || !Carbon::parse($old_settlement_date)->isSameDay(Carbon::parse($order->settlement_date)))) {

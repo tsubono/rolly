@@ -274,7 +274,7 @@
             <!-- クレジットカード名義者情報ヘッダー -->
             <div class="box-header">
                 <h3 class="box-title">クレジットカード名義者情報</h3>
-                <input type="hidden" name="order_credit[id]" value="{{ $order->order_credit->id }}">
+                <input type="hidden" name="order_credit[id]" value="{{ !empty($order->order_credit)?$order->order_credit->id:'' }}">
             </div>
             <!-- /クレジットカード名義者情報ヘッダー -->
             <!-- クレジットカード名義者情報ボディ -->
@@ -286,7 +286,7 @@
                         </label>
                         <div class="col-md-6">
                             <input type="text" id="order_credit-name" name="order_credit[name]" class="form-control"
-                                   value="{{ old('order_credit.name', $order->order_credit->name) }}">
+                                   value="{{ old('order_credit.name', !empty($order->order_credit)?$order->order_credit->name:'') }}">
                         </div>
                     </div>
                     <div class="form-group {{ ($errors->has('order_credit_zip01')||$errors->has('order_credit_zip02')) ? 'has-error' : '' }}">
@@ -326,7 +326,7 @@
                             <select id="order_credit-pref_id" name="order_credit[pref_id]" class="form-control">
                                 <option value=""></option>
                                 @foreach(config('pref') as $key => $name)
-                                    <option value="{{ $key }}" {{ old('order_credit.pref_id', $order->order_credit->pref_id) == $key ? "selected" : "" }}>{{ $name }}</option>
+                                    <option value="{{ $key }}" {{ old('order_credit.pref_id', (!empty($order->order_credit)?$order->order_credit->pref_id:'')) == $key ? "selected" : "" }}>{{ $name }}</option>
                                 @endforeach
                             </select>
                         </div>
@@ -336,7 +336,7 @@
                         </label>
                         <div class="col-md-8">
                             <input type="text" id="order_credit-address1" name="order_credit[address1]"
-                                   value="{{ old('order_credit.address1', $order->order_credit->address1) }}"
+                                   value="{{ old('order_credit.address1', !empty($order->order_credit)?$order->order_credit->address1:'') }}"
                                    class="form-control" placeholder="市区町村"/>
                         </div>
                     </div>
@@ -345,7 +345,7 @@
                         </label>
                         <div class="col-md-8">
                             <input type="text" id="order_credit-address2" name="order_credit[address2]"
-                                   value="{{ old('order_credit.address2', $order->order_credit->address2) }}"
+                                   value="{{ old('order_credit.address2', !empty($order->order_credit)?$order->order_credit->address2:'') }}"
                                    class="form-control"
                                    placeholder="番地・ビル名"/>
                         </div>
@@ -372,7 +372,7 @@
                         <div class="col-md-6">
                             <input type="text" id="order_credit-relationship" name="order_credit[relationship]"
                                    class="form-control"
-                                   value="{{ old('order_credit.relationship', $order->order_credit->relationship) }}">
+                                   value="{{ old('order_credit.relationship', !empty($order->order_credit)?$order->order_credit->relationship:'') }}">
                         </div>
                     </div>
                     <div class="form-group">
@@ -641,11 +641,11 @@
                 showRemove: true,
                 removeLabel: '',
                 removeClass: 'btn btn-danger',
-                @if (!empty(old('order_credit.doc_1', $order->order_credit->doc_1)))
-                initialPreview: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_1', $order->order_credit->doc_1)) }}",
+                @if (!empty(old('order_credit.doc_1', !empty($order->order_credit)?$order->order_credit->doc_1:'')))
+                initialPreview: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_1', !empty($order->order_credit)?$order->order_credit->doc_1:'')) }}",
                 initialPreviewAsData: true,
                 overwriteInitial : true,
-                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_1', $order->order_credit->doc_1)) }}"
+                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_1', !empty($order->order_credit)?$order->order_credit->doc_1:'')) }}"
                 @endif
             });
             $("[name='order_credit[doc_1]']").on('filecleared', function(event) {
@@ -661,11 +661,11 @@
                 showRemove: true,
                 removeLabel: '',
                 removeClass: 'btn btn-danger',
-                @if (!empty(old('order_credit.doc_2', $order->order_credit->doc_2)))
-                initialPreview: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_2', $order->order_credit->doc_2)) }}",
+                @if (!empty(old('order_credit.doc_2', !empty($order->order_credit)?$order->order_credit->doc_2:'')))
+                initialPreview: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_2', !empty($order->order_credit)?$order->order_credit->doc_2:'')) }}",
                 initialPreviewAsData: true,
                 overwriteInitial : true,
-                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_2', $order->order_credit->doc_2)) }}"
+                initialPreviewDownloadUrl: "{{ asset(env('PUBLIC', ''). old('order_credit.doc_2', !empty($order->order_credit)?$order->order_credit->doc_2:'')) }}"
                 @endif
             });
             $("[name='order_credit[doc_2]']").on('filecleared', function(event) {
