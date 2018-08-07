@@ -16,6 +16,14 @@
         .line35 {
             line-height: 35px;
         }
+        @media screen and (min-width:0px) and (max-width:767px) {
+            dt {
+                width: 40% !important;
+            }
+            dd {
+                width: 60% !important;
+            }
+        }
     </style>
     <div class="order">
         <section class="mainimg">
