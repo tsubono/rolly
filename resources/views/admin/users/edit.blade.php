@@ -247,7 +247,7 @@
                             生年月日
                         </label>
                         <div class="col-md-6">
-                            <input type="text" id="user-birthday" name="user[birthday]" value="{{ old('user.birthday', $user->birthday) }}" class="form-control" placeholder=""/>
+                            <input type="text" id="user-birthday" name="user[birthday]" value="{{ old('user.birthday', !empty($user->birthday)?$user->birthday->format('Y-m-d'):'') }}" class="form-control" placeholder=""/>
                             @if ($errors->has('birthday'))
                                 @foreach ($errors->get('birthday') as $error)
                                     <div class="text-danger">{{ $error }}</div>
