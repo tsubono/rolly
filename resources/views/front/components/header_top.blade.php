@@ -44,7 +44,7 @@
 </div>
 <div class="scroll">
     <p class="txt">
-        <span>時計レンタルのROLLY（ローリー）サービス開始！新規会員募集中！！</span>
+        <span>17日から20日迄臨時休業とさせていただきます。問い合わせ・発送・決済については、翌21日より順次ご対応させていただきます。</span>
     </p>
 </div>
 <nav class="globalnav">
