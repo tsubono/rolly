@@ -35,25 +35,25 @@
 
                     <!-- ジョブタイプ -->
                     <!-- AUTH:仮売上 CAPTURE:仮実同時売上 -->
-                    {{--<input type="hidden" name="jb" value="AUTH">--}}
-                    <input type="hidden" name="jb" value="CAPTURE">
+                    <input type="hidden" name="jb" value="AUTH">
+                {{--<input type="hidden" name="jb" value="CAPTURE">--}}
                     <!-- /ジョブタイプ -->
 
                     <!-- 商品コード -->
                     <input type="hidden" name="iid" value="">
                     <!-- /商品コード -->
 
-                    <!-- 自動課金周期 -->
-                    <input type="hidden" name="actp" value="4">
-                    <!-- /自動課金周期 -->
+                    {{--<!-- 自動課金周期 -->--}}
+                    {{--<input type="hidden" name="actp" value="4">--}}
+                    {{--<!-- /自動課金周期 -->--}}
 
-                    <!-- 自動課金金額 -->
-                    <input type="hidden" name="acam" value="{{ $price }}">
-                    <!-- /自動課金金額 -->
+                    {{--<!-- 自動課金金額 -->--}}
+                    {{--<input type="hidden" name="acam" value="{{ $price }}">--}}
+                    {{--<!-- /自動課金金額 -->--}}
 
-                    <!-- 自動課金税額 -->
-                    <input type="hidden" name="actx" value="{{ $price * 0.08 }}">
-                    <!-- /自動課金税額 -->
+                    {{--<!-- 自動課金税額 -->--}}
+                    {{--<input type="hidden" name="actx" value="{{ $price * 0.08 }}">--}}
+                    {{--<!-- /自動課金税額 -->--}}
 
                     <input class="payment__btn" type="submit" name="submit" value="決済へ進む">
                 </form>
