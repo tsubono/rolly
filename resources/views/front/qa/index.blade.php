@@ -76,7 +76,7 @@
                                 <p>利用するのに年齢制限はある？</p>
                             </div>
                             <div class="answer cf"> <img src="../img/qa/answer_07.png">
-                                <p>18歳未満の方はご利用いただけません。</p>
+                                <p>未成年の方はご利用いただけません。</p>
                             </div>
                             <div class="question cf"> <img src="../img/qa/question_08.png">
                                 <p>自宅以外の住所で会員登録できる？</p>
