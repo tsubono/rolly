@@ -52,7 +52,8 @@
                                     大阪市中央区南久宝寺町2丁目2番5号YOLO-BLD 3階<br>
                                     電話番号：06-6265-8878<br>
                                     FAX番号：06-6265-8879<br>
-                                    お問い合わせメールアドレス：<a href="mailto:rolly-rental@daishin.jp.net">rolly-rental@daishin.jp.net</a>
+                                    お問い合わせメールアドレス：<a href="mailto:rolly-rental@daishin.jp.net">rolly-rental@daishin.jp.net</a><br>
+                                    お電話には対応しかねる場合がございます。お返事まで数日かかる場合がございます。
                                 </td>
                             </tr>
                             </tbody>

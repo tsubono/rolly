@@ -44,7 +44,7 @@
 </div>
 <div class="scroll">
     <p class="txt">
-        <span>時計レンタルのROLLY（ローリー）サービス開始！新規会員募集中！！</span>
+        <span>時計レンタルのROLLY（ローリー）サービス開始！新規会員募集中！！ ※2018.8.31　利用規約を改訂いたしました。</span>
     </p>
 </div>
 <nav class="globalnav">
