@@ -158,6 +158,14 @@
                                     なお、「紛失」「盗難」などの場合、同等物の購入をお客様にご負担して頂く事となります。
                                 </p>
                             </div>
+                            <div class="question cf"> <img src="../img/qa/question_18.png">
+                                <p>問い合わせがしたい場合は？</p>
+                            </div>
+                            <div class="answer cf"> <img src="../img/qa/answer_18.png">
+                                <p>お問い合わせはこちらへお願い致します。 <a href="mailto:rolly-rental@daishin.jp.net">rolly-rental@daishin.jp.net</a><br>
+                                    お返事まで数日かかる場合がございますので予めご了承ください。
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </section>
