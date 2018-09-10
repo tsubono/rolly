@@ -55,7 +55,7 @@
                     {{--<input type="hidden" name="actx" value="{{ $price * 0.08 }}">--}}
                     {{--<!-- /自動課金税額 -->--}}
 
-                    <input class="payment__btn" type="submit" name="submit" value="決済へ進む">
+                    <button class="payment__btn" type="submit" name="submit">決済はこちらから<br>↓↓↓↓↓</button>
                 </form>
                 <p class="payment__attention">クレジットカード決済には、株式会社ROBOT PAYMENTの決済代行サービスを使用しています。決済情報はSSLで暗号化され、安全性を確保しております。</p>
             </div>
